@@ -60,14 +60,15 @@ export default function AboutUs() {
                 </p>
 
                 <p>
-                  Life doesn't follow store timings. Students studying late,
-                  professionals heading home after midnight, families in service
-                  apartments, parents needing baby supplies, or pet owners with
-                  emergencies — people deserve quick, reliable access anytime.
+                  Life doesn&apos;t follow store timings. Students studying
+                  late, professionals heading home after midnight, families in
+                  service apartments, parents needing baby supplies, or pet
+                  owners with emergencies — people deserve quick, reliable
+                  access anytime.
                 </p>
 
                 <p>
-                  That's why we created{" "}
+                  That&apos;s why we created{" "}
                   <span className="font-semibold text-primary">Frovo</span>:{" "}
                   <span className="font-semibold">
                     AI-powered vending machines + a simple app

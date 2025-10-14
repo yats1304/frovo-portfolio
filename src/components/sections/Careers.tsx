@@ -31,7 +31,7 @@ export default function Careers() {
             Join the Future of Retail
           </h2>
           <p className="text-sm text-muted-foreground">
-            We're building something amazing- come grow with us!
+            We&apos;re building something amazing- come grow with us!
           </p>
         </motion.div>
 
@@ -85,7 +85,7 @@ export default function Careers() {
           className="text-center"
         >
           <p className="text-sm text-muted-foreground mb-3">
-            Don't see the right role? Send us your resume anyway!
+            Don&apos;t see the right role? Send us your resume anyway!
           </p>
           <Button
             size="sm"

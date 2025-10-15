@@ -1,11 +1,6 @@
-import { IconType } from "react-icons";
-import {
-  FaFacebook,
-  FaTwitter,
-  FaInstagram,
-  FaLinkedin,
-  FaYoutube,
-} from "react-icons/fa";
+import { LucideIcon } from "lucide-react";
+import { Facebook, Twitter, Instagram, Linkedin, Youtube } from "lucide-react";
+
 
 // Quick Links
 export interface FooterLink {
@@ -26,14 +21,14 @@ export const FOOTER_LINKS: FooterLink[] = [
 // Social Links
 export interface SocialLink {
   name: string;
-  icon: IconType;
+  icon: LucideIcon;
   href: string;
 }
 
 export const SOCIAL_LINKS: SocialLink[] = [
-  { name: "Facebook", icon: FaFacebook, href: "#" },
-  { name: "Twitter", icon: FaTwitter, href: "#" },
-  { name: "Instagram", icon: FaInstagram, href: "#" },
-  { name: "LinkedIn", icon: FaLinkedin, href: "#" },
-  { name: "YouTube", icon: FaYoutube, href: "#" },
+  { name: "Facebook", icon: Facebook, href: "#" },
+  { name: "Twitter", icon: Twitter, href: "#" },
+  { name: "Instagram", icon: Instagram, href: "#" },
+  { name: "LinkedIn", icon: Linkedin, href: "#" },
+  { name: "YouTube", icon: Youtube, href: "#" },
 ];

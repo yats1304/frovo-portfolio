@@ -224,7 +224,7 @@ export default function HeroDesktop() {
                       fill
                       className="object-cover"
                       priority={currentIndex === 0}
-                      sizes="35vw"
+                      sizes="1200px"
                     />
                   </motion.div>
                 </AnimatePresence>

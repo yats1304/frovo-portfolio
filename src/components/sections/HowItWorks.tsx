@@ -9,7 +9,7 @@ export default function HowItWorks() {
   return (
     <section
       id="how-it-works"
-      className="relative py-16 md:py-18 overflow-hidden"
+      className="relative py-16 md:py-18 overflow-hidden  min-h-[1333px] md:min-h-[885px]"
     >
       {/* Background matching Hero */}
       <div className="absolute inset-0 bg-gradient-to-b from-gray-50 via-white to-primary/5 -z-10" />

@@ -269,11 +269,11 @@ export default function NavbarMobile() {
 
         /* Closing animations */
         [data-radix-dialog-overlay][data-state="closed"] {
-          animation: overlayFadeOut 0.2s ease-in !important;
+          animation: overlayFadeOut 0.3s ease-in !important;
         }
 
         [data-radix-sheet-content][data-state="closed"] {
-          animation: menuFadeOut 0.2s ease-in !important;
+          animation: menuFadeOut 0.3s ease-in !important;
         }
 
         /* Fade in animations */

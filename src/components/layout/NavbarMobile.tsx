@@ -5,7 +5,15 @@ import Link from "next/link";
 import Image from "next/image";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import {
+  Sheet,
+  SheetContent,
+  SheetTrigger,
+  SheetHeader,
+  SheetTitle,
+  SheetDescription,
+} from "@/components/ui/sheet";
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import { NAV_ITEMS, NAV_SECTIONS } from "@/constants/navigation";
 
 export default function NavbarMobile() {
@@ -113,13 +121,24 @@ export default function NavbarMobile() {
 
             <SheetContent
               side="right"
-              className="w-[320px] sm:w-[380px] p-0 border-l border-gray-200 bg-white flex flex-col [&>button]:hidden"
+              className="w-[320px] sm:w-[380px] p-0 border-l border-gray-200 bg-white flex flex-col [&>button]:hidden will-change-transform"
             >
-              {/* Header */}
+              {/* Accessibility Headers - Hidden but present for screen readers */}
+              <VisuallyHidden>
+                <SheetHeader>
+                  <SheetTitle>Navigation Menu</SheetTitle>
+                  <SheetDescription>
+                    Browse Frovo&apos;s main navigation links, discover our
+                    vending solutions, and access contact information.
+                  </SheetDescription>
+                </SheetHeader>
+              </VisuallyHidden>
+
+              {/* Visible Header */}
               <div className="relative bg-gradient-to-br from-primary via-blue-600 to-primary p-5 pb-6 flex-shrink-0">
                 <button
                   onClick={() => setIsOpen(false)}
-                  className="absolute top-3 right-3 w-9 h-9 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center transition-all"
+                  className="absolute top-3 right-3 w-9 h-9 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center"
                   aria-label="Close menu"
                   type="button"
                 >
@@ -137,7 +156,10 @@ export default function NavbarMobile() {
               </div>
 
               {/* Navigation Links */}
-              <nav className="flex-1 overflow-y-auto px-4 py-4 space-y-1.5 bg-white">
+              <nav
+                className="flex-1 overflow-y-auto px-4 py-4 space-y-1.5 bg-white"
+                aria-label="Main navigation"
+              >
                 {NAV_ITEMS.map((item) => (
                   <Link
                     key={item.name}
@@ -146,23 +168,24 @@ export default function NavbarMobile() {
                       handleNavClick(e, item.href);
                       setIsOpen(false);
                     }}
-                    className={`group px-3.5 py-3 rounded-lg border transition-all duration-200 flex items-center justify-between ${
+                    className={`group px-3.5 py-3 rounded-lg border flex items-center justify-between ${
                       isActive(item.href)
                         ? "bg-primary/10 border-primary/30"
-                        : "bg-gray-50 border-gray-200 hover:bg-primary/5 active:bg-primary/10"
+                        : "bg-gray-50 border-gray-200 active:bg-primary/10"
                     }`}
+                    aria-current={isActive(item.href) ? "page" : undefined}
                   >
                     <span
                       className={`text-sm font-medium ${
                         isActive(item.href)
                           ? "text-primary font-semibold"
-                          : "text-gray-900 group-hover:text-primary"
+                          : "text-gray-900"
                       }`}
                     >
                       {item.name}
                     </span>
                     <svg
-                      className={`w-4 h-4 transition-transform group-hover:translate-x-0.5 ${
+                      className={`w-4 h-4 ${
                         isActive(item.href) ? "text-primary" : "text-gray-400"
                       }`}
                       fill="none"
@@ -171,6 +194,7 @@ export default function NavbarMobile() {
                       strokeWidth="2"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
+                      aria-hidden="true"
                     >
                       <path d="M9 5l7 7-7 7" />
                     </svg>
@@ -179,12 +203,15 @@ export default function NavbarMobile() {
               </nav>
 
               {/* Divider */}
-              <div className="h-px bg-gray-200 mx-5 flex-shrink-0" />
+              <div
+                className="h-px bg-gray-200 mx-5 flex-shrink-0"
+                role="separator"
+              />
 
               {/* CTA Buttons */}
               <div className="p-5 space-y-2.5 flex-shrink-0 bg-white">
                 <Button
-                  className="w-full h-11 text-sm font-semibold bg-gradient-to-r from-primary to-blue-600 hover:from-primary/90 hover:to-blue-700 shadow-md"
+                  className="w-full h-11 text-sm font-semibold bg-gradient-to-r from-primary to-blue-600 shadow-md"
                   asChild
                 >
                   <Link
@@ -200,7 +227,7 @@ export default function NavbarMobile() {
 
                 <Button
                   variant="outline"
-                  className="w-full h-11 text-sm font-semibold border-2 border-primary hover:bg-primary hover:text-white"
+                  className="w-full h-11 text-sm font-semibold border-2 border-primary"
                   asChild
                 >
                   <Link
@@ -225,6 +252,86 @@ export default function NavbarMobile() {
           </Sheet>
         </nav>
       </header>
+
+      <style jsx global>{`
+        /* Override default Radix animations completely */
+        [data-radix-dialog-overlay] {
+          animation: overlayFadeIn 0.25s ease-out !important;
+        }
+
+        [data-radix-sheet-content] {
+          /* Cancel default slide */
+          animation: menuFadeIn 0.3s ease-out !important;
+          /* Keep it in place - no sliding */
+          transform: translateX(0) !important;
+          right: 0 !important;
+        }
+
+        /* Closing animations */
+        [data-radix-dialog-overlay][data-state="closed"] {
+          animation: overlayFadeOut 0.2s ease-in !important;
+        }
+
+        [data-radix-sheet-content][data-state="closed"] {
+          animation: menuFadeOut 0.2s ease-in !important;
+        }
+
+        /* Fade in animations */
+        @keyframes overlayFadeIn {
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
+        }
+
+        @keyframes menuFadeIn {
+          from {
+            opacity: 0;
+            transform: translateX(0) scale(0.98);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0) scale(1);
+          }
+        }
+
+        /* Fade out animations */
+        @keyframes overlayFadeOut {
+          from {
+            opacity: 1;
+          }
+          to {
+            opacity: 0;
+          }
+        }
+
+        @keyframes menuFadeOut {
+          from {
+            opacity: 1;
+            transform: translateX(0) scale(1);
+          }
+          to {
+            opacity: 0;
+            transform: translateX(0) scale(0.98);
+          }
+        }
+
+        /* Mobile optimizations */
+        @media (max-width: 768px) {
+          * {
+            -webkit-tap-highlight-color: transparent;
+          }
+
+          [data-radix-sheet-content] {
+            /* Force position - prevent sliding */
+            position: fixed !important;
+            right: 0 !important;
+            transform: none !important;
+          }
+        }
+      `}</style>
     </>
   );
 }

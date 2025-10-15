@@ -190,46 +190,48 @@ export default function HeroDesktop() {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="relative flex items-center justify-center"
           >
-            <div className="relative w-full aspect-[2/3] max-w-[380px] group">
-              <motion.div
-                animate={{
-                  scale: [1, 1.1, 1],
-                  opacity: [0.3, 0.5, 0.3],
-                }}
-                transition={{
-                  duration: 4,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-                className="absolute inset-0 bg-gradient-to-br from-primary/30 to-secondary/30 rounded-3xl blur-3xl"
-              />
+            <div className="relative w-full max-w-[380px] group">
+              <div className="relative w-full h-[570px]">
+                {" "}
+                <motion.div
+                  animate={{
+                    scale: [1, 1.1, 1],
+                    opacity: [0.3, 0.5, 0.3],
+                  }}
+                  transition={{
+                    duration: 4,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                  className="absolute inset-0 bg-gradient-to-br from-primary/30 to-secondary/30 rounded-3xl blur-3xl"
+                />
+                {/* SLIDESHOW CONTAINER */}
+                <div className="relative w-full h-full rounded-3xl overflow-hidden shadow-2xl border-4 border-white/10 group-hover:border-primary/20 transition-all duration-500">
+                  <AnimatePresence mode="wait">
+                    <motion.div
+                      key={currentIndex}
+                      initial={{ x: "100%" }}
+                      animate={{ x: 0 }}
+                      exit={{ x: "-100%" }}
+                      transition={{
+                        duration: 0.5,
+                        ease: [0.43, 0.13, 0.23, 0.96],
+                      }}
+                      className="absolute inset-0"
+                    >
+                      <Image
+                        src={currentImage.src}
+                        alt={currentImage.alt}
+                        fill
+                        className="object-cover"
+                        priority={currentIndex === 0}
+                        sizes="380px"
+                      />
+                    </motion.div>
+                  </AnimatePresence>
 
-              {/* SLIDESHOW CONTAINER */}
-              <div className="relative w-full h-full rounded-3xl overflow-hidden shadow-2xl border-4 border-white/10 group-hover:border-primary/20 transition-all duration-500">
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={currentIndex}
-                    initial={{ x: "100%" }}
-                    animate={{ x: 0 }}
-                    exit={{ x: "-100%" }}
-                    transition={{
-                      duration: 0.5,
-                      ease: [0.43, 0.13, 0.23, 0.96],
-                    }}
-                    className="absolute inset-0"
-                  >
-                    <Image
-                      src={currentImage.src}
-                      alt={currentImage.alt}
-                      fill
-                      className="object-cover"
-                      priority={currentIndex === 0}
-                      sizes="1200px"
-                    />
-                  </motion.div>
-                </AnimatePresence>
-
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                </div>
               </div>
 
               {/* Live Ads Card */}

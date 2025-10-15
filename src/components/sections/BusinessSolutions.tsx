@@ -27,7 +27,7 @@ export default function BusinessSolutions() {
   return (
     <section
       id="business-solutions"
-      className="relative py-8 md:py-6 overflow-hidden"
+      className="relative py-8 md:py-6 overflow-hidden min-h-[800px] md:min-h-[600px]"
     >
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-gray-50 via-white to-primary/5 -z-10" />

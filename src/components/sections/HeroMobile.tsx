@@ -65,46 +65,49 @@ export default function HeroMobile() {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="relative mt-8"
           >
-            <div className="relative w-full aspect-[2/3] max-w-xs mx-auto sm:max-w-sm group">
-              <motion.div
-                animate={{
-                  scale: [1, 1.1, 1],
-                  opacity: [0.3, 0.5, 0.3],
-                }}
-                transition={{
-                  duration: 4,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-                className="absolute inset-0 bg-gradient-to-br from-primary/30 to-secondary/30 rounded-3xl blur-3xl"
-              />
+            <div className="relative w-full max-w-xs mx-auto sm:max-w-sm group">
+              {/* ✅ FIXED: Explicit heights for mobile/desktop */}
+              <div className="relative w-full h-[450px] sm:h-[525px]">
+                <motion.div
+                  animate={{
+                    scale: [1, 1.1, 1],
+                    opacity: [0.3, 0.5, 0.3],
+                  }}
+                  transition={{
+                    duration: 4,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                  className="absolute inset-0 bg-gradient-to-br from-primary/30 to-secondary/30 rounded-3xl blur-3xl"
+                />
 
-              {/* SLIDESHOW CONTAINER - SYNCED */}
-              <div className="relative w-full h-full rounded-3xl overflow-hidden shadow-2xl border-4 border-white/10 group-hover:border-primary/20 transition-all duration-500">
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={currentIndex}
-                    initial={{ x: "100%" }}
-                    animate={{ x: 0 }}
-                    exit={{ x: "-100%" }}
-                    transition={{
-                      duration: 0.5,
-                      ease: [0.43, 0.13, 0.23, 0.96],
-                    }}
-                    className="absolute inset-0"
-                  >
-                    <Image
-                      src={currentImage.src}
-                      alt={currentImage.alt}
-                      fill
-                      className="object-cover"
-                      priority={currentIndex === 0}
-                      sizes="80vw"
-                    />
-                  </motion.div>
-                </AnimatePresence>
+                {/* SLIDESHOW CONTAINER - SYNCED */}
+                <div className="relative w-full h-full rounded-3xl overflow-hidden shadow-2xl border-4 border-white/10 group-hover:border-primary/20 transition-all duration-500">
+                  <AnimatePresence mode="wait">
+                    <motion.div
+                      key={currentIndex}
+                      initial={{ x: "100%" }}
+                      animate={{ x: 0 }}
+                      exit={{ x: "-100%" }}
+                      transition={{
+                        duration: 0.5,
+                        ease: [0.43, 0.13, 0.23, 0.96],
+                      }}
+                      className="absolute inset-0"
+                    >
+                      <Image
+                        src={currentImage.src}
+                        alt={currentImage.alt}
+                        fill
+                        className="object-cover"
+                        priority={currentIndex === 0}
+                        sizes="(max-width: 640px) 300px, 350px"
+                      />
+                    </motion.div>
+                  </AnimatePresence>
 
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                </div>
               </div>
 
               {/* Live Ads Card - SYNCED */}

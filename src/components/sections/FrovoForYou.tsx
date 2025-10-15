@@ -8,7 +8,10 @@ import { USER_TYPES } from "@/constants/frovoForYou";
 
 export default function FrovoForYou() {
   return (
-    <section id="for-you" className="relative py-12 md:py-4 overflow-hidden">
+    <section
+      id="for-you"
+      className="relative py-12 md:py-4 overflow-hidden min-h-[800px] md:min-h-[600px]"
+    >
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-white to-gray-50 -z-10" />
 

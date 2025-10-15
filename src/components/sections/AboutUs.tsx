@@ -6,7 +6,10 @@ import { Sparkles, Target } from "lucide-react";
 
 export default function AboutUs() {
   return (
-    <section id="about-us" className="relative py-8 md:py-10 overflow-hidden">
+    <section
+      id="about-us"
+      className="relative py-8 md:py-10 overflow-hidden min-h-[800px] md:min-h-[600px]"
+    >
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-white via-primary/5 to-gray-50 -z-10" />
 

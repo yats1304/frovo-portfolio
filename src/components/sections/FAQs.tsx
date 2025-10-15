@@ -13,7 +13,10 @@ export default function FAQs() {
   };
 
   return (
-    <section id="faqs" className="relative py-10 overflow-hidden">
+    <section
+      id="faqs"
+      className="relative py-10 overflow-hidden min-h-[800px] md:min-h-[600px]"
+    >
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-white via-gray-50 to-white -z-10" />
 

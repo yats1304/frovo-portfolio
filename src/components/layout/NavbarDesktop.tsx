@@ -73,7 +73,7 @@ export default function NavbarDesktop() {
 
   return (
     <header className="fixed top-0 w-full bg-white/95 backdrop-blur-md shadow-md z-50 border-b border-white/20 hidden lg:block">
-      <nav className="max-w-[1400px] mx-auto px-4 sm:px-6 md:px-10 lg:px-16 xl:px-20 py-4 flex justify-between items-center">
+      <nav className="max-w-[1400px] mx-auto px-4 sm:px-6 md:px-10 lg:px-16 xl:px-20 h-18 flex justify-between items-center">
         <Link
           href="/"
           className="flex items-center hover:opacity-80 transition-opacity"

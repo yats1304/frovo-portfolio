@@ -11,7 +11,7 @@ export default function Franchise() {
   return (
     <section
       id="franchise"
-      className="relative py-8 md:py-6 overflow-hidden min-h-[800px] md:min-h-[600px]"
+      className="relative py-8 md:py-6 overflow-hidden min-h-[800px] md:min-h-[700px]"
     >
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-white via-primary/5 to-blue-50 -z-10" />

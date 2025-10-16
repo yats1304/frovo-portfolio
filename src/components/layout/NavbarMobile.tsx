@@ -123,7 +123,6 @@ export default function NavbarMobile() {
               side="right"
               className="w-[320px] sm:w-[380px] p-0 border-l border-gray-200 bg-white flex flex-col [&>button]:hidden will-change-transform"
             >
-              {/* Accessibility Headers - Hidden but present for screen readers */}
               <VisuallyHidden>
                 <SheetHeader>
                   <SheetTitle>Navigation Menu</SheetTitle>
@@ -134,7 +133,6 @@ export default function NavbarMobile() {
                 </SheetHeader>
               </VisuallyHidden>
 
-              {/* Visible Header */}
               <div className="relative bg-gradient-to-br from-primary via-blue-600 to-primary p-5 pb-6 flex-shrink-0">
                 <button
                   onClick={() => setIsOpen(false)}
@@ -260,9 +258,7 @@ export default function NavbarMobile() {
         }
 
         [data-radix-sheet-content] {
-          /* Cancel default slide */
           animation: menuFadeIn 0.3s ease-out !important;
-          /* Keep it in place - no sliding */
           transform: translateX(0) !important;
           right: 0 !important;
         }

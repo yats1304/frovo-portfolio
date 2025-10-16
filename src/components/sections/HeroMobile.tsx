@@ -58,7 +58,7 @@ export default function HeroMobile() {
 
       <div className="container max-w-[1400px] mx-auto px-4 sm:px-6">
         <div className="space-y-8 min-h-[calc(100vh-160px)] flex flex-col justify-center">
-          {/* Right Column First on Mobile - Vending Machine Slideshow */}
+          {/* Vending Machine Slideshow */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
@@ -81,7 +81,7 @@ export default function HeroMobile() {
                   className="absolute inset-0 bg-gradient-to-br from-primary/30 to-secondary/30 rounded-3xl blur-3xl"
                 />
 
-                {/* SLIDESHOW CONTAINER - SYNCED */}
+                {/* SLIDESHOW CONTAINER  */}
                 <div className="relative w-full h-full rounded-3xl overflow-hidden shadow-2xl border-4 border-white/10 group-hover:border-primary/20 transition-all duration-500">
                   <AnimatePresence mode="wait">
                     <motion.div
@@ -110,7 +110,7 @@ export default function HeroMobile() {
                 </div>
               </div>
 
-              {/* Live Ads Card - SYNCED */}
+              {/* Live Ads Card */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}

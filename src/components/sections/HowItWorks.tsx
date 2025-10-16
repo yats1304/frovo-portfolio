@@ -58,7 +58,6 @@ export default function HowItWorks() {
 
         {/* Steps Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 relative">
-          {/* Connection Line - Curved Path */}
           <svg
             className="hidden lg:block absolute top-24 left-0 w-full h-1 pointer-events-none"
             style={{ zIndex: 0 }}
@@ -141,7 +140,7 @@ export default function HowItWorks() {
           transition={{ duration: 0.6, delay: 0.6 }}
           className="mt-12 md:mt-16"
         >
-          {/* Glassmorphism Banner like Hero's Sub-Banner */}
+          {/* Glassmorphism Banner */}
           <div className="relative bg-gradient-to-r from-primary/10 via-primary/5 to-secondary/10 rounded-2xl p-6 md:p-8 border border-primary/20 overflow-hidden group hover:shadow-lg transition-all duration-300 max-w-4xl mx-auto">
             {/* Animated shine effect */}
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />

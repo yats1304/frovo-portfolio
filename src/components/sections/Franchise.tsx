@@ -129,11 +129,10 @@ export default function Franchise() {
                 className="absolute inset-0 bg-gradient-to-br from-primary/30 to-blue-600/30 rounded-2xl blur-3xl"
               />
 
-              {/* Image Container with Enhanced Styling */}
               <div className="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white/30 group-hover:border-primary/40 transition-all duration-500 group-hover:shadow-primary/20">
                 <div className="aspect-[4/5] relative bg-gradient-to-br from-gray-100 to-gray-200">
                   <Image
-                    src="/images/owner_with_machine.jpg"
+                    src="/images/owner_with_machine.webp"
                     alt="Franchise Owner with Vending Machine"
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-700"

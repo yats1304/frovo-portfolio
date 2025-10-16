@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { MapPin, Mail, Phone } from "lucide-react";
 import { FOOTER_LINKS, SOCIAL_LINKS } from "@/constants/footer";
-import { Button } from "@/components/ui/button";
 
 export default function Footer() {
   return (

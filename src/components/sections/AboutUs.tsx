@@ -81,7 +81,7 @@ export default function AboutUs() {
               </div>
             </motion.div>
 
-            {/* Mission - Highlighted Box */}
+            {/* Mission */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -89,10 +89,8 @@ export default function AboutUs() {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="relative bg-gradient-to-br from-primary via-blue-600 to-primary rounded-2xl p-7 shadow-2xl overflow-hidden group"
             >
-              {/* Animated shine effect */}
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
 
-              {/* Radial gradient overlay */}
               <div className="absolute inset-0 opacity-20">
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.8),transparent_70%)]" />
               </div>
@@ -121,7 +119,6 @@ export default function AboutUs() {
             className="relative"
           >
             <div className="relative max-w-md mx-auto group">
-              {/* Animated Glow Effect */}
               <motion.div
                 animate={{
                   scale: [1, 1.05, 1],

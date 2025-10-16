@@ -67,7 +67,6 @@ export default function BusinessSolutions() {
             transition={{ duration: 0.5 }}
             className="space-y-5"
           >
-            {/* Perfect For Section */}
             <div>
               <h3 className="text-lg font-bold mb-3 flex items-center gap-2">
                 Perfect for:
@@ -161,7 +160,6 @@ export default function BusinessSolutions() {
             className="relative"
           >
             <div className="relative max-w-[420px] mx-auto">
-              {/* Animated Glow Effect */}
               <motion.div
                 animate={{
                   scale: [1, 1.05, 1],

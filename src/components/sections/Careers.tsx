@@ -49,17 +49,14 @@ export default function Careers() {
               transition={{ duration: 0.4, delay: index * 0.05 }}
               className="bg-white/60 backdrop-blur-sm rounded-xl p-5 border border-white/20 shadow-lg hover:shadow-xl transition-all duration-300 group"
             >
-              {/* Department Badge */}
               <div className="inline-block px-2.5 py-0.5 rounded-full bg-primary/10 text-primary text-xs font-semibold mb-3">
                 {role.department}
               </div>
 
-              {/* Role Name */}
               <h3 className="text-lg font-bold mb-2 group-hover:text-primary transition-colors">
                 {role.role}
               </h3>
 
-              {/* Description */}
               <p className="text-xs text-muted-foreground leading-relaxed mb-4">
                 {role.description}
               </p>

@@ -15,9 +15,9 @@ export default function Footer() {
       </div>
 
       <div className="relative container max-w-[1400px] mx-auto px-4 sm:px-6 md:px-10 lg:px-16 xl:px-20 pt-16 md:pt-20 pb-8">
-        {/* Footer Content Grid - Fixed with proper column widths */}
+        {/* Footer Content Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 md:gap-8 mb-12">
-          {/* Brand Column - Takes 3 columns on desktop */}
+          {/* Brand Column */}
           <div className="lg:col-span-3">
             <Link href="/" className="inline-block mb-4 group">
               <span className="text-3xl font-bold font-poppins bg-gradient-to-r from-primary via-blue-600 to-primary bg-clip-text text-transparent group-hover:scale-105 transition-transform inline-block">
@@ -52,7 +52,7 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Quick Links Column - Takes 2 columns */}
+          {/* Quick Links Column */}
           <div className="lg:col-span-2">
             <h3 className="text-base font-bold mb-5 text-foreground relative inline-block">
               Quick Links
@@ -74,7 +74,7 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* More Column - Takes 2 columns */}
+          {/* More Column */}
           <div className="lg:col-span-2">
             <h3 className="text-base font-bold mb-5 text-foreground relative inline-block">
               More
@@ -96,7 +96,7 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Contact Column - Takes 3 columns */}
+          {/* Contact Column */}
           <div className="lg:col-span-3">
             <h3 className="text-base font-bold mb-5 text-foreground relative inline-block">
               Get in Touch
@@ -128,7 +128,7 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Download App Column - Production Ready */}
+          {/* Download App Column */}
           <div className="lg:col-span-12 xl:col-span-2 xl:col-start-11">
             <h3 className="text-base font-bold mb-5 text-foreground relative inline-block">
               Download App
@@ -140,7 +140,7 @@ export default function Footer() {
             </p>
 
             <div className="flex flex-row xl:flex-col gap-3">
-              {/* Google Play Button - Official 4-Color Triangle */}
+              {/* Google Play Button */}
               <a
                 href="/"
                 target="_blank"
@@ -148,41 +148,34 @@ export default function Footer() {
                 className="flex-1 xl:w-full group"
               >
                 <div className="relative flex items-center gap-3 h-12 px-4 bg-black hover:bg-gray-900 rounded-lg transition-all duration-300 hover:scale-[1.02] hover:shadow-xl cursor-pointer overflow-hidden">
-                  {/* Shine effect */}
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000"></div>
 
-                  {/* Official Google Play Triangle Icon */}
                   <svg
                     className="w-7 h-7 flex-shrink-0 relative z-10"
                     viewBox="0 0 48 48"
                     fill="none"
                   >
-                    {/* Blue (Cyan) - Left Side */}
                     <path
                       d="M9.93 2.4C9.2 2.75 8.8 3.7 8.8 5.1V42.9C8.8 44.3 9.2 45.25 9.93 45.6L10.15 45.75L29.8 26.1V25.85V25.6L10.15 5.95L9.93 2.4Z"
                       fill="#00D6FF"
                     />
 
-                    {/* Green - Top Right */}
                     <path
                       d="M36.35 32.65L29.8 26.1V25.85V25.6L36.4 19.05L36.65 19.2L44.55 23.65C46.8 25 46.8 27.35 44.55 28.7L36.65 33.15L36.35 32.65Z"
                       fill="#00E676"
                     />
 
-                    {/* Yellow - Bottom Right Corner */}
                     <path
                       d="M36.65 33.15L29.8 26.1L10.15 45.75C10.85 46.45 12.05 46.55 13.45 45.75L36.65 33.15Z"
                       fill="#FFD600"
                     />
 
-                    {/* Red (Pink) - Bottom Triangle */}
                     <path
                       d="M36.65 19.2L13.45 6.6C12.05 5.8 10.85 5.9 10.15 6.6L29.8 26.1L36.65 19.2Z"
                       fill="#FF3D00"
                     />
                   </svg>
 
-                  {/* Text */}
                   <div className="flex flex-col items-start relative z-10">
                     <span className="text-[9px] text-gray-300 leading-none uppercase tracking-wide">
                       GET IT ON
@@ -194,7 +187,7 @@ export default function Footer() {
                 </div>
               </a>
 
-              {/* App Store Button - White Icon */}
+              {/* App Store Button */}
               <a
                 href="/"
                 target="_blank"

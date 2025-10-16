@@ -54,17 +54,17 @@ export interface BusinessImage {
 
 export const BUSINESS_IMAGES: BusinessImage[] = [
   {
-    src: "/images/office_image.png",
+    src: "/images/office_image.webp",
     alt: "Frovo machine in office",
     label: "Offices",
   },
   {
-    src: "/images/gym_image.png",
+    src: "/images/gym_image.webp",
     alt: "Frovo machine in gym",
     label: "Gyms",
   },
   {
-    src: "/images/campus_image.png",
+    src: "/images/campus_image.webp",
     alt: "Frovo machine in campus",
     label: "Campus",
   },

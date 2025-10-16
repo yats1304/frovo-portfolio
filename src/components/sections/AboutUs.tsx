@@ -112,7 +112,7 @@ export default function AboutUs() {
             </motion.div>
           </div>
 
-          {/* Right Side - Ecosystem Image (Smaller, Full Visible) */}
+          {/* Right Side */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -139,7 +139,7 @@ export default function AboutUs() {
               <div className="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white/30 group-hover:border-primary/40 transition-all duration-500 bg-white">
                 <div className="aspect-square relative">
                   <Image
-                    src="/images/ecosystem.png"
+                    src="/images/ecosystem.webp"
                     alt="Frovo 24/7 Vending Ecosystem - Daily Essentials Anytime Anywhere"
                     fill
                     className="object-contain group-hover:scale-105 transition-transform duration-700"

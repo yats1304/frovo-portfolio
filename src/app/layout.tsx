@@ -39,8 +39,38 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        {/* Preload hero images for faster LCP */}
+
+        <link
+          rel="preload"
+          as="image"
+          href="/images/vending-machine-hero.webp"
+          fetchPriority="high"
+          type="image/webp"
+        />
+        <link
+          rel="preload"
+          as="image"
+          href="/images/user_using_machine.webp"
+          fetchPriority="high"
+          type="image/webp"
+        />
+        <link
+          rel="preload"
+          as="image"
+          href="/images/machine_with_user.webp"
+          type="image/webp"
+        />
+        <link
+          rel="preload"
+          as="image"
+          href="/images/user_collecting_item.webp"
+          type="image/webp"
+        />
+      </head>
       <body
-        className={`${inter.variable} ${poppins.variable}`}
+        className={`${inter.variable} ${poppins.variable} font-inter antialiased`}
         suppressHydrationWarning
       >
         <Navbar />

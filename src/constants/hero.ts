@@ -8,19 +8,19 @@ export interface HeroImage {
 
 export const HERO_IMAGES: HeroImage[] = [
   {
-    src: "/images/vending-machine-hero.jpg",
+    src: "/images/vending-machine-hero.webp",
     alt: "Frovo Smart Vending Machine",
   },
   {
-    src: "/images/user_using_machine.png",
+    src: "/images/user_using_machine.webp",
     alt: "User Using Frovo Machine",
   },
   {
-    src: "/images/machine_with_user.png",
+    src: "/images/machine_with_user.webp",
     alt: "Frovo Machine with User",
   },
   {
-    src: "/images/user_collecting_item.png",
+    src: "/images/user_collecting_item.webp",
     alt: "User Collecting Item from Frovo",
   },
 ];

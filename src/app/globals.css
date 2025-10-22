@@ -121,7 +121,7 @@
   }
 }
 
-/* Optimize backdrop blur performance */
+/* backdrop blur */
 .backdrop-blur-sm,
 .backdrop-blur-md {
   will-change: transform;
@@ -134,14 +134,46 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Float animation for greeting particles */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0) translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-100vh) translateX(20px);
+  }
+  90% {
+    opacity: 1;
+  }
+}
+
+.animate-float {
+  animation: float linear infinite;
+}
+
+/* Respect user's motion preferences */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
 
-  * {
+  *,
+  *::before,
+  *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* Disable float animation for reduced motion */
+  .animate-float {
+    animation: none !important;
+    opacity: 0.3 !important;
   }
 }

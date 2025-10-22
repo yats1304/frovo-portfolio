@@ -141,7 +141,7 @@ export default function Contact() {
               </span>
             </h2>
             <p className="text-sm text-muted-foreground">
-              Let&apos;gis build the future of shopping together.
+              Let&apos;s build the future of shopping together.
             </p>
           </motion.div>
 

@@ -97,7 +97,7 @@ export default function Careers() {
               className="flex items-center gap-2"
             >
               <Mail className="w-4 h-4" />
-              careers@frovo.in
+              join@frovo.in
             </a>
           </Button>
         </motion.div>

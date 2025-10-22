@@ -100,9 +100,9 @@ export default function NavbarMobile() {
             <Image
               src="/images/temp_logo.png"
               alt="Frovo Logo"
-              width={80}
-              height={28}
-              className="object-contain h-7"
+              width={120}
+              height={60}
+              className="object-contain h-10"
               priority
             />
           </Link>

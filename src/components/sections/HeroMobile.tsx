@@ -5,14 +5,9 @@ import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Smartphone } from "lucide-react";
+import { Smartphone, MapPin, Download } from "lucide-react";
 import { useState, useEffect } from "react";
-import {
-  HERO_ADS,
-  QUICK_HIGHLIGHTS,
-  HERO_STATS,
-  HERO_IMAGES,
-} from "@/constants/hero";
+import { HERO_ADS, HERO_IMAGES } from "@/constants/hero";
 
 export default function HeroMobile() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -27,14 +22,13 @@ export default function HeroMobile() {
     return () => clearInterval(interval);
   }, []);
 
-  // Get current items (with fallback if arrays have different lengths)
   const currentAd = HERO_ADS[currentIndex % HERO_ADS.length];
   const currentImage = HERO_IMAGES[currentIndex % HERO_IMAGES.length];
 
   return (
     <section className="relative min-h-screen pt-20 pb-12 overflow-hidden">
       {/* Background Gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-white via-primary/5 to-secondary/10 -z-10" />
+      <div className="absolute inset-0 bg-gradient-to-br from-white via-orange-50/30 to-yellow-50/30 -z-10" />
 
       {/* Floating Shapes Animation */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10">
@@ -44,7 +38,7 @@ export default function HeroMobile() {
             x: [0, 10, 0],
           }}
           transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-20 left-10 w-32 h-32 bg-primary/10 rounded-full blur-3xl"
+          className="absolute top-20 left-10 w-32 h-32 bg-[#FF6B2B]/10 rounded-full blur-3xl"
         />
         <motion.div
           animate={{
@@ -52,7 +46,7 @@ export default function HeroMobile() {
             x: [0, -10, 0],
           }}
           transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute bottom-20 right-20 w-40 h-40 bg-secondary/10 rounded-full blur-3xl"
+          className="absolute bottom-20 right-20 w-40 h-40 bg-yellow-400/10 rounded-full blur-3xl"
         />
       </div>
 
@@ -66,8 +60,8 @@ export default function HeroMobile() {
             className="relative mt-8"
           >
             <div className="relative w-full max-w-xs mx-auto sm:max-w-sm group">
-              {/* ✅ FIXED: Explicit heights for mobile/desktop */}
               <div className="relative w-full h-[450px] sm:h-[525px]">
+                {/* Glow Effect */}
                 <motion.div
                   animate={{
                     scale: [1, 1.1, 1],
@@ -78,11 +72,20 @@ export default function HeroMobile() {
                     repeat: Infinity,
                     ease: "easeInOut",
                   }}
-                  className="absolute inset-0 bg-gradient-to-br from-primary/30 to-secondary/30 rounded-3xl blur-3xl"
+                  className="absolute inset-0 rounded-3xl blur-3xl"
+                  style={{
+                    background:
+                      "linear-gradient(135deg, rgba(255, 107, 43, 0.3) 0%, rgba(255, 215, 0, 0.3) 100%)",
+                  }}
                 />
 
-                {/* SLIDESHOW CONTAINER  */}
-                <div className="relative w-full h-full rounded-3xl overflow-hidden shadow-2xl border-4 border-white/10 group-hover:border-primary/20 transition-all duration-500">
+                {/* Slideshow Container */}
+                <div
+                  className="relative w-full h-full rounded-3xl overflow-hidden shadow-2xl border-4 transition-all duration-500"
+                  style={{
+                    borderColor: "rgba(255, 107, 43, 0.1)",
+                  }}
+                >
                   <AnimatePresence mode="wait">
                     <motion.div
                       key={currentIndex}
@@ -110,15 +113,21 @@ export default function HeroMobile() {
                 </div>
               </div>
 
-              {/* Live Ads Card */}
+              {/* Live Ads Card  */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.6, duration: 0.6 }}
                 whileHover={{ scale: 1.05, y: -5 }}
-                className="absolute -bottom-3 -right-4 sm:-right-6 bg-white rounded-xl shadow-2xl p-2.5 sm:p-3 w-[160px] sm:w-[180px] h-[125px] sm:h-[140px] border-2 border-primary/10 hover:border-primary/30 overflow-hidden flex flex-col cursor-pointer transition-all duration-300"
+                className="absolute -bottom-3 -right-4 sm:-right-6 bg-white rounded-xl shadow-2xl p-2.5 sm:p-3 w-[160px] sm:w-[180px] h-[125px] sm:h-[140px] border-2 border-gray-100 overflow-hidden flex flex-col cursor-pointer transition-all duration-300"
               >
-                <Badge className="mb-1 text-xs bg-secondary text-secondary-foreground w-fit flex-shrink-0">
+                <Badge
+                  className="mb-1 text-xs w-fit flex-shrink-0"
+                  style={{
+                    backgroundColor: "#FFF5F0",
+                    color: "#FF6B2B",
+                  }}
+                >
                   Live Ads
                 </Badge>
 
@@ -153,11 +162,17 @@ export default function HeroMobile() {
                   {HERO_ADS.map((_, index) => (
                     <div
                       key={index}
-                      className={`h-1 rounded-full transition-all duration-300 ${
-                        index === currentIndex % HERO_ADS.length
-                          ? "w-3 sm:w-4 bg-primary"
-                          : "w-1 bg-gray-300"
-                      }`}
+                      className="h-1 rounded-full transition-all duration-300"
+                      style={{
+                        width:
+                          index === currentIndex % HERO_ADS.length
+                            ? "12px"
+                            : "4px",
+                        backgroundColor:
+                          index === currentIndex % HERO_ADS.length
+                            ? "#FF6B2B"
+                            : "#D1D5DB",
+                      }}
                     />
                   ))}
                 </div>
@@ -165,7 +180,7 @@ export default function HeroMobile() {
             </div>
           </motion.div>
 
-          {/* Left Column - Content */}
+          {/* Content Section */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
@@ -175,7 +190,13 @@ export default function HeroMobile() {
             {/* Headline */}
             <div className="space-y-3">
               <h1 className="text-3xl sm:text-4xl font-bold font-poppins leading-[1.15]">
-                <span className="bg-gradient-to-r from-primary via-blue-600 to-primary bg-clip-text text-transparent">
+                <span
+                  className="bg-clip-text text-transparent"
+                  style={{
+                    backgroundImage:
+                      "linear-gradient(135deg, #FF6B2B 0%, #FF8A4C 40%, #FFD700 70%, #9ACD32 100%)",
+                  }}
+                >
                   Life Can&apos;t Wait.
                 </span>
                 <br />
@@ -183,8 +204,8 @@ export default function HeroMobile() {
               </h1>
 
               <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
-                Snacks, drinks, essentials — anytime, anywhere. AI-powered
-                vending machines + the Frovo app.
+                Snacks, drinks & essentials - anytime, anywhere. AI-powered
+                smart vending machines + the Frovo app.
               </p>
             </div>
 
@@ -192,10 +213,14 @@ export default function HeroMobile() {
             <div className="flex flex-col sm:flex-row gap-3">
               <Button
                 size="lg"
-                className="text-sm sm:text-base h-11 sm:h-12 px-5 sm:px-6 font-semibold bg-gradient-to-r from-primary to-blue-600 hover:from-primary/90 hover:to-blue-700 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 group"
+                className="text-sm sm:text-base h-11 sm:h-12 px-5 sm:px-6 font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 group"
+                style={{
+                  background:
+                    "linear-gradient(135deg, #FF6B2B 0%, #FF8A4C 100%)",
+                }}
                 asChild
               >
-                <Link href="/">
+                <Link href="#download-app">
                   <Smartphone className="mr-2 h-4 w-4 group-hover:animate-pulse" />
                   Download the App
                   <span className="ml-2 group-hover:translate-x-1 transition-transform">
@@ -204,87 +229,123 @@ export default function HeroMobile() {
                 </Link>
               </Button>
 
+              {/* Partner Button  */}
               <Button
                 size="lg"
                 variant="outline"
-                className="text-sm sm:text-base h-11 sm:h-12 px-5 sm:px-6 font-semibold border-2 border-primary hover:bg-primary hover:text-white transition-all duration-300 hover:scale-105 group relative overflow-hidden"
+                className="text-sm sm:text-base h-11 sm:h-12 px-5 sm:px-6 font-semibold border-2 transition-all duration-300 hover:scale-105 group relative overflow-hidden"
+                style={{
+                  borderColor: "#FF6B2B",
+                  color: "#FF6B2B",
+                }}
                 asChild
               >
-                <Link href="#franchise">
-                  <span className="relative z-10">Partner With Frovo</span>
-                  <span className="absolute inset-0 bg-gradient-to-r from-primary/0 via-primary/5 to-primary/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
+                <Link href="#business-solutions" className="relative z-10">
+                  <span
+                    className="absolute inset-0 -z-10 transition-transform duration-300 ease-out scale-x-0 group-hover:scale-x-100 origin-left"
+                    style={{
+                      background:
+                        "linear-gradient(135deg, #FFD700 0%, #9ACD32 100%)",
+                    }}
+                  />
+                  <span className="relative z-10 transition-colors duration-300 group-hover:text-white">
+                    Partner With Frovo
+                  </span>
                 </Link>
               </Button>
             </div>
 
-            {/* Quick Highlights */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4">
-              {QUICK_HIGHLIGHTS.map((highlight, index) => (
-                <motion.div
-                  key={highlight.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.2 + index * 0.1, duration: 0.6 }}
-                  className="flex items-start gap-2.5 p-3 rounded-xl bg-white/60 backdrop-blur-sm border border-white/20 shadow-sm hover:shadow-md hover:scale-105 transition-all duration-300"
-                >
-                  <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center flex-shrink-0 shadow-sm">
-                    <highlight.icon className="w-5 h-5 text-primary drop-shadow-sm" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-sm mb-0.5">
-                      {highlight.title}
-                    </h3>
-                    <p className="text-xs text-muted-foreground">
-                      {highlight.description}
-                    </p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-
-            {/* Stats Section */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.6, duration: 0.6 }}
-              className="grid grid-cols-3 gap-4 py-4"
-            >
-              {HERO_STATS.map((stat) => (
-                <div key={stat.label} className="text-center">
-                  <div className="text-2xl sm:text-3xl font-bold text-primary">
-                    {stat.value}
-                  </div>
-                  <div className="text-xs text-muted-foreground">
-                    {stat.label}
-                  </div>
-                </div>
-              ))}
-            </motion.div>
-
-            {/* Sub-Banner */}
+            {/* Badges */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.7, duration: 0.6 }}
-              className="relative bg-gradient-to-r from-primary/10 via-primary/5 to-secondary/10 rounded-xl p-4 sm:p-5 border border-primary/20 overflow-hidden group hover:shadow-lg transition-all duration-300"
+              transition={{ delay: 0.2, duration: 0.6 }}
+              className="flex flex-wrap items-center gap-3 pt-4"
             >
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+              {/* Location Badge */}
+              <motion.div
+                whileHover={{ scale: 1.05, y: -2 }}
+                className="relative group inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-orange-50 border-2 border-orange-300 hover:border-orange-400 transition-all duration-300 cursor-pointer shadow-sm hover:shadow-md overflow-hidden"
+              >
+                <div className="absolute inset-0 bg-gradient-to-r from-orange-100/50 via-orange-100/30 to-orange-100/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-              <div className="relative flex flex-col sm:flex-row items-center justify-between gap-3">
+                <MapPin
+                  className="relative w-3.5 h-3.5 group-hover:scale-110 transition-transform duration-300"
+                  style={{ color: "#FF6B2B" }}
+                  strokeWidth={2.5}
+                />
+
+                <span
+                  className="relative text-xs sm:text-sm font-bold"
+                  style={{ color: "#FF6B2B" }}
+                >
+                  Now in Bangalore
+                </span>
+
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
+              </motion.div>
+
+              {/* 24/7 Badge */}
+              <motion.div
+                whileHover={{ scale: 1.05, y: -2 }}
+                className="relative group inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-gradient-to-r from-yellow-50 to-lime-50 border-2 border-yellow-300 hover:border-yellow-400 transition-all duration-300 shadow-sm hover:shadow-md overflow-hidden"
+              >
+                <div className="absolute inset-0 bg-gradient-to-r from-yellow-100/50 via-lime-100/50 to-yellow-100/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                <div className="relative flex items-center justify-center">
+                  <div className="w-2 h-2 rounded-full bg-lime-500 animate-pulse" />
+                  <div className="absolute w-3 h-3 rounded-full border-2 border-lime-500 animate-ping opacity-50" />
+                </div>
+
+                <span className="relative text-xs sm:text-sm font-bold text-lime-700">
+                  Open 24/7
+                </span>
+
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
+              </motion.div>
+            </motion.div>
+
+            {/* Download Banner  */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4, duration: 0.6 }}
+              className="relative rounded-xl p-4 sm:p-5 border-2 overflow-hidden group hover:shadow-lg transition-all duration-300"
+              style={{
+                background: "linear-gradient(135deg, #FFF5F0 0%, #FFF9E6 100%)",
+                borderColor: "#FFD7B8",
+              }}
+            >
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-orange-100/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+
+              <div className="relative flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
                 <div>
-                  <p className="font-semibold text-base mb-0.5 flex items-center gap-2">
-                    Your store in your pocket
+                  <p className="font-semibold text-sm sm:text-base mb-1 flex items-center gap-2">
+                    <Smartphone
+                      className="w-4 h-4"
+                      style={{ color: "#FF6B2B" }}
+                    />
+                    <span style={{ color: "#FF6B2B" }}>
+                      Your store in your pocket
+                    </span>
                   </p>
-                  <p className="text-xs text-muted-foreground">
+                  <p className="text-xs sm:text-sm text-muted-foreground">
                     Download the Frovo App
                   </p>
                 </div>
                 <Button
                   size="default"
-                  className="font-semibold whitespace-nowrap text-sm w-full sm:w-auto shadow-md hover:shadow-lg"
+                  className="font-semibold whitespace-nowrap text-xs sm:text-sm w-full sm:w-auto shadow-md hover:shadow-lg group"
+                  style={{
+                    background:
+                      "linear-gradient(135deg, #FF6B2B 0%, #FF8A4C 100%)",
+                  }}
                   asChild
                 >
-                  <Link href="#download-app">Download App Now</Link>
+                  <Link href="#download-app">
+                    <Download className="w-3.5 h-3.5 sm:w-4 sm:h-4 mr-2 group-hover:animate-bounce" />
+                    Download App Now
+                  </Link>
                 </Button>
               </div>
             </motion.div>

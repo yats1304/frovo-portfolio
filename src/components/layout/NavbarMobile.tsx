@@ -68,8 +68,12 @@ export default function NavbarMobile() {
     if (href === "/") {
       e.preventDefault();
       window.scrollTo({ top: 0, behavior: "smooth" });
+      setActiveSection("/");
       setIsOpen(false);
-    } else if (href.startsWith("#")) {
+      return;
+    }
+
+    if (href.startsWith("#")) {
       e.preventDefault();
       const element = document.querySelector(href);
       if (element) {
@@ -91,10 +95,11 @@ export default function NavbarMobile() {
 
   return (
     <>
-      <header className="fixed top-0 w-full bg-white shadow-sm z-50 border-b border-gray-200 lg:hidden">
-        <nav className="max-w-[1400px] mx-auto px-4 sm:px-6 py-3 flex justify-between items-center">
+      <header className="fixed top-0 w-full bg-white/80 backdrop-blur-lg shadow-[0_1px_10px_rgba(255,107,43,0.05)] z-50 border-b border-orange-100 lg:hidden">
+        <nav className="max-w-[1400px] mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
           <Link
             href="/"
+            onClick={(e) => handleNavClick(e, "/")}
             className="flex items-center hover:opacity-80 transition-opacity"
           >
             <Image
@@ -113,15 +118,15 @@ export default function NavbarMobile() {
                 variant="ghost"
                 size="icon"
                 aria-label="Toggle menu"
-                className="h-10 w-10 rounded-lg hover:bg-primary/10 transition-colors"
+                className="h-10 w-10 rounded-lg hover:bg-orange-50 transition-colors"
               >
-                <Menu className="h-6 w-6 text-primary" strokeWidth={2.5} />
+                <Menu className="h-6 w-6 text-orange-600" strokeWidth={2.5} />
               </Button>
             </SheetTrigger>
 
             <SheetContent
               side="right"
-              className="w-[320px] sm:w-[380px] p-0 border-l border-gray-200 bg-white flex flex-col [&>button]:hidden will-change-transform"
+              className="w-[320px] sm:w-[380px] p-0 border-l border-orange-100 bg-white flex flex-col [&>button]:hidden will-change-transform"
             >
               <VisuallyHidden>
                 <SheetHeader>
@@ -133,10 +138,11 @@ export default function NavbarMobile() {
                 </SheetHeader>
               </VisuallyHidden>
 
-              <div className="relative bg-gradient-to-br from-primary via-blue-600 to-primary p-5 pb-6 flex-shrink-0">
+              {/* Header */}
+              <div className="relative bg-gradient-to-br from-orange-500 via-orange-600 to-orange-500 p-5 pb-6 flex-shrink-0">
                 <button
                   onClick={() => setIsOpen(false)}
-                  className="absolute top-3 right-3 w-9 h-9 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center"
+                  className="absolute top-3 right-3 w-9 h-9 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center transition-colors"
                   aria-label="Close menu"
                   type="button"
                 >
@@ -164,27 +170,28 @@ export default function NavbarMobile() {
                     href={item.href}
                     onClick={(e) => {
                       handleNavClick(e, item.href);
-                      setIsOpen(false);
                     }}
-                    className={`group px-3.5 py-3 rounded-lg border flex items-center justify-between ${
+                    className={`group px-3.5 py-3 rounded-lg border flex items-center justify-between transition-all duration-300 ${
                       isActive(item.href)
-                        ? "bg-primary/10 border-primary/30"
-                        : "bg-gray-50 border-gray-200 active:bg-primary/10"
+                        ? "bg-orange-50 border-orange-300"
+                        : "bg-gray-50 border-gray-200 hover:bg-orange-50 hover:border-orange-200"
                     }`}
                     aria-current={isActive(item.href) ? "page" : undefined}
                   >
                     <span
                       className={`text-sm font-medium ${
                         isActive(item.href)
-                          ? "text-primary font-semibold"
+                          ? "text-orange-600 font-semibold"
                           : "text-gray-900"
                       }`}
                     >
                       {item.name}
                     </span>
                     <svg
-                      className={`w-4 h-4 ${
-                        isActive(item.href) ? "text-primary" : "text-gray-400"
+                      className={`w-4 h-4 transition-colors ${
+                        isActive(item.href)
+                          ? "text-orange-600"
+                          : "text-gray-400"
                       }`}
                       fill="none"
                       strokeLinecap="round"
@@ -202,21 +209,20 @@ export default function NavbarMobile() {
 
               {/* Divider */}
               <div
-                className="h-px bg-gray-200 mx-5 flex-shrink-0"
+                className="h-px bg-orange-100 mx-5 flex-shrink-0"
                 role="separator"
               />
 
               {/* CTA Buttons */}
               <div className="p-5 space-y-2.5 flex-shrink-0 bg-white">
                 <Button
-                  className="w-full h-11 text-sm font-semibold bg-gradient-to-r from-primary to-blue-600 shadow-md"
+                  className="w-full h-11 text-sm font-semibold bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 shadow-md"
                   asChild
                 >
                   <Link
                     href="#contact"
                     onClick={(e) => {
                       handleNavClick(e, "#contact");
-                      setIsOpen(false);
                     }}
                   >
                     Contact Us →
@@ -225,14 +231,13 @@ export default function NavbarMobile() {
 
                 <Button
                   variant="outline"
-                  className="w-full h-11 text-sm font-semibold border-2 border-primary"
+                  className="w-full h-11 text-sm font-semibold border-2 border-orange-600 text-orange-600 hover:bg-orange-50"
                   asChild
                 >
                   <Link
                     href="#franchise"
                     onClick={(e) => {
                       handleNavClick(e, "#franchise");
-                      setIsOpen(false);
                     }}
                   >
                     Become a Partner
@@ -241,7 +246,7 @@ export default function NavbarMobile() {
               </div>
 
               {/* Footer */}
-              <div className="bg-gray-50 py-3 border-t border-gray-200 flex-shrink-0">
+              <div className="bg-orange-50/50 py-3 border-t border-orange-100 flex-shrink-0">
                 <p className="text-xs text-gray-500 text-center">
                   &copy; 2025 Frovo. All rights reserved.
                 </p>
@@ -252,7 +257,6 @@ export default function NavbarMobile() {
       </header>
 
       <style jsx global>{`
-        /* Override default Radix animations completely */
         [data-radix-dialog-overlay] {
           animation: overlayFadeIn 0.25s ease-out !important;
         }
@@ -321,7 +325,6 @@ export default function NavbarMobile() {
           }
 
           [data-radix-sheet-content] {
-            /* Force position - prevent sliding */
             position: fixed !important;
             right: 0 !important;
             transform: none !important;

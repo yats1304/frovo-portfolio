@@ -3,36 +3,40 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Menu, X } from "lucide-react";
 import { NAV_ITEMS, NAV_SECTIONS } from "@/constants/navigation";
 
 export default function NavbarDesktop() {
   const [activeSection, setActiveSection] = useState("");
-  const [isOpen, setIsOpen] = useState(false);
 
-  // Active scroll tracker
+  // Active scroll tracker with NAV_SECTIONS
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY + 200;
+
       if (window.scrollY < 100) {
         setActiveSection("/");
         return;
       }
 
-      NAV_ITEMS.forEach((item) => {
-        if (item.href.startsWith("#")) {
-          const element = document.querySelector(item.href);
-          if (element) {
-            const top = element.getBoundingClientRect().top + window.scrollY;
-            const bottom = top + element.clientHeight;
-            if (scrollPosition >= top && scrollPosition < bottom) {
-              setActiveSection(item.href);
-            }
+      for (let i = NAV_SECTIONS.length - 1; i >= 0; i--) {
+        const sectionId = NAV_SECTIONS[i];
+        const element = document.getElementById(sectionId);
+
+        if (element) {
+          const offsetTop = element.offsetTop;
+          const offsetBottom = offsetTop + element.offsetHeight;
+
+          if (scrollPosition >= offsetTop && scrollPosition < offsetBottom) {
+            setActiveSection(`#${sectionId}`);
+            return;
           }
         }
-      });
+      }
     };
+
     window.addEventListener("scroll", handleScroll);
+    handleScroll();
+
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -62,7 +66,7 @@ export default function NavbarDesktop() {
   };
 
   return (
-    <header className="fixed top-0 w-full z-50 bg-gradient-to-r from-[#FFF5F0]/95 via-white/95 to-[#FFFAF7]/95 backdrop-blur-lg border-b border-orange-100 shadow-[0_1px_10px_rgba(255,107,43,0.05)]">
+    <header className="hidden lg:block fixed top-0 w-full z-50 bg-gradient-to-r from-[#FFF5F0]/95 via-white/95 to-[#FFFAF7]/95 backdrop-blur-lg border-b border-orange-100 shadow-[0_1px_10px_rgba(255,107,43,0.05)]">
       <nav className="max-w-[1300px] mx-auto px-6 py-4 flex justify-between items-center">
         {/* Logo */}
         <Link
@@ -80,7 +84,7 @@ export default function NavbarDesktop() {
         </Link>
 
         {/* Desktop Nav */}
-        <ul className="hidden md:flex items-center space-x-6">
+        <ul className="flex items-center space-x-6">
           {NAV_ITEMS.map((item) => (
             <li key={item.name}>
               <Link
@@ -108,56 +112,7 @@ export default function NavbarDesktop() {
             </li>
           ))}
         </ul>
-
-        {/* Mobile menu button */}
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          className="md:hidden transition hover:scale-110"
-          style={{ color: "#FF6B2B" }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.color = "#FF8A4C";
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.color = "#FF6B2B";
-          }}
-        >
-          {isOpen ? <X size={26} /> : <Menu size={26} />}
-        </button>
       </nav>
-
-      {/* Mobile Menu */}
-      {isOpen && (
-        <div
-          className="md:hidden border-t border-orange-100 backdrop-blur-md"
-          style={{
-            background:
-              "linear-gradient(to bottom, rgba(255, 245, 240, 0.98), rgba(255, 250, 247, 0.98))",
-          }}
-        >
-          <ul className="flex flex-col items-start px-6 py-4 space-y-4">
-            {NAV_ITEMS.map((item) => (
-              <li key={item.name}>
-                <Link
-                  href={item.href}
-                  onClick={(e) => {
-                    handleClick(e, item.href);
-                    setIsOpen(false);
-                  }}
-                  className="text-gray-800 text-lg font-medium transition-colors"
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.color = "#FF6B2B";
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.color = "";
-                  }}
-                >
-                  {item.name}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
     </header>
   );
 }

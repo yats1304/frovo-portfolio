@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Mail, Rocket, Sparkles } from "lucide-react";
+import { ArrowRight, Mail, Sparkles } from "lucide-react";
 import { CAREER_ROLES } from "@/constants/careers";
 
 export default function Careers() {

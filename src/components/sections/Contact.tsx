@@ -96,7 +96,7 @@ export default function Contact() {
         message: "",
       });
       setErrors({ name: "", email: "", message: "" });
-    } catch (error) {
+    } catch (_error) {
       toast.error("Failed to send message", {
         description: "Please try again later",
         duration: 3000,

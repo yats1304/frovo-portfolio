@@ -83,17 +83,17 @@ export default function AboutUs() {
 
             <div className="space-y-4 text-sm sm:text-base lg:text-lg leading-relaxed text-foreground">
               <p>
-                The future of retail isn't bigger stores.{" "}
+                The future of retail isn&apos;t bigger stores.{" "}
                 <span className="font-semibold" style={{ color: "#FF6B2B" }}>
-                  It's smarter access.
+                  It&apos;s smarter access.
                 </span>
               </p>
 
               <p>
                 We built Frovo to eliminate the friction between need and
                 fulfillment. No more waiting for stores to open. No more rushing
-                before closing time. No more settling for what's nearby instead
-                of what you actually need.
+                before closing time. No more settling for what&apos;s nearby
+                instead of what you actually need.
               </p>
 
               <p>
@@ -101,7 +101,7 @@ export default function AboutUs() {
                 <span className="font-semibold" style={{ color: "#FF6B2B" }}>
                   AI-powered machines and intelligent inventory management
                 </span>
-                , we're creating a{" "}
+                , we&apos;re creating a{" "}
                 <span className="font-semibold">
                   distributed retail network that operates autonomously, serves
                   continuously, and scales infinitely

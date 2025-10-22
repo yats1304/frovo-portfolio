@@ -62,20 +62,20 @@ export default function NavbarDesktop() {
   };
 
   return (
-    <header className="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-lg border-b border-orange-100 shadow-[0_1px_10px_rgba(255,107,43,0.05)]">
+    <header className="fixed top-0 w-full z-50 bg-gradient-to-r from-[#FFF5F0]/95 via-white/95 to-[#FFFAF7]/95 backdrop-blur-lg border-b border-orange-100 shadow-[0_1px_10px_rgba(255,107,43,0.05)]">
       <nav className="max-w-[1300px] mx-auto px-6 py-4 flex justify-between items-center">
         {/* Logo */}
         <Link
           href="/"
           onClick={(e) => handleClick(e, "/")}
-          className="flex items-center space-x-2"
+          className="flex items-center space-x-2 group"
         >
           <Image
             src="/images/temp_logo.png"
             alt="Frovo Logo"
             width={110}
             height={50}
-            className="h-10 object-contain"
+            className="h-10 object-contain group-hover:scale-105 transition-transform duration-300"
           />
         </Link>
 
@@ -89,14 +89,20 @@ export default function NavbarDesktop() {
                 className={`relative px-2 py-1 text-[15px] font-medium transition-all duration-300 ${
                   activeSection === item.href ||
                   (item.href === "/" && activeSection === "")
-                    ? "text-orange-600"
-                    : "text-gray-700 hover:text-orange-600"
+                    ? "text-[#FF6B2B]"
+                    : "text-gray-700 hover:text-[#FF6B2B]"
                 }`}
               >
                 {item.name}
                 {(activeSection === item.href ||
                   (item.href === "/" && activeSection === "")) && (
-                  <span className="absolute bottom-0 left-0 w-full h-[2px] bg-gradient-to-r from-orange-500 to-lime-500 rounded-full transition-all duration-500" />
+                  <span
+                    className="absolute bottom-0 left-0 w-full h-[2px] rounded-full transition-all duration-500"
+                    style={{
+                      backgroundImage:
+                        "linear-gradient(to right, #FF6B2B, #FFD700)",
+                    }}
+                  />
                 )}
               </Link>
             </li>
@@ -106,7 +112,14 @@ export default function NavbarDesktop() {
         {/* Mobile menu button */}
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="md:hidden text-orange-600 hover:text-orange-700 transition"
+          className="md:hidden transition hover:scale-110"
+          style={{ color: "#FF6B2B" }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.color = "#FF8A4C";
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.color = "#FF6B2B";
+          }}
         >
           {isOpen ? <X size={26} /> : <Menu size={26} />}
         </button>
@@ -114,7 +127,13 @@ export default function NavbarDesktop() {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="md:hidden bg-white border-t border-orange-100 backdrop-blur-md">
+        <div
+          className="md:hidden border-t border-orange-100 backdrop-blur-md"
+          style={{
+            background:
+              "linear-gradient(to bottom, rgba(255, 245, 240, 0.98), rgba(255, 250, 247, 0.98))",
+          }}
+        >
           <ul className="flex flex-col items-start px-6 py-4 space-y-4">
             {NAV_ITEMS.map((item) => (
               <li key={item.name}>
@@ -124,7 +143,13 @@ export default function NavbarDesktop() {
                     handleClick(e, item.href);
                     setIsOpen(false);
                   }}
-                  className="text-gray-800 hover:text-orange-600 text-lg font-medium transition-colors"
+                  className="text-gray-800 text-lg font-medium transition-colors"
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.color = "#FF6B2B";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.color = "";
+                  }}
                 >
                   {item.name}
                 </Link>

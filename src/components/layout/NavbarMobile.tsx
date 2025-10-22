@@ -95,7 +95,13 @@ export default function NavbarMobile() {
 
   return (
     <>
-      <header className="fixed top-0 w-full bg-white/80 backdrop-blur-lg shadow-[0_1px_10px_rgba(255,107,43,0.05)] z-50 border-b border-orange-100 lg:hidden">
+      <header
+        className="fixed top-0 w-full backdrop-blur-lg shadow-[0_1px_10px_rgba(255,107,43,0.05)] z-50 border-b border-orange-100 lg:hidden"
+        style={{
+          background:
+            "linear-gradient(to right, rgba(255, 245, 240, 0.95), rgba(255, 255, 255, 0.95), rgba(255, 250, 247, 0.95))",
+        }}
+      >
         <nav className="max-w-[1400px] mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
           <Link
             href="/"
@@ -120,13 +126,21 @@ export default function NavbarMobile() {
                 aria-label="Toggle menu"
                 className="h-10 w-10 rounded-lg hover:bg-orange-50 transition-colors"
               >
-                <Menu className="h-6 w-6 text-orange-600" strokeWidth={2.5} />
+                <Menu
+                  className="h-6 w-6"
+                  style={{ color: "#FF6B2B" }}
+                  strokeWidth={2.5}
+                />
               </Button>
             </SheetTrigger>
 
             <SheetContent
               side="right"
-              className="w-[320px] sm:w-[380px] p-0 border-l border-orange-100 bg-white flex flex-col [&>button]:hidden will-change-transform"
+              className="w-[320px] sm:w-[380px] p-0 border-l border-orange-100 flex flex-col [&>button]:hidden will-change-transform"
+              style={{
+                background:
+                  "linear-gradient(to bottom, rgba(255, 250, 247, 1), rgba(255, 255, 255, 1))",
+              }}
             >
               <VisuallyHidden>
                 <SheetHeader>
@@ -139,7 +153,13 @@ export default function NavbarMobile() {
               </VisuallyHidden>
 
               {/* Header */}
-              <div className="relative bg-gradient-to-br from-orange-500 via-orange-600 to-orange-500 p-5 pb-6 flex-shrink-0">
+              <div
+                className="relative p-5 pb-6 flex-shrink-0"
+                style={{
+                  background:
+                    "linear-gradient(135deg, #FF6B2B 0%, #FF8A4C 50%, #FFD700 100%)",
+                }}
+              >
                 <button
                   onClick={() => setIsOpen(false)}
                   className="absolute top-3 right-3 w-9 h-9 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center transition-colors"
@@ -161,8 +181,12 @@ export default function NavbarMobile() {
 
               {/* Navigation Links */}
               <nav
-                className="flex-1 overflow-y-auto px-4 py-4 space-y-1.5 bg-white"
+                className="flex-1 overflow-y-auto px-4 py-4 space-y-1.5"
                 aria-label="Main navigation"
+                style={{
+                  background:
+                    "linear-gradient(to bottom, rgba(255, 250, 247, 1), rgba(255, 255, 255, 1))",
+                }}
               >
                 {NAV_ITEMS.map((item) => (
                   <Link
@@ -180,19 +204,21 @@ export default function NavbarMobile() {
                   >
                     <span
                       className={`text-sm font-medium ${
-                        isActive(item.href)
-                          ? "text-orange-600 font-semibold"
-                          : "text-gray-900"
+                        isActive(item.href) ? "font-semibold" : "text-gray-900"
                       }`}
+                      style={{
+                        color: isActive(item.href) ? "#FF6B2B" : undefined,
+                      }}
                     >
                       {item.name}
                     </span>
                     <svg
                       className={`w-4 h-4 transition-colors ${
-                        isActive(item.href)
-                          ? "text-orange-600"
-                          : "text-gray-400"
+                        isActive(item.href) ? "" : "text-gray-400"
                       }`}
+                      style={{
+                        color: isActive(item.href) ? "#FF6B2B" : undefined,
+                      }}
                       fill="none"
                       strokeLinecap="round"
                       strokeLinejoin="round"
@@ -214,9 +240,19 @@ export default function NavbarMobile() {
               />
 
               {/* CTA Buttons */}
-              <div className="p-5 space-y-2.5 flex-shrink-0 bg-white">
+              <div
+                className="p-5 space-y-2.5 flex-shrink-0"
+                style={{
+                  background:
+                    "linear-gradient(to bottom, rgba(255, 255, 255, 1), rgba(255, 250, 247, 1))",
+                }}
+              >
                 <Button
-                  className="w-full h-11 text-sm font-semibold bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 shadow-md"
+                  className="w-full h-11 text-sm font-semibold shadow-md"
+                  style={{
+                    background:
+                      "linear-gradient(135deg, #FF6B2B 0%, #FF8A4C 100%)",
+                  }}
                   asChild
                 >
                   <Link
@@ -231,7 +267,11 @@ export default function NavbarMobile() {
 
                 <Button
                   variant="outline"
-                  className="w-full h-11 text-sm font-semibold border-2 border-orange-600 text-orange-600 hover:bg-orange-50"
+                  className="w-full h-11 text-sm font-semibold border-2 hover:bg-orange-50"
+                  style={{
+                    borderColor: "#FF6B2B",
+                    color: "#FF6B2B",
+                  }}
                   asChild
                 >
                   <Link
@@ -246,7 +286,13 @@ export default function NavbarMobile() {
               </div>
 
               {/* Footer */}
-              <div className="bg-orange-50/50 py-3 border-t border-orange-100 flex-shrink-0">
+              <div
+                className="py-3 border-t border-orange-100 flex-shrink-0"
+                style={{
+                  background:
+                    "linear-gradient(to bottom, rgba(255, 250, 247, 0.5), rgba(255, 245, 240, 0.5))",
+                }}
+              >
                 <p className="text-xs text-gray-500 text-center">
                   &copy; 2025 Frovo. All rights reserved.
                 </p>

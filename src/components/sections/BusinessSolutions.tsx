@@ -5,11 +5,10 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
+import { Sparkles } from "lucide-react";
 import {
   BUSINESS_LOCATIONS,
-  BUSINESS_MODELS,
   BUSINESS_IMAGES,
-  BUSINESS_SPECIAL_NOTE,
 } from "@/constants/businessSolutions";
 
 export default function BusinessSolutions() {
@@ -29,17 +28,31 @@ export default function BusinessSolutions() {
       id="business-solutions"
       className="relative py-8 md:py-6 overflow-hidden min-h-[800px] md:min-h-[700px]"
     >
-      {/* Background */}
+      {/* Background  */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#FFEDE5] via-white to-[#FFF8F3] -z-10" />
 
       {/* Floating Shapes */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10">
-        <div className="floating-shape-1 absolute top-20 left-10 w-56 h-56 bg-secondary/10 rounded-full blur-3xl" />
-        <div className="floating-shape-2 absolute bottom-20 right-20 w-64 h-64 bg-primary/10 rounded-full blur-3xl" />
+        <motion.div
+          animate={{
+            y: [0, 30, 0],
+            x: [0, -20, 0],
+          }}
+          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-20 left-10 w-56 h-56 bg-yellow-400/10 rounded-full blur-3xl"
+        />
+        <motion.div
+          animate={{
+            y: [0, -30, 0],
+            x: [0, 20, 0],
+          }}
+          transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute bottom-20 right-20 w-64 h-64 bg-[#FF6B2B]/10 rounded-full blur-3xl"
+        />
       </div>
 
       <div className="container max-w-[1400px] mx-auto px-4 sm:px-6 md:px-10 lg:px-16 xl:px-20">
-        {/* Section Title */}
+        {/* Section Title  */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -48,7 +61,13 @@ export default function BusinessSolutions() {
           className="text-center mb-8"
         >
           <h2 className="text-3xl sm:text-4xl font-bold font-poppins mb-2">
-            <span className="bg-gradient-to-r from-primary via-blue-600 to-primary bg-clip-text text-transparent">
+            <span
+              className="bg-clip-text text-transparent"
+              style={{
+                backgroundImage:
+                  "linear-gradient(135deg, #FF6B2B 0%, #FF8A4C 40%, #FFD700 70%, #9ACD32 100%)",
+              }}
+            >
               Frovo
             </span>{" "}
             for Businesses
@@ -59,7 +78,7 @@ export default function BusinessSolutions() {
         </motion.div>
 
         <div className="grid lg:grid-cols-2 gap-6 lg:gap-8 items-center">
-          {/* Left Column - Content */}
+          {/* Left Column */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -67,6 +86,7 @@ export default function BusinessSolutions() {
             transition={{ duration: 0.5 }}
             className="space-y-5"
           >
+            {/* Perfect For Section */}
             <div>
               <h3 className="text-lg font-bold mb-3 flex items-center gap-2">
                 Perfect for:
@@ -79,10 +99,19 @@ export default function BusinessSolutions() {
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.4, delay: index * 0.05 }}
-                    className="flex items-center gap-2 bg-white/60 backdrop-blur-sm rounded-lg p-2.5 border border-white/20 shadow-sm hover:shadow-md hover:scale-105 transition-all duration-300"
+                    className="flex items-center gap-2 bg-white/60 backdrop-blur-sm rounded-lg p-2.5 border border-orange-100/50 shadow-sm hover:shadow-md hover:scale-105 transition-all duration-300"
                   >
-                    <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center flex-shrink-0">
-                      <location.icon className="w-4 h-4 text-primary" />
+                    <div
+                      className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0"
+                      style={{
+                        background:
+                          "linear-gradient(135deg, rgba(255, 107, 43, 0.2) 0%, rgba(255, 215, 0, 0.15) 100%)",
+                      }}
+                    >
+                      <location.icon
+                        className="w-4 h-4"
+                        style={{ color: "#FF6B2B" }}
+                      />
                     </div>
                     <span className="text-xs font-medium">{location.name}</span>
                   </motion.div>
@@ -90,56 +119,45 @@ export default function BusinessSolutions() {
               </div>
             </div>
 
-            {/* Models Section */}
-            <div>
-              <h3 className="text-lg font-bold mb-3">Models:</h3>
-              <div className="space-y-2.5">
-                {BUSINESS_MODELS.map((model, index) => (
-                  <motion.div
-                    key={model.title}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.4, delay: index * 0.1 }}
-                    className="bg-white/60 backdrop-blur-sm rounded-lg p-3.5 border border-white/20 shadow-sm hover:shadow-md transition-all duration-300"
-                  >
-                    <div className="flex items-start gap-3">
-                      <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center flex-shrink-0">
-                        <model.icon className="w-5 h-5 text-primary" />
-                      </div>
-                      <div>
-                        <h4 className="font-bold text-sm mb-0.5">
-                          {model.title}
-                        </h4>
-                        <p className="text-xs text-muted-foreground">
-                          {model.description}
-                        </p>
-                      </div>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-
-            {/* Special Note */}
+            {/* Tagline */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.3 }}
-              className="relative bg-gradient-to-r from-primary/10 via-primary/5 to-secondary/10 rounded-lg p-3.5 border border-primary/20 overflow-hidden group hover:shadow-lg transition-all duration-300"
+              className="relative rounded-lg p-4 border-2 overflow-hidden group hover:shadow-lg transition-all duration-300"
+              style={{
+                background:
+                  "linear-gradient(135deg, rgba(255, 245, 240, 0.8) 0%, rgba(255, 249, 230, 0.8) 100%)",
+                borderColor: "rgba(255, 107, 43, 0.2)",
+              }}
             >
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
 
-              <p className="relative text-xs sm:text-sm font-semibold">
-                &quot;{BUSINESS_SPECIAL_NOTE}&quot;
+              <p className="relative text-base sm:text-lg font-bold text-center flex items-center justify-center gap-2">
+                <Sparkles
+                  className="w-5 h-5 flex-shrink-0"
+                  style={{ color: "#FF6B2B" }}
+                />
+                <span
+                  style={{
+                    backgroundImage:
+                      "linear-gradient(135deg, #FF6B2B 0%, #FF8A4C 100%)",
+                  }}
+                  className="bg-clip-text text-transparent"
+                >
+                  Your community + Frovo = instant 24/7 smart retail.
+                </span>
               </p>
             </motion.div>
 
             {/* CTA Button */}
             <Button
               size="default"
-              className="w-full sm:w-auto text-sm h-10 px-6 font-semibold bg-gradient-to-r from-primary to-blue-600 hover:from-primary/90 hover:to-blue-700 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 group"
+              className="w-full sm:w-auto text-sm h-10 px-6 font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 group"
+              style={{
+                background: "linear-gradient(135deg, #FF6B2B 0%, #FF8A4C 100%)",
+              }}
               asChild
             >
               <Link href="/">
@@ -151,7 +169,7 @@ export default function BusinessSolutions() {
             </Button>
           </motion.div>
 
-          {/* Right Column - Image Slideshow */}
+          {/* Right Column */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -160,6 +178,7 @@ export default function BusinessSolutions() {
             className="relative"
           >
             <div className="relative max-w-[420px] mx-auto">
+              {/* Animated Orange Glow */}
               <motion.div
                 animate={{
                   scale: [1, 1.05, 1],
@@ -170,11 +189,15 @@ export default function BusinessSolutions() {
                   repeat: Infinity,
                   ease: "easeInOut",
                 }}
-                className="absolute inset-0 bg-gradient-to-br from-primary/30 to-blue-600/30 rounded-2xl blur-3xl"
+                className="absolute inset-0 rounded-2xl blur-3xl"
+                style={{
+                  background:
+                    "linear-gradient(135deg, rgba(255, 107, 43, 0.3) 0%, rgba(255, 215, 0, 0.2) 100%)",
+                }}
               />
 
               {/* Image Container */}
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white/30 hover:border-primary/40 transition-all duration-500">
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white/30 hover:border-[#FF6B2B]/40 transition-all duration-500">
                 <div className="aspect-[4/5] relative bg-gradient-to-br from-gray-100 to-gray-200">
                   <AnimatePresence mode="wait">
                     <motion.div

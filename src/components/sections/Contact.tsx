@@ -121,8 +121,22 @@ export default function Contact() {
 
         {/* Floating Shapes */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10">
-          <div className="floating-shape-1 absolute top-20 left-10 w-56 h-56 bg-primary/10 rounded-full blur-3xl" />
-          <div className="floating-shape-2 absolute bottom-20 right-20 w-64 h-64 bg-secondary/10 rounded-full blur-3xl" />
+          <motion.div
+            animate={{
+              y: [0, 30, 0],
+              x: [0, -20, 0],
+            }}
+            transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute top-20 left-10 w-56 h-56 bg-[#FF6B2B]/10 rounded-full blur-3xl"
+          />
+          <motion.div
+            animate={{
+              y: [0, -30, 0],
+              x: [0, 20, 0],
+            }}
+            transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute bottom-20 right-20 w-64 h-64 bg-yellow-400/10 rounded-full blur-3xl"
+          />
         </div>
 
         <div className="container max-w-[1200px] mx-auto px-4 sm:px-6 md:px-10">
@@ -136,7 +150,13 @@ export default function Contact() {
           >
             <h2 className="text-3xl sm:text-4xl font-bold font-poppins mb-2">
               Get in{" "}
-              <span className="bg-gradient-to-r from-primary via-blue-600 to-primary bg-clip-text text-transparent">
+              <span
+                className="bg-clip-text text-transparent"
+                style={{
+                  backgroundImage:
+                    "linear-gradient(135deg, #FF6B2B 0%, #FF8A4C 40%, #FFD700 70%, #9ACD32 100%)",
+                }}
+              >
                 Touch
               </span>
             </h2>
@@ -156,14 +176,23 @@ export default function Contact() {
               className="space-y-4"
             >
               {/* Contact Info Card */}
-              <div className="bg-white/60 backdrop-blur-sm rounded-xl p-6 border border-white/20 shadow-lg">
+              <div className="bg-white/60 backdrop-blur-sm rounded-xl p-6 border border-orange-100/50 shadow-lg">
                 <h3 className="text-xl font-bold mb-4">Contact Information</h3>
 
                 <div className="space-y-4">
                   {/* Location */}
                   <div className="flex items-start gap-3">
-                    <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center flex-shrink-0">
-                      <MapPin className="w-5 h-5 text-primary" />
+                    <div
+                      className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0"
+                      style={{
+                        background:
+                          "linear-gradient(135deg, rgba(255, 107, 43, 0.2) 0%, rgba(255, 215, 0, 0.1) 100%)",
+                      }}
+                    >
+                      <MapPin
+                        className="w-5 h-5"
+                        style={{ color: "#FF6B2B" }}
+                      />
                     </div>
                     <div>
                       <p className="font-semibold text-sm mb-0.5">Location</p>
@@ -175,14 +204,20 @@ export default function Contact() {
 
                   {/* Email */}
                   <div className="flex items-start gap-3">
-                    <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center flex-shrink-0">
-                      <Mail className="w-5 h-5 text-primary" />
+                    <div
+                      className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0"
+                      style={{
+                        background:
+                          "linear-gradient(135deg, rgba(255, 107, 43, 0.2) 0%, rgba(255, 215, 0, 0.1) 100%)",
+                      }}
+                    >
+                      <Mail className="w-5 h-5" style={{ color: "#FF6B2B" }} />
                     </div>
                     <div>
                       <p className="font-semibold text-sm mb-0.5">Email</p>
                       <a
                         href="mailto:contact@frovo.in"
-                        className="text-xs text-primary hover:underline"
+                        className="text-xs hover:underline"
                       >
                         contact@frovo.in
                       </a>
@@ -191,14 +226,20 @@ export default function Contact() {
 
                   {/* Phone */}
                   <div className="flex items-start gap-3">
-                    <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center flex-shrink-0">
-                      <Phone className="w-5 h-5 text-primary" />
+                    <div
+                      className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0"
+                      style={{
+                        background:
+                          "linear-gradient(135deg, rgba(255, 107, 43, 0.2) 0%, rgba(255, 215, 0, 0.1) 100%)",
+                      }}
+                    >
+                      <Phone className="w-5 h-5" style={{ color: "#FF6B2B" }} />
                     </div>
                     <div>
                       <p className="font-semibold text-sm mb-0.5">Phone</p>
                       <a
                         href="tel:+91XXXXXXXXXX"
-                        className="text-xs text-primary hover:underline"
+                        className="text-xs hover:underline"
                       >
                         +91-XXXXXXXXXX
                       </a>
@@ -224,7 +265,7 @@ export default function Contact() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="bg-white/60 backdrop-blur-sm rounded-xl p-6 border border-white/20 shadow-lg"
+              className="bg-white/60 backdrop-blur-sm rounded-xl p-6 border border-orange-100/50 shadow-lg"
             >
               <h3 className="text-xl font-bold mb-4">Send Us a Message</h3>
 
@@ -243,7 +284,18 @@ export default function Contact() {
                     }}
                     className={`w-full px-3 py-2 text-sm rounded-lg border ${
                       errors.name ? "border-red-500" : "border-gray-200"
-                    } bg-white focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all duration-300`}
+                    } bg-white focus:outline-none focus:ring-2 focus:border-transparent transition-all duration-300`}
+                    onFocus={(e) => {
+                      e.target.style.boxShadow =
+                        "0 0 0 2px rgba(255, 107, 43, 0.2)";
+                      e.target.style.borderColor = "#FF6B2B";
+                    }}
+                    onBlur={(e) => {
+                      e.target.style.boxShadow = "";
+                      e.target.style.borderColor = errors.name
+                        ? "#ef4444"
+                        : "#e5e7eb";
+                    }}
                     placeholder="Your name"
                   />
                   {errors.name && (
@@ -265,7 +317,18 @@ export default function Contact() {
                     }}
                     className={`w-full px-3 py-2 text-sm rounded-lg border ${
                       errors.email ? "border-red-500" : "border-gray-200"
-                    } bg-white focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all duration-300`}
+                    } bg-white focus:outline-none focus:ring-2 focus:border-transparent transition-all duration-300`}
+                    onFocus={(e) => {
+                      e.target.style.boxShadow =
+                        "0 0 0 2px rgba(255, 107, 43, 0.2)";
+                      e.target.style.borderColor = "#FF6B2B";
+                    }}
+                    onBlur={(e) => {
+                      e.target.style.boxShadow = "";
+                      e.target.style.borderColor = errors.email
+                        ? "#ef4444"
+                        : "#e5e7eb";
+                    }}
                     placeholder="your@email.com"
                   />
                   {errors.email && (
@@ -283,7 +346,16 @@ export default function Contact() {
                     onChange={(e) =>
                       setFormData({ ...formData, userType: e.target.value })
                     }
-                    className="w-full px-3 py-2 text-sm rounded-lg border border-gray-200 bg-white focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all duration-300"
+                    className="w-full px-3 py-2 text-sm rounded-lg border border-gray-200 bg-white focus:outline-none focus:ring-2 focus:border-transparent transition-all duration-300"
+                    onFocus={(e) => {
+                      e.target.style.boxShadow =
+                        "0 0 0 2px rgba(255, 107, 43, 0.2)";
+                      e.target.style.borderColor = "#FF6B2B";
+                    }}
+                    onBlur={(e) => {
+                      e.target.style.boxShadow = "";
+                      e.target.style.borderColor = "#e5e7eb";
+                    }}
                   >
                     <option value="Consumer">Consumer</option>
                     <option value="Shop Owner">Shop Owner</option>
@@ -307,7 +379,18 @@ export default function Contact() {
                     rows={3}
                     className={`w-full px-3 py-2 text-sm rounded-lg border ${
                       errors.message ? "border-red-500" : "border-gray-200"
-                    } bg-white focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all duration-300 resize-none`}
+                    } bg-white focus:outline-none focus:ring-2 focus:border-transparent transition-all duration-300 resize-none`}
+                    onFocus={(e) => {
+                      e.target.style.boxShadow =
+                        "0 0 0 2px rgba(255, 107, 43, 0.2)";
+                      e.target.style.borderColor = "#FF6B2B";
+                    }}
+                    onBlur={(e) => {
+                      e.target.style.boxShadow = "";
+                      e.target.style.borderColor = errors.message
+                        ? "#ef4444"
+                        : "#e5e7eb";
+                    }}
                     placeholder="Tell us about your needs..."
                   />
                   {errors.message && (
@@ -322,7 +405,11 @@ export default function Contact() {
                   type="submit"
                   size="default"
                   disabled={isSubmitting}
-                  className="w-full bg-gradient-to-r from-primary to-blue-600 hover:from-primary/90 hover:to-blue-700 font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 group disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+                  className="w-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 group disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+                  style={{
+                    background:
+                      "linear-gradient(135deg, #FF6B2B 0%, #FF8A4C 100%)",
+                  }}
                 >
                   {isSubmitting ? (
                     <>

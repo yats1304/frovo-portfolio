@@ -1,16 +1,17 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { MapPin, Mail, Phone } from "lucide-react";
 import { FOOTER_LINKS, SOCIAL_LINKS } from "@/constants/footer";
 
 export default function Footer() {
   return (
-    <footer className="relative bg-gradient-to-b from-gray-50 to-gray-100 border-t border-gray-200 overflow-hidden">
+    <footer className="relative bg-gradient-to-b from-[#FFF5F0] via-[#FFFAF7] to-white border-t border-orange-100 overflow-hidden">
       {/* Subtle Background Shapes */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-30">
-        <div className="absolute top-10 right-20 w-64 h-64 bg-primary/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-10 left-20 w-72 h-72 bg-blue-400/10 rounded-full blur-3xl" />
+        <div className="absolute top-10 right-20 w-64 h-64 bg-[#FF6B2B]/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-10 left-20 w-72 h-72 bg-yellow-400/10 rounded-full blur-3xl" />
       </div>
 
       <div className="relative container max-w-[1400px] mx-auto px-4 sm:px-6 md:px-10 lg:px-16 xl:px-20 pt-16 md:pt-20 pb-8">
@@ -18,10 +19,17 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 md:gap-8 mb-12">
           {/* Brand Column */}
           <div className="lg:col-span-3">
-            <Link href="/" className="inline-block mb-4 group">
-              <span className="text-3xl font-bold font-poppins bg-gradient-to-r from-primary via-blue-600 to-primary bg-clip-text text-transparent group-hover:scale-105 transition-transform inline-block">
-                Frovo
-              </span>
+            <Link
+              href="/"
+              className="inline-flex items-center gap-2 mb-4 group"
+            >
+              <Image
+                src="/images/temp_logo.png"
+                alt="Frovo Logo"
+                width={110}
+                height={50}
+                className="group-hover:scale-110 transition-transform duration-300"
+              />
             </Link>
             <p className="text-sm text-muted-foreground mb-6 leading-relaxed">
               AI-powered vending machines making daily essentials available
@@ -40,11 +48,19 @@ export default function Footer() {
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    style={{ borderRadius: "50%" }}
-                    className="flex items-center justify-center w-10 h-10 min-w-[2.5rem] min-h-[2.5rem] bg-white border border-gray-200 hover:bg-primary hover:border-primary transition-all duration-300 hover:scale-110 hover:-translate-y-1 shadow-sm group overflow-hidden"
+                    className="flex items-center justify-center w-10 h-10 min-w-[2.5rem] min-h-[2.5rem] bg-white border border-orange-200 hover:bg-[#FF6B2B] hover:border-[#FF6B2B] transition-all duration-300 hover:scale-110 hover:-translate-y-1 shadow-sm group overflow-hidden rounded-full"
                     aria-label={social.name}
                   >
-                    <social.icon className="w-5 h-5 text-primary group-hover:text-white transition-colors flex-shrink-0" />
+                    <social.icon
+                      className="w-5 h-5 transition-colors flex-shrink-0"
+                      style={{ color: "#FF6B2B" }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.color = "white";
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.color = "#FF6B2B";
+                      }}
+                    />
                   </a>
                 ))}
               </div>
@@ -55,14 +71,29 @@ export default function Footer() {
           <div className="lg:col-span-2">
             <h3 className="text-base font-bold mb-5 text-foreground relative inline-block">
               Quick Links
-              <span className="absolute bottom-0 left-0 w-8 h-0.5 bg-gradient-to-r from-primary to-transparent"></span>
+              <span
+                className="absolute bottom-0 left-0 w-8 h-0.5 bg-gradient-to-r to-transparent"
+                style={{
+                  backgroundImage:
+                    "linear-gradient(to right, #FF6B2B, transparent)",
+                }}
+              ></span>
             </h3>
             <ul className="space-y-3">
               {FOOTER_LINKS.slice(0, 4).map((link) => (
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="text-sm text-muted-foreground hover:text-primary transition-all duration-300 hover:translate-x-1 inline-block group"
+                    className="text-sm text-muted-foreground hover:translate-x-1 inline-block group transition-all duration-300"
+                    style={{
+                      color: "inherit",
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.color = "#FF6B2B";
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.color = "";
+                    }}
                   >
                     <span className="group-hover:underline underline-offset-4">
                       {link.name}
@@ -77,14 +108,26 @@ export default function Footer() {
           <div className="lg:col-span-2">
             <h3 className="text-base font-bold mb-5 text-foreground relative inline-block">
               More
-              <span className="absolute bottom-0 left-0 w-8 h-0.5 bg-gradient-to-r from-primary to-transparent"></span>
+              <span
+                className="absolute bottom-0 left-0 w-8 h-0.5 bg-gradient-to-r to-transparent"
+                style={{
+                  backgroundImage:
+                    "linear-gradient(to right, #FF6B2B, transparent)",
+                }}
+              ></span>
             </h3>
             <ul className="space-y-3">
               {FOOTER_LINKS.slice(4).map((link) => (
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="text-sm text-muted-foreground hover:text-primary transition-all duration-300 hover:translate-x-1 inline-block group"
+                    className="text-sm text-muted-foreground hover:translate-x-1 inline-block group transition-all duration-300"
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.color = "#FF6B2B";
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.color = "";
+                    }}
                   >
                     <span className="group-hover:underline underline-offset-4">
                       {link.name}
@@ -99,27 +142,54 @@ export default function Footer() {
           <div className="lg:col-span-3">
             <h3 className="text-base font-bold mb-5 text-foreground relative inline-block">
               Get in Touch
-              <span className="absolute bottom-0 left-0 w-8 h-0.5 bg-gradient-to-r from-primary to-transparent"></span>
+              <span
+                className="absolute bottom-0 left-0 w-8 h-0.5 bg-gradient-to-r to-transparent"
+                style={{
+                  backgroundImage:
+                    "linear-gradient(to right, #FF6B2B, transparent)",
+                }}
+              ></span>
             </h3>
             <ul className="space-y-3">
               <li className="flex items-start gap-2.5 text-sm text-muted-foreground">
-                <MapPin className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
+                <MapPin
+                  className="w-4 h-4 flex-shrink-0 mt-0.5"
+                  style={{ color: "#FF6B2B" }}
+                />
                 <span>Bangalore, India</span>
               </li>
               <li className="flex items-start gap-2.5">
-                <Mail className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
+                <Mail
+                  className="w-4 h-4 flex-shrink-0 mt-0.5"
+                  style={{ color: "#FF6B2B" }}
+                />
                 <a
                   href="mailto:contact@frovo.in"
-                  className="text-sm text-muted-foreground hover:text-primary transition-colors duration-300 hover:underline underline-offset-4 break-all"
+                  className="text-sm text-muted-foreground hover:underline underline-offset-4 break-all transition-colors duration-300"
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.color = "#FF6B2B";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.color = "";
+                  }}
                 >
                   contact@frovo.in
                 </a>
               </li>
               <li className="flex items-start gap-2.5">
-                <Phone className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
+                <Phone
+                  className="w-4 h-4 flex-shrink-0 mt-0.5"
+                  style={{ color: "#FF6B2B" }}
+                />
                 <a
                   href="tel:+91XXXXXXXXXX"
-                  className="text-sm text-muted-foreground hover:text-primary transition-colors duration-300 hover:underline underline-offset-4"
+                  className="text-sm text-muted-foreground hover:underline underline-offset-4 transition-colors duration-300"
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.color = "#FF6B2B";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.color = "";
+                  }}
                 >
                   +91-XXXXXXXXXX
                 </a>
@@ -131,7 +201,13 @@ export default function Footer() {
           <div className="lg:col-span-12 xl:col-span-2 xl:col-start-11">
             <h3 className="text-base font-bold mb-5 text-foreground relative inline-block">
               Download App
-              <span className="absolute bottom-0 left-0 w-8 h-0.5 bg-gradient-to-r from-primary to-transparent"></span>
+              <span
+                className="absolute bottom-0 left-0 w-8 h-0.5 bg-gradient-to-r to-transparent"
+                style={{
+                  backgroundImage:
+                    "linear-gradient(to right, #FF6B2B, transparent)",
+                }}
+              ></span>
             </h3>
 
             <p className="text-sm text-muted-foreground mb-5 leading-relaxed">
@@ -221,11 +297,14 @@ export default function Footer() {
         {/* Divider with Gradient */}
         <div className="relative mb-6">
           <div className="absolute inset-0 flex items-center">
-            <div className="w-full border-t border-gray-300"></div>
+            <div className="w-full border-t border-orange-200"></div>
           </div>
           <div className="relative flex justify-center">
-            <span className="bg-gradient-to-b from-gray-50 to-gray-100 px-4">
-              <div className="w-2 h-2 rounded-full bg-primary/40"></div>
+            <span className="bg-gradient-to-b from-[#FFF5F0] via-[#FFFAF7] to-white px-4">
+              <div
+                className="w-2 h-2 rounded-full"
+                style={{ backgroundColor: "rgba(255, 107, 43, 0.4)" }}
+              ></div>
             </span>
           </div>
         </div>
@@ -235,7 +314,15 @@ export default function Footer() {
           <p className="text-sm text-muted-foreground">
             © <span className="font-semibold text-foreground">Frovo</span> 2025
             |{" "}
-            <span className="hover:text-primary transition-colors duration-300 cursor-default">
+            <span
+              className="transition-colors duration-300 cursor-default"
+              onMouseEnter={(e) => {
+                e.currentTarget.style.color = "#FF6B2B";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.color = "";
+              }}
+            >
               All rights reserved
             </span>
           </p>

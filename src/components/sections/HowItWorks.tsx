@@ -11,10 +11,10 @@ export default function HowItWorks() {
       id="how-it-works"
       className="relative py-16 md:py-18 overflow-hidden min-h-[1333px] md:min-h-[885px]"
     >
-      {/* Background with Frovo Colors */}
+      {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#FFEDE5] via-white to-[#FFF8F3] -z-10" />
 
-      {/* Floating Shapes - Frovo Orange Theme */}
+      {/* Floating Shapes */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10">
         <motion.div
           animate={{
@@ -35,7 +35,7 @@ export default function HowItWorks() {
       </div>
 
       <div className="container max-w-[1400px] mx-auto px-4 sm:px-6 md:px-10 lg:px-16 xl:px-20">
-        {/* Section Header with Frovo Colors */}
+        {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -61,9 +61,8 @@ export default function HowItWorks() {
           </p>
         </motion.div>
 
-        {/* Steps Grid - No Numbers, Smooth Flow */}
+        {/* Steps */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 relative">
-          {/* Smooth Connecting Line with Orange Gradient */}
           <svg
             className="hidden lg:block absolute top-24 left-0 w-full h-1 pointer-events-none"
             style={{ zIndex: 0 }}
@@ -103,9 +102,8 @@ export default function HowItWorks() {
               transition={{ duration: 0.5, delay: index * 0.15 }}
               className="relative z-10"
             >
-              {/* Card with Orange Accent */}
+              {/* Cards */}
               <div className="relative bg-white/60 backdrop-blur-sm rounded-2xl p-6 border border-orange-100/50 shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 group h-full">
-                {/* Icon with Orange Gradient Background */}
                 <div
                   className="w-14 h-14 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-all duration-300 shadow-md"
                   style={{
@@ -145,7 +143,7 @@ export default function HowItWorks() {
           ))}
         </div>
 
-        {/* CTA Section - Updated Text */}
+        {/* CTA Section */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

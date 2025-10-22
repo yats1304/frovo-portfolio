@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Mail } from "lucide-react";
+import { ArrowRight, Mail, Rocket, Sparkles } from "lucide-react";
 import { CAREER_ROLES } from "@/constants/careers";
 
 export default function Careers() {
@@ -17,8 +17,22 @@ export default function Careers() {
 
       {/* Floating Shapes */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10">
-        <div className="floating-shape-1 absolute top-20 left-10 w-56 h-56 bg-primary/10 rounded-full blur-3xl" />
-        <div className="floating-shape-2 absolute bottom-20 right-20 w-64 h-64 bg-secondary/10 rounded-full blur-3xl" />
+        <motion.div
+          animate={{
+            y: [0, 30, 0],
+            x: [0, -20, 0],
+          }}
+          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-20 left-10 w-56 h-56 bg-[#FF6B2B]/10 rounded-full blur-3xl"
+        />
+        <motion.div
+          animate={{
+            y: [0, -30, 0],
+            x: [0, 20, 0],
+          }}
+          transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute bottom-20 right-20 w-64 h-64 bg-yellow-400/10 rounded-full blur-3xl"
+        />
       </div>
 
       <div className="container max-w-[1200px] mx-auto px-4 sm:px-6 md:px-10">
@@ -30,11 +44,16 @@ export default function Careers() {
           transition={{ duration: 0.5 }}
           className="text-center mb-8"
         >
-          <h2 className="text-3xl sm:text-4xl font-bold font-poppins mb-2">
-            Join the Future of Retail
-          </h2>
+          <div className="flex items-center justify-center gap-2 mb-3">
+            <h2 className="text-3xl sm:text-4xl font-bold font-poppins">
+              Join the Future of Smart Retail
+            </h2>
+          </div>
+          <p className="text-sm font-semibold text-foreground mb-1">
+            Build with Frovo.
+          </p>
           <p className="text-sm text-muted-foreground">
-            We&apos;re building something amazing- come grow with us!
+            We&apos;re building something amazing - come grow with us!
           </p>
         </motion.div>
 
@@ -47,13 +66,24 @@ export default function Careers() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: index * 0.05 }}
-              className="bg-white/60 backdrop-blur-sm rounded-xl p-5 border border-white/20 shadow-lg hover:shadow-xl transition-all duration-300 group"
+              className="bg-white/60 backdrop-blur-sm rounded-xl p-5 border border-orange-100/50 shadow-lg hover:shadow-xl transition-all duration-300 group relative overflow-hidden"
             >
-              <div className="inline-block px-2.5 py-0.5 rounded-full bg-primary/10 text-primary text-xs font-semibold mb-3">
+              {/* Orange hover accent */}
+              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#FF6B2B] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+              <div
+                className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold mb-3"
+                style={{
+                  background:
+                    "linear-gradient(135deg, rgba(255, 107, 43, 0.15) 0%, rgba(255, 215, 0, 0.1) 100%)",
+                  color: "#FF6B2B",
+                }}
+              >
+                <Sparkles className="w-3 h-3" />
                 {role.department}
               </div>
 
-              <h3 className="text-lg font-bold mb-2 group-hover:text-primary transition-colors">
+              <h3 className="text-lg font-bold mb-2 transition-colors group-hover:text-[#FF6B2B]">
                 {role.role}
               </h3>
 
@@ -64,7 +94,11 @@ export default function Careers() {
               {/* Apply Button */}
               <Button
                 size="sm"
-                className="w-full bg-gradient-to-r from-primary to-blue-600 hover:from-primary/90 hover:to-blue-700 shadow-md hover:shadow-lg transition-all duration-300 group/btn"
+                className="w-full shadow-md hover:shadow-lg transition-all duration-300 group/btn"
+                style={{
+                  background:
+                    "linear-gradient(135deg, #FF6B2B 0%, #FF8A4C 100%)",
+                }}
                 asChild
               >
                 <Link href="/">
@@ -89,13 +123,15 @@ export default function Careers() {
           </p>
           <Button
             size="sm"
-            className="rounded-full bg-white text-primary border-2 border-primary hover:bg-primary hover:text-white font-bold shadow-md hover:shadow-lg transition-all duration-300 px-6"
+            className="rounded-full font-bold shadow-md hover:shadow-lg transition-all duration-300 px-6"
+            style={{
+              background: "white",
+              color: "#FF6B2B",
+              border: "2px solid #FF6B2B",
+            }}
             asChild
           >
-            <a
-              href={"mailto:careers@frovo.in"}
-              className="flex items-center gap-2"
-            >
+            <a href="mailto:join@frovo.in" className="flex items-center gap-2">
               <Mail className="w-4 h-4" />
               join@frovo.in
             </a>

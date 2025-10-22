@@ -1,25 +1,38 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
-import { Sparkles, Target } from "lucide-react";
+import { Sparkles, Target, Zap, Users, Globe } from "lucide-react";
 
 export default function AboutUs() {
   return (
     <section
       id="about-us"
-      className="relative py-8 md:py-10 overflow-hidden min-h-[800px] md:min-h-[700px]"
+      className="relative py-8 md:py-6 overflow-hidden min-h-[800px] md:min-h-[700px]"
     >
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#FFEDE5] via-white to-[#FFF8F3] -z-10" />
 
       {/* Floating Shapes */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10">
-        <div className="floating-shape-1 absolute top-20 right-10 w-56 h-56 bg-primary/10 rounded-full blur-3xl" />
-        <div className="floating-shape-2 absolute bottom-20 left-20 w-64 h-64 bg-secondary/10 rounded-full blur-3xl" />
+        <motion.div
+          animate={{
+            y: [0, 30, 0],
+            x: [0, -20, 0],
+          }}
+          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-20 right-10 w-56 h-56 bg-[#FF6B2B]/10 rounded-full blur-3xl"
+        />
+        <motion.div
+          animate={{
+            y: [0, -30, 0],
+            x: [0, 20, 0],
+          }}
+          transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute bottom-20 left-20 w-64 h-64 bg-yellow-400/10 rounded-full blur-3xl"
+        />
       </div>
 
-      <div className="container max-w-[1200px] mx-auto px-4 sm:px-6 md:px-10">
+      <div className="container max-w-[1400px] mx-auto px-4 sm:px-6 md:px-10 lg:px-16 xl:px-20">
         {/* Section Title */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -28,66 +41,89 @@ export default function AboutUs() {
           transition={{ duration: 0.5 }}
           className="text-center mb-8"
         >
-          <h2 className="text-3xl sm:text-4xl font-bold font-poppins mb-2">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold font-poppins mb-3">
             About{" "}
-            <span className="bg-gradient-to-r from-primary via-blue-600 to-primary bg-clip-text text-transparent">
+            <span
+              className="bg-clip-text text-transparent"
+              style={{
+                backgroundImage:
+                  "linear-gradient(135deg, #FF6B2B 0%, #FF8A4C 40%, #FFD700 70%, #9ACD32 100%)",
+              }}
+            >
               Frovo
             </span>
           </h2>
+          <p className="text-base text-muted-foreground">
+            Redefining retail through intelligent automation
+          </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-[1.3fr_1fr] gap-6 items-center">
-          {/* Left Side - Story & Mission (Larger) */}
-          <div className="space-y-5">
-            {/* Our Story */}
+        {/* Main Grid: Story Left, Mission + Features Right */}
+        <div className="grid lg:grid-cols-2 gap-6 lg:gap-8">
+          {/* left side - Our Story */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="bg-white/60 backdrop-blur-sm rounded-2xl p-6 lg:p-8 border border-orange-100/50 shadow-lg"
+          >
+            <div className="flex items-center gap-3 mb-5">
+              <div
+                className="w-12 h-12 rounded-lg flex items-center justify-center"
+                style={{
+                  background:
+                    "linear-gradient(135deg, rgba(255, 107, 43, 0.2) 0%, rgba(255, 215, 0, 0.15) 100%)",
+                }}
+              >
+                <Sparkles className="w-6 h-6" style={{ color: "#FF6B2B" }} />
+              </div>
+              <h3 className="text-2xl lg:text-3xl font-bold">Our Story</h3>
+            </div>
+
+            <div className="space-y-4 text-sm sm:text-base lg:text-lg leading-relaxed text-foreground">
+              <p>
+                The future of retail isn't bigger stores.{" "}
+                <span className="font-semibold" style={{ color: "#FF6B2B" }}>
+                  It's smarter access.
+                </span>
+              </p>
+
+              <p>
+                We built Frovo to eliminate the friction between need and
+                fulfillment. No more waiting for stores to open. No more rushing
+                before closing time. No more settling for what's nearby instead
+                of what you actually need.
+              </p>
+
+              <p>
+                With{" "}
+                <span className="font-semibold" style={{ color: "#FF6B2B" }}>
+                  AI-powered machines and intelligent inventory management
+                </span>
+                , we're creating a{" "}
+                <span className="font-semibold">
+                  distributed retail network that operates autonomously, serves
+                  continuously, and scales infinitely
+                </span>
+                . This is convenience evolved.
+              </p>
+            </div>
+          </motion.div>
+
+          {/* Rght side - Mission + Features */}
+          <div className="space-y-6">
+            {/* Mission Box */}
             <motion.div
-              initial={{ opacity: 0, x: -30 }}
+              initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="bg-white/60 backdrop-blur-sm rounded-2xl p-7 border border-white/20 shadow-lg"
-            >
-              <div className="flex items-center gap-3 mb-5">
-                <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center">
-                  <Sparkles className="w-6 h-6 text-primary" />
-                </div>
-                <h3 className="text-2xl font-bold">Our Story</h3>
-              </div>
-
-              <div className="space-y-4 text-base leading-relaxed text-foreground">
-                <p>
-                  At Frovo, we asked:{" "}
-                  <span className="font-semibold text-primary">
-                    Why should access to essentials stop when the shop closes?
-                  </span>
-                </p>
-
-                <p>
-                  Life doesn&apos;t follow store timings. Students studying
-                  late, professionals heading home after midnight, families in
-                  service apartments, parents needing baby supplies, or pet
-                  owners with emergencies — people deserve quick, reliable
-                  access anytime.
-                </p>
-
-                <p>
-                  That&apos;s why we created{" "}
-                  <span className="font-semibold text-primary">Frovo</span>:{" "}
-                  <span className="font-semibold">
-                    AI-powered vending machines + a simple app
-                  </span>{" "}
-                  making shopping instant, stress-free, and fun.
-                </p>
-              </div>
-            </motion.div>
-
-            {/* Mission */}
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="relative bg-gradient-to-br from-primary via-blue-600 to-primary rounded-2xl p-7 shadow-2xl overflow-hidden group"
+              className="relative rounded-2xl p-6 lg:p-8 shadow-2xl overflow-hidden group"
+              style={{
+                background:
+                  "linear-gradient(135deg, #FF6B2B 0%, #FF8A4C 50%, #FFD700 100%)",
+              }}
             >
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
 
@@ -96,57 +132,91 @@ export default function AboutUs() {
               </div>
 
               <div className="relative">
-                <div className="flex items-center gap-3 mb-4">
+                <div className="flex items-center gap-3 mb-3">
                   <Target className="w-7 h-7 text-white" />
-                  <h3 className="text-2xl font-bold text-white">Our Mission</h3>
+                  <h3 className="text-2xl lg:text-3xl font-bold text-white">
+                    Our Mission
+                  </h3>
                 </div>
-                <p className="text-base font-semibold text-white flex items-center gap-2">
-                  <span>
-                    Make daily essentials available to everyone, anytime,
-                    anywhere.
-                  </span>
+                <p className="text-sm sm:text-base lg:text-lg font-semibold text-white leading-relaxed">
+                  Democratize access to daily essentials through autonomous
+                  retail technology - making convenience truly universal,
+                  instant, and effortless.
                 </p>
               </div>
             </motion.div>
-          </div>
 
-          {/* Right Side */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="relative"
-          >
-            <div className="relative max-w-md mx-auto group">
+            {/* Feature Cards - 3 Columns */}
+            <div className="grid grid-cols-3 gap-4">
               <motion.div
-                animate={{
-                  scale: [1, 1.05, 1],
-                  opacity: [0.3, 0.5, 0.3],
-                }}
-                transition={{
-                  duration: 4,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-                className="absolute inset-0 bg-gradient-to-br from-primary/30 to-blue-600/30 rounded-2xl blur-3xl"
-              />
-
-              {/* Image Container */}
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white/30 group-hover:border-primary/40 transition-all duration-500 bg-white">
-                <div className="aspect-square relative">
-                  <Image
-                    src="/images/ecosystem.webp"
-                    alt="Frovo 24/7 Vending Ecosystem - Daily Essentials Anytime Anywhere"
-                    fill
-                    className="object-contain group-hover:scale-105 transition-transform duration-700"
-                    priority
-                    sizes="(max-width: 768px) 100vw, 40vw"
-                  />
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+                className="bg-white/60 backdrop-blur-sm rounded-xl p-5 border border-orange-100/50 shadow-sm hover:shadow-md transition-all duration-300"
+              >
+                <div
+                  className="w-12 h-12 rounded-lg flex items-center justify-center mb-3 mx-auto"
+                  style={{
+                    background:
+                      "linear-gradient(135deg, rgba(255, 107, 43, 0.2) 0%, rgba(255, 215, 0, 0.15) 100%)",
+                  }}
+                >
+                  <Zap className="w-6 h-6" style={{ color: "#FF6B2B" }} />
                 </div>
-              </div>
+                <h4 className="text-lg font-bold mb-1 text-center">24/7</h4>
+                <p className="text-xs text-muted-foreground text-center">
+                  Always Available
+                </p>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                className="bg-white/60 backdrop-blur-sm rounded-xl p-5 border border-orange-100/50 shadow-sm hover:shadow-md transition-all duration-300"
+              >
+                <div
+                  className="w-12 h-12 rounded-lg flex items-center justify-center mb-3 mx-auto"
+                  style={{
+                    background:
+                      "linear-gradient(135deg, rgba(255, 107, 43, 0.2) 0%, rgba(255, 215, 0, 0.15) 100%)",
+                  }}
+                >
+                  <Users className="w-6 h-6" style={{ color: "#FF6B2B" }} />
+                </div>
+                <h4 className="text-lg font-bold mb-1 text-center">
+                  AI-Powered
+                </h4>
+                <p className="text-xs text-muted-foreground text-center">
+                  Smart Tech
+                </p>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+                className="bg-white/60 backdrop-blur-sm rounded-xl p-5 border border-orange-100/50 shadow-sm hover:shadow-md transition-all duration-300"
+              >
+                <div
+                  className="w-12 h-12 rounded-lg flex items-center justify-center mb-3 mx-auto"
+                  style={{
+                    background:
+                      "linear-gradient(135deg, rgba(255, 107, 43, 0.2) 0%, rgba(255, 215, 0, 0.15) 100%)",
+                  }}
+                >
+                  <Globe className="w-6 h-6" style={{ color: "#FF6B2B" }} />
+                </div>
+                <h4 className="text-lg font-bold mb-1 text-center">Scalable</h4>
+                <p className="text-xs text-muted-foreground text-center">
+                  Network
+                </p>
+              </motion.div>
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

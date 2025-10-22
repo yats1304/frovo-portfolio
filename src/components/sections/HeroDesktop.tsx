@@ -28,7 +28,7 @@ export default function HeroDesktop() {
   return (
     <section className="relative min-h-screen pt-20 pb-32 overflow-visible">
       {/* Background Gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-white via-orange-50/30 to-yellow-50/30 -z-10" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#FFEDE5] via-white to-[#FFF8F3] -z-10" />
 
       {/* Floating Shapes Animation */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10">

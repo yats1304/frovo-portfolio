@@ -14,7 +14,7 @@ export default function Franchise() {
       className="relative py-8 md:py-6 overflow-hidden min-h-[800px] md:min-h-[700px]"
     >
       {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-white via-primary/5 to-blue-50 -z-10" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#FFEDE5] via-white to-[#FFF8F3] -z-10" />
 
       {/* Floating Shapes */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10">

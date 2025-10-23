@@ -3,9 +3,8 @@
 import Link from "next/link";
 import Image from "next/image";
 import { MapPin, Mail, Phone } from "lucide-react";
-import { SOCIAL_LINKS } from "@/constants/footer";
 
-// Footer links matching your navbar
+// Footer links
 const FOOTER_LINKS = [
   { name: "Home", href: "/" },
   { name: "How It Works", href: "#how-it-works" },
@@ -17,6 +16,16 @@ const FOOTER_LINKS = [
 ];
 
 export default function Footer() {
+  //smooth scrolling to home page
+  const handleClick = (e: { preventDefault: () => void }) => {
+    e.preventDefault();
+    if (window.location.pathname === "/") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else {
+      window.location.href = "/";
+    }
+  };
+
   return (
     <footer className="relative bg-gradient-to-b from-[#FFF5F0] via-[#FFFAF7] to-white border-t border-orange-100 overflow-hidden">
       {/* Subtle Background Shapes */}
@@ -28,10 +37,11 @@ export default function Footer() {
       <div className="relative container max-w-[1400px] mx-auto px-4 sm:px-6 md:px-10 lg:px-16 xl:px-20 pt-16 md:pt-20 pb-8">
         {/* Footer Content Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 md:gap-8 mb-12">
-          {/* Brand Column - Takes more space */}
+          {/* Brand Column */}
           <div className="lg:col-span-4">
             <Link
               href="/"
+              onClick={handleClick}
               className="inline-flex items-center gap-2 mb-4 group"
             >
               <Image
@@ -39,32 +49,62 @@ export default function Footer() {
                 alt="Frovo Logo"
                 width={120}
                 height={50}
-                className="group-hover:scale-110 transition-transform duration-300"
               />
             </Link>
             <p className="text-sm text-muted-foreground mb-6 leading-relaxed max-w-sm">
               AI-powered vending machines making daily essentials available
               anytime, anywhere.
             </p>
-
-            {/* Social Media Icons - FIXED HOVER */}
+            {/* Social Media Icons */}
             <div>
               <p className="text-sm font-semibold text-foreground mb-3">
                 Follow Us
               </p>
               <div className="flex items-center gap-3 flex-wrap">
-                {SOCIAL_LINKS.map((social) => (
-                  <a
-                    key={social.name}
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center justify-center w-10 h-10 min-w-[2.5rem] min-h-[2.5rem] bg-white border border-orange-200 hover:bg-[#FF6B2B] hover:border-[#FF6B2B] transition-all duration-300 hover:scale-110 hover:-translate-y-1 shadow-sm group overflow-hidden rounded-full"
-                    aria-label={social.name}
-                  >
-                    <social.icon className="w-5 h-5 text-[#FF6B2B] group-hover:text-white transition-colors duration-300 flex-shrink-0" />
-                  </a>
-                ))}
+                <a
+                  href="https://www.instagram.com/frovo.in/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center w-10 h-10"
+                  aria-label="Instagram"
+                >
+                  <Image
+                    src="/icons/instagram_logo.svg"
+                    alt="Instagram"
+                    width={40}
+                    height={40}
+                  />
+                </a>
+
+                <a
+                  href="https://www.linkedin.com/company/frovo/posts/?feedView=all"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center w-10 h-10"
+                  aria-label="LinkedIn"
+                >
+                  <Image
+                    src="/icons/linkedin_logo.svg"
+                    alt="LinkedIn"
+                    width={40}
+                    height={40}
+                  />
+                </a>
+
+                <a
+                  href="https://www.youtube.com/@frovo_official"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center w-10 h-10"
+                  aria-label="YouTube"
+                >
+                  <Image
+                    src="/icons/youtube_logo.svg"
+                    alt="YouTube"
+                    width={40}
+                    height={40}
+                  />
+                </a>
               </div>
             </div>
           </div>
@@ -106,19 +146,23 @@ export default function Footer() {
             </h3>
             <ul className="space-y-3">
               <li className="flex items-start gap-2.5 text-sm text-muted-foreground">
-                <MapPin
-                  className="w-4 h-4 flex-shrink-0 mt-0.5"
-                  style={{ color: "#FF6B2B" }}
+                <Image
+                  src="/icons/location_icon.svg"
+                  alt="Instagram"
+                  width={20}
+                  height={20}
                 />
                 <span>Bangalore, India</span>
               </li>
               <li className="flex items-start gap-2.5">
-                <Mail
-                  className="w-4 h-4 flex-shrink-0 mt-0.5"
-                  style={{ color: "#FF6B2B" }}
+                <Image
+                  src="/icons/email_icon.svg"
+                  alt="Instagram"
+                  width={20}
+                  height={20}
                 />
                 <a
-                  href="mailto:contact@frovo.in"
+                  href="mailto:hello@frovo.in"
                   className="text-sm text-muted-foreground hover:underline underline-offset-4 break-all transition-colors duration-300"
                   onMouseEnter={(e) => {
                     e.currentTarget.style.color = "#FF6B2B";
@@ -127,16 +171,18 @@ export default function Footer() {
                     e.currentTarget.style.color = "";
                   }}
                 >
-                  contact@frovo.in
+                  hello@frovo.in
                 </a>
               </li>
               <li className="flex items-start gap-2.5">
-                <Phone
-                  className="w-4 h-4 flex-shrink-0 mt-0.5"
-                  style={{ color: "#FF6B2B" }}
+                <Image
+                  src="/icons/phone_icon.svg"
+                  alt="Instagram"
+                  width={20}
+                  height={20}
                 />
                 <a
-                  href="tel:+91XXXXXXXXXX"
+                  href="tel:+919035598876"
                   className="text-sm text-muted-foreground hover:underline underline-offset-4 transition-colors duration-300"
                   onMouseEnter={(e) => {
                     e.currentTarget.style.color = "#FF6B2B";
@@ -145,13 +191,13 @@ export default function Footer() {
                     e.currentTarget.style.color = "";
                   }}
                 >
-                  +91-XXXXXXXXXX
+                  +91-9035598876
                 </a>
               </li>
             </ul>
           </div>
 
-          {/* Download App Column - MOBILE OPTIMIZED */}
+          {/* Download App Column */}
           <div className="lg:col-span-2">
             <h3 className="text-base font-bold mb-5 text-foreground relative inline-block">
               Download App
@@ -169,12 +215,7 @@ export default function Footer() {
 
             <div className="flex flex-col gap-3 max-w-[200px]">
               {/* Google Play Button */}
-              <a
-                href="/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group"
-              >
+              <a target="_blank" rel="noopener noreferrer" className="group">
                 <div className="relative flex items-center gap-2 h-12 px-3.5 bg-black hover:bg-gray-900 rounded-lg transition-all duration-300 hover:scale-[1.03] hover:shadow-lg cursor-pointer overflow-hidden">
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000"></div>
 
@@ -213,12 +254,7 @@ export default function Footer() {
               </a>
 
               {/* App Store Button */}
-              <a
-                href="/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group"
-              >
+              <a target="_blank" rel="noopener noreferrer" className="group">
                 <div className="relative flex items-center gap-2 h-12 px-3.5 bg-black hover:bg-gray-900 rounded-lg transition-all duration-300 hover:scale-[1.03] hover:shadow-lg cursor-pointer overflow-hidden">
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000"></div>
 

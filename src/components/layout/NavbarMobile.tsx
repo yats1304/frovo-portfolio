@@ -109,9 +109,9 @@ export default function NavbarMobile() {
             className="flex items-center hover:opacity-80 transition-opacity"
           >
             <Image
-              src="/images/temp_logo.png"
+              src="/images/logo.svg"
               alt="Frovo Logo"
-              width={120}
+              width={80}
               height={60}
               className="object-contain h-10"
               priority

@@ -40,8 +40,6 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        {/* Preload hero images for faster LCP */}
-
         <link
           rel="preload"
           as="image"

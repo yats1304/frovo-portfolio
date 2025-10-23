@@ -81,7 +81,7 @@ export default function Home() {
           <Hero />
           <HowItWorks />
           {/* <FrovoForYou /> */}
-          <Franchise />
+          {/* <Franchise /> */}
           <BusinessSolutions />
           <AboutUs />
           <Careers />

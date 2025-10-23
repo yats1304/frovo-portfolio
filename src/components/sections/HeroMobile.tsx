@@ -204,8 +204,7 @@ export default function HeroMobile() {
               </h1>
 
               <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
-                Snacks, drinks & essentials - anytime, anywhere. AI-powered
-                smart vending machines + the Frovo app.
+                Your everyday essentials, one tap away.
               </p>
             </div>
 

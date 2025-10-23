@@ -9,7 +9,7 @@ import { SOCIAL_LINKS } from "@/constants/footer";
 const FOOTER_LINKS = [
   { name: "Home", href: "/" },
   { name: "How It Works", href: "#how-it-works" },
-  { name: "Franchise", href: "#franchise" },
+  //{ name: "Franchise", href: "#franchise" },
   { name: "Business Solutions", href: "#business-solutions" },
   { name: "About Us", href: "#about-us" },
   { name: "Careers", href: "#careers" },
@@ -35,10 +35,10 @@ export default function Footer() {
               className="inline-flex items-center gap-2 mb-4 group"
             >
               <Image
-                src="/images/temp_logo.png"
+                src="/images/logo.svg"
                 alt="Frovo Logo"
                 width={120}
-                height={55}
+                height={50}
                 className="group-hover:scale-110 transition-transform duration-300"
               />
             </Link>
@@ -68,7 +68,7 @@ export default function Footer() {
               </div>
             </div>
           </div>
-          {/* Quick Links Column - PERFECTLY ALIGNED */}
+          {/* Quick Links Column */}
           <div className="lg:col-span-3">
             <h3 className="text-base font-bold mb-5 text-foreground relative inline-block">
               Quick Links

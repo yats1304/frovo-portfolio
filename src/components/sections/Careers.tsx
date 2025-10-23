@@ -46,12 +46,9 @@ export default function Careers() {
         >
           <div className="flex items-center justify-center gap-2 mb-3">
             <h2 className="text-3xl sm:text-4xl font-bold font-poppins">
-              Join the Future of Smart Retail
+              Join the Future of Smart Retail - build with Frovo.
             </h2>
           </div>
-          <p className="text-sm font-semibold text-foreground mb-1">
-            Build with Frovo.
-          </p>
           <p className="text-sm text-muted-foreground">
             We&apos;re building something amazing - come grow with us!
           </p>

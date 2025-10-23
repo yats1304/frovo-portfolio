@@ -1,78 +1,24 @@
-<svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+<svg width="512" height="512" viewBox="150 20 250 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g transform="translate(-213, 0)">
+    <path d="M552.128 67.3409C552.128 108.258 527.638 134.688 489.749 134.688C451.86 134.688 427.376 108.246 427.376 67.3409C427.376 26.4361 451.86 0.00012207 489.749 0.00012207C527.638 0.00012207 552.128 26.4234 552.128 67.3409ZM520.766 67.3409C520.766 43.7757 510.032 31.3184 489.749 31.3184C469.465 31.3184 458.737 43.7694 458.737 67.3409C458.737 90.9124 469.465 103.37 489.749 103.37C510.032 103.37 520.766 90.906 520.766 67.3409Z" fill="url(#paint0_linear_5_15)"/>
+    
+    <path d="M422.346 137.317C425.788 139.074 429.874 141.741 433.648 143.587C440.003 146.687 446.441 149.291 452.988 151.538C487.906 163.549 522.761 159.526 555.544 142.931C556.233 142.581 559.375 140.099 560 140.729C559.949 141.041 559.853 141.512 559.649 142.059C559.433 142.53 559.184 143.014 558.904 143.498C557.297 146.28 555.194 148.189 553.396 149.469C532.099 164.6 507.342 168.642 507.342 168.642C501.949 169.45 471.32 174.04 461.344 165.65C461.344 165.65 455.467 160.71 451.177 161.659C450.4 161.831 448.315 162.919 447.837 163.409C447.786 163.46 447.378 163.899 446.773 164.415C446.76 164.428 446.747 164.434 446.747 164.441C441.418 168.986 438.371 178.871 438.371 178.871C436.172 186.242 438.237 193.977 434.47 200.641C433.508 202.341 431.627 205.167 428.096 206.79C423.003 209.133 416.488 207.917 412.498 204.492C411.848 203.932 411.421 203.448 410.981 202.946C407.392 198.865 406.175 194.409 405.983 192.525C405.276 185.479 407.347 175.905 412.766 168.775C417.782 162.168 424.845 157.98 432.156 153.645C433.31 152.957 434.285 152.416 434.955 152.047C433.75 150.997 432.832 150.105 432.265 149.545C428.759 146.076 427.401 143.88 422.869 138.877C422.257 138.202 421.753 137.661 421.473 137.362C421.549 137.024 422.098 137.19 422.353 137.317H422.346ZM422.525 174.867C422.448 175.778 422.416 176.707 422.416 176.707C422.378 177.834 422.404 178.788 422.442 179.533H423.411C423.5 179.38 423.627 179.145 423.742 178.846C423.882 178.47 423.94 178.184 423.946 178.139C423.997 177.897 426.024 168.903 432.749 163.008C436 160.157 437.632 158.731 439.238 158.342C439.595 158.26 441.055 157.96 441.405 156.98C441.507 156.7 441.488 156.452 441.469 156.293C441.348 154.994 439.939 154.23 439.621 154.071C438.696 153.606 437.836 153.638 437.377 153.664C436.516 153.708 435.866 153.957 435.261 154.224C434.19 154.695 432.756 155.331 431.245 156.547C427.325 159.717 424.928 165.217 424.73 165.682C424.73 165.682 422.965 169.826 422.525 174.861V174.867Z" fill="url(#paint1_linear_5_15)"/>
+    
+    <path d="M391.909 150.774C392.304 151.035 392.553 151.321 392.801 151.639C394.764 154.115 395.141 156.184 396.345 158.075C396.894 158.934 397.856 160.131 399.596 161.251L402.191 162.658C400.208 163.142 397.04 163.575 393.464 162.601C392.731 162.397 386.599 160.723 385.496 156.904C385.311 156.261 385.286 155.611 385.279 155.471C385.248 154.631 385.165 152.155 387.064 150.831C388.562 149.787 390.634 149.927 391.902 150.78L391.909 150.774Z" fill="#FF5200"/>
+    
+    <path d="M391.081 174.001C391.291 173.861 391.425 173.708 391.559 173.537C392.617 172.206 392.814 171.092 393.465 170.08C393.758 169.615 394.274 168.973 395.211 168.374L396.607 167.617C395.543 167.356 393.841 167.12 391.916 167.649C391.52 167.757 388.225 168.661 387.632 170.71C387.53 171.054 387.517 171.404 387.517 171.481C387.505 171.933 387.454 173.263 388.473 173.976C389.277 174.536 390.392 174.46 391.074 174.001H391.081Z" fill="#FF5200"/>
+  </g>
+
   <defs>
-    <!-- Machine body gradient (realistic metal) -->
-    <linearGradient id="bodyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" style="stop-color:#f8fafc"/>
-      <stop offset="50%" style="stop-color:#e2e8f0"/>
-      <stop offset="100%" style="stop-color:#cbd5e1"/>
+    <linearGradient id="paint0_linear_5_15" x1="537.934" y1="8.8093" x2="445.734" y2="25.6901" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#8FEF3B"/>
+      <stop offset="0.364398" stop-color="#FFD448"/>
+      <stop offset="1" stop-color="#FF5200"/>
     </linearGradient>
-    
-    <!-- Screen gradient -->
-    <linearGradient id="screenGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" style="stop-color:#1e3a8a"/>
-      <stop offset="100%" style="stop-color:#1e40af"/>
-    </linearGradient>
-    
-    <!-- Glass reflection -->
-    <linearGradient id="glassGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.6"/>
-      <stop offset="100%" style="stop-color:#ffffff;stop-opacity:0"/>
+    <linearGradient id="paint1_linear_5_15" x1="536.309" y1="145.221" x2="398.913" y2="166.046" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#8FEF3B"/>
+      <stop offset="0.529716" stop-color="#FFD448"/>
+      <stop offset="1" stop-color="#D8420D"/>
     </linearGradient>
   </defs>
-  
-  <!-- Vending Machine Body (LARGER) -->
-  <rect x="8" y="4" width="48" height="56" rx="3" fill="url(#bodyGrad)"/>
-  
-  <!-- Side shadow (3D effect) -->
-  <rect x="55" y="6" width="2" height="52" fill="#64748b" opacity="0.4"/>
-  <rect x="8" y="59" width="48" height="2" fill="#475569" opacity="0.5"/>
-  
-  <!-- Top screen/display area -->
-  <rect x="12" y="8" width="40" height="12" rx="2" fill="url(#screenGrad)"/>
-  <!-- Screen highlight -->
-  <rect x="12" y="8" width="40" height="4" rx="2" fill="url(#glassGrad)" opacity="0.5"/>
-  
-  <!-- 24/7 Text ON SCREEN (LARGER) -->
-  <text x="32" y="17" font-family="Arial, sans-serif" font-size="8" font-weight="900" fill="white" text-anchor="middle">24/7</text>
-  
-  <!-- Glass window (product display area) -->
-  <rect x="12" y="22" width="40" height="26" rx="1.5" fill="#0f172a" opacity="0.8"/>
-  <!-- Glass reflection effect -->
-  <rect x="12" y="22" width="40" height="8" rx="1.5" fill="url(#glassGrad)" opacity="0.3"/>
-  
-  <!-- Product rows inside glass (colorful items) -->
-  <g opacity="0.9">
-    <!-- Row 1 - Drinks -->
-    <rect x="14" y="24" width="6" height="7" rx="0.8" fill="#ef4444"/>
-    <rect x="21" y="24" width="6" height="7" rx="0.8" fill="#22c55e"/>
-    <rect x="28" y="24" width="6" height="7" rx="0.8" fill="#eab308"/>
-    <rect x="35" y="24" width="6" height="7" rx="0.8" fill="#3b82f6"/>
-    <rect x="42" y="24" width="6" height="7" rx="0.8" fill="#ec4899"/>
-    
-    <!-- Row 2 - Snacks -->
-    <rect x="14" y="32" width="6" height="6" rx="0.8" fill="#f59e0b"/>
-    <rect x="21" y="32" width="6" height="6" rx="0.8" fill="#8b5cf6"/>
-    <rect x="28" y="32" width="6" height="6" rx="0.8" fill="#06b6d4"/>
-    <rect x="35" y="32" width="6" height="6" rx="0.8" fill="#14b8a6"/>
-    <rect x="42" y="32" width="6" height="6" rx="0.8" fill="#f97316"/>
-    
-    <!-- Row 3 - More items -->
-    <rect x="14" y="39" width="6" height="6" rx="0.8" fill="#a855f7"/>
-    <rect x="21" y="39" width="6" height="6" rx="0.8" fill="#10b981"/>
-    <rect x="28" y="39" width="6" height="6" rx="0.8" fill="#fbbf24"/>
-    <rect x="35" y="39" width="6" height="6" rx="0.8" fill="#f43f5e"/>
-    <rect x="42" y="39" width="6" height="6" rx="0.8" fill="#0ea5e9"/>
-  </g>
-  
-  <!-- Dispenser slot -->
-  <rect x="12" y="50" width="40" height="7" rx="1.5" fill="#1e293b"/>
-  <!-- Dispenser opening -->
-  <rect x="15" y="52" width="34" height="3" rx="0.8" fill="#0f172a"/>
-  
-  <!-- Button panel (larger) -->
-  <g>
-    ircle cx="16" cy="13.5" r="1.5" fill="#3b82f6" opacity="0.7.7"/>
-    ircle cx="20" cy="13.5" r="1.5" fill="#3b82f6" opacity="0"0.7"/>
-    ircle cx="24" cy="13.5" r="1.5" fill="#3b82f6" opacityty="0.7"/>
-  </g>
 </svg>

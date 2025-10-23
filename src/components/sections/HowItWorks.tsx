@@ -57,7 +57,8 @@ export default function HowItWorks() {
             Works
           </h2>
           <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
-            Get essentials instantly - fast, easy, 24/7 access.
+            Get what you need in 4 smart steps powered by Frovo, available round
+            the clock.
           </p>
         </motion.div>
 

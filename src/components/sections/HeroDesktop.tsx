@@ -76,8 +76,7 @@ export default function HeroDesktop() {
               </h1>
 
               <p className="text-lg xl:text-xl text-muted-foreground leading-relaxed max-w-xl">
-                Snacks, drinks & essentials - anytime, anywhere. AI-powered
-                smart vending machines + the Frovo app.
+                Your everyday essentials, one tap away.
               </p>
             </div>
 

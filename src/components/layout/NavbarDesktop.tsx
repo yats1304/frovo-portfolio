@@ -67,7 +67,7 @@ export default function NavbarDesktop() {
 
   return (
     <header className="hidden lg:block fixed top-0 w-full z-50 bg-gradient-to-r from-[#FFF5F0]/95 via-white/95 to-[#FFFAF7]/95 backdrop-blur-lg border-b border-orange-100 shadow-[0_1px_10px_rgba(255,107,43,0.05)]">
-      <nav className="max-w-[1300px] mx-auto px-6 py-4 flex justify-between items-center">
+      <nav className="max-w-[1300px] mx-auto px-8 py-4 flex justify-between items-center">
         {/* Logo */}
         <Link
           href="/"
@@ -75,10 +75,10 @@ export default function NavbarDesktop() {
           className="flex items-center space-x-2 group"
         >
           <Image
-            src="/images/temp_logo.png"
+            src="/images/logo.svg"
             alt="Frovo Logo"
-            width={110}
-            height={50}
+            width={80}
+            height={60}
             className="h-10 object-contain group-hover:scale-105 transition-transform duration-300"
           />
         </Link>

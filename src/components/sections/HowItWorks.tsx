@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { HOW_IT_WORKS_STEPS } from "@/constants/howItWorks";
@@ -105,16 +106,12 @@ export default function HowItWorks() {
             >
               {/* Cards */}
               <div className="relative bg-white/60 backdrop-blur-sm rounded-2xl p-6 border border-orange-100/50 shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 group h-full">
-                <div
-                  className="w-14 h-14 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-all duration-300 shadow-md"
-                  style={{
-                    background:
-                      "linear-gradient(135deg, rgba(255, 107, 43, 0.2) 0%, rgba(255, 215, 0, 0.15) 100%)",
-                  }}
-                >
-                  <step.icon
-                    className="w-7 h-7 drop-shadow-sm"
-                    style={{ color: "#FF6B2B" }}
+                <div className="w-16 h-16 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-all duration-300 shadow-md">
+                  <Image
+                    src={step.icon}
+                    alt={step.title}
+                    width={50}
+                    height={50}
                   />
                 </div>
 

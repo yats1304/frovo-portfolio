@@ -4,9 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { useState, useEffect } from "react";
-import { Smartphone, MapPin, Download } from "lucide-react";
 import { HERO_ADS, HERO_IMAGES } from "@/constants/hero";
 
 export default function HeroDesktop() {
@@ -92,7 +90,12 @@ export default function HeroDesktop() {
                 asChild
               >
                 <Link href="#download-app">
-                  <Smartphone className="mr-2 h-4 w-4 group-hover:animate-pulse" />
+                  <Image
+                    src="/icons/download_icon.svg"
+                    alt="download"
+                    width={30}
+                    height={30}
+                  />
                   Download the App
                   <span className="ml-2 group-hover:translate-x-1 transition-transform">
                     →
@@ -111,7 +114,10 @@ export default function HeroDesktop() {
                 }}
                 asChild
               >
-                <Link href="#business-solutions" className="relative z-10">
+                <Link
+                  href="https://forms.gle/jdpXENfo3iFogJyh7"
+                  className="relative z-10"
+                >
                   {/* Background Fill Animation */}
                   <span
                     className="absolute inset-0 -z-10 transition-transform duration-300 ease-out scale-x-0 group-hover:scale-x-100 origin-left"
@@ -141,10 +147,11 @@ export default function HeroDesktop() {
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-orange-100/50 via-orange-100/30 to-orange-100/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-                <MapPin
-                  className="relative w-4 h-4 group-hover:scale-110 transition-transform duration-300"
-                  style={{ color: "#FF6B2B" }}
-                  strokeWidth={2.5}
+                <Image
+                  src="/icons/location_icon.svg"
+                  alt="Location"
+                  width={20}
+                  height={20}
                 />
 
                 <span
@@ -182,43 +189,48 @@ export default function HeroDesktop() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.6 }}
-              className="relative rounded-xl p-5 border-2 overflow-hidden group hover:shadow-lg transition-all duration-300"
-              style={{
-                background: "linear-gradient(135deg, #FFF5F0 0%, #FFF9E6 100%)",
-                borderColor: "#FFD7B8",
-              }}
+              className="relative group overflow-hidden rounded-2xl border border-orange-200 bg-gradient-to-r from-orange-50/80 via-amber-50 to-yellow-50 p-5 shadow-sm hover:shadow-lg transition-all duration-300 max-w-md"
             >
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-orange-100/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+              {/* Hover shimmer */}
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out" />
 
-              <div className="relative flex items-center justify-between gap-3">
+              <div className="relative flex items-center justify-between gap-4">
+                {/* Text Section */}
                 <div>
-                  <p className="font-semibold text-base mb-1 flex items-center gap-2">
-                    <Smartphone
-                      className="w-4 h-4"
-                      style={{ color: "#FF6B2B" }}
+                  <h4 className="text-base font-semibold flex items-center gap-2">
+                    <Image
+                      src="/icons/smartphones_icon.svg"
+                      alt="Smartphone"
+                      width={20}
+                      height={20}
+                      className="inline-block"
                     />
-                    <span style={{ color: "#FF6B2B" }}>
+                    <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#FF6B2B] to-[#FFD700]">
                       Your store in your pocket
                     </span>
-                  </p>
-                  <p className="text-sm text-muted-foreground">
+                  </h4>
+                  <p className="text-sm text-muted-foreground mt-0.5">
                     Download the Frovo App
                   </p>
                 </div>
-                <Button
-                  size="default"
-                  className="font-semibold whitespace-nowrap text-sm shadow-md hover:shadow-lg group"
-                  style={{
-                    background:
-                      "linear-gradient(135deg, #FF6B2B 0%, #FF8A4C 100%)",
-                  }}
-                  asChild
-                >
-                  <Link href="#download-app">
-                    <Download className="w-4 h-4 mr-2 group-hover:animate-bounce" />
-                    Download App Now
-                  </Link>
-                </Button>
+
+                {/* CTA Button */}
+                <Link href="#download-app" className="flex-none">
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold text-white bg-gradient-to-r from-[#FF6B2B] via-[#FF8A4C] to-[#FFD700] shadow-md hover:shadow-lg transition-all duration-300"
+                  >
+                    <Image
+                      src="/icons/download_app_icon.svg"
+                      alt="Download"
+                      width={30}
+                      height={30}
+                      className="inline-block"
+                    />
+                    Download App
+                  </motion.button>
+                </Link>
               </div>
             </motion.div>
           </motion.div>
@@ -291,77 +303,6 @@ export default function HeroDesktop() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
               </div>
-
-              {/* Live Ads Card */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.6, duration: 0.6 }}
-                whileHover={{ scale: 1.05, y: -5 }}
-                className="absolute -bottom-6 -right-8 bg-white rounded-2xl shadow-2xl p-4 w-[200px] h-[180px] border-2 border-gray-100 overflow-hidden flex flex-col cursor-pointer transition-all duration-300"
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = "rgba(255, 107, 43, 0.3)";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = "rgb(243, 244, 246)";
-                }}
-              >
-                <Badge
-                  className="mb-2 text-xs w-fit px-2 py-0.5 flex-shrink-0"
-                  style={{
-                    backgroundColor: "#FFF5F0",
-                    color: "#FF6B2B",
-                  }}
-                >
-                  Live Ads
-                </Badge>
-
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={currentIndex}
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: -20 }}
-                    transition={{ duration: 0.5 }}
-                    className="flex-1 flex flex-col justify-center min-h-0 overflow-hidden"
-                  >
-                    <div className="text-2xl mb-2 flex-shrink-0">
-                      {currentAd.logo}
-                    </div>
-
-                    <div className="space-y-1 flex-1 flex flex-col justify-center">
-                      <p className="font-bold text-sm line-clamp-1 leading-tight">
-                        {currentAd.brand}
-                      </p>
-                      <p className="font-semibold text-xs line-clamp-2 leading-tight">
-                        {currentAd.message}
-                      </p>
-                      <p className="text-[10px] text-muted-foreground line-clamp-1 leading-tight">
-                        {currentAd.tagline}
-                      </p>
-                    </div>
-                  </motion.div>
-                </AnimatePresence>
-
-                <div className="flex gap-1.5 justify-center mt-3 pt-2 border-t border-gray-100 flex-shrink-0">
-                  {HERO_ADS.map((_, index) => (
-                    <div
-                      key={index}
-                      className="h-1.5 rounded-full transition-all duration-300"
-                      style={{
-                        width:
-                          index === currentIndex % HERO_ADS.length
-                            ? "16px"
-                            : "6px",
-                        backgroundColor:
-                          index === currentIndex % HERO_ADS.length
-                            ? "#FF6B2B"
-                            : "#D1D5DB",
-                      }}
-                    />
-                  ))}
-                </div>
-              </motion.div>
             </div>
           </motion.div>
         </div>

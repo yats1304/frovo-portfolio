@@ -1,9 +1,10 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Mail, Sparkles } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { CAREER_ROLES } from "@/constants/careers";
 
 export default function Careers() {
@@ -76,7 +77,6 @@ export default function Careers() {
                   color: "#FF6B2B",
                 }}
               >
-                <Sparkles className="w-3 h-3" />
                 {role.department}
               </div>
 
@@ -128,8 +128,17 @@ export default function Careers() {
             }}
             asChild
           >
-            <a href="mailto:join@frovo.in" className="flex items-center gap-2">
-              <Mail className="w-4 h-4" />
+            <a
+              href="mailto:join@frovo.in"
+              className="flex items-center gap-2 py-4"
+            >
+              <Image
+                src="/icons/email_icon.svg"
+                alt="Email"
+                width={22}
+                height={22}
+                className="mb-1"
+              />
               join@frovo.in
             </a>
           </Button>

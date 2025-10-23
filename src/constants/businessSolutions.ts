@@ -1,48 +1,16 @@
-import {
-  Building2,
-  Dumbbell,
-  Briefcase,
-  Home,
-  Fuel,
-  GraduationCap,
-  DollarSign,
-  Handshake,
-  LucideIcon,
-} from "lucide-react";
-
 // Business Locations
 export interface BusinessLocation {
-  icon: LucideIcon;
+  icon: string;
   name: string;
 }
 
 export const BUSINESS_LOCATIONS: BusinessLocation[] = [
-  { icon: Building2, name: "Offices" },
-  { icon: Dumbbell, name: "Gyms" },
-  { icon: Briefcase, name: "Co-working spaces" },
-  { icon: Home, name: "Service apartments" },
-  { icon: Fuel, name: "Petrol pumps" },
-  { icon: GraduationCap, name: "Colleges & Campuses" },
-];
-
-// Business Models
-export interface BusinessModel {
-  title: string;
-  description: string;
-  icon: LucideIcon;
-}
-
-export const BUSINESS_MODELS: BusinessModel[] = [
-  {
-    title: "Rental Model",
-    description: "Fixed monthly fee",
-    icon: DollarSign,
-  },
-  {
-    title: "Revenue Sharing",
-    description: "Earn along with Frovo",
-    icon: Handshake,
-  },
+  { icon: "/icons/office_icon.svg", name: "Offices" },
+  { icon: "/icons/gym_icon.svg", name: "Gyms" },
+  { icon: "/icons/co-working_icon.svg", name: "Co-working spaces" },
+  { icon: "/icons/apartment_icon.svg", name: "Service apartments" },
+  { icon: "/icons/petrol_pump_icon.svg", name: "Petrol pumps" },
+  { icon: "/icons/college_icon.svg", name: "Colleges & Campuses" },
 ];
 
 // Slideshow Images
@@ -69,7 +37,3 @@ export const BUSINESS_IMAGES: BusinessImage[] = [
     label: "Campus",
   },
 ];
-
-// Special note
-export const BUSINESS_SPECIAL_NOTE =
-  "Your community + Frovo app = instant 24/7 convenience.";

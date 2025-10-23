@@ -4,8 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { Smartphone, MapPin, Download } from "lucide-react";
+
 import { useState, useEffect } from "react";
 import { HERO_ADS, HERO_IMAGES } from "@/constants/hero";
 
@@ -112,71 +111,6 @@ export default function HeroMobile() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
               </div>
-
-              {/* Live Ads Card  */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.6, duration: 0.6 }}
-                whileHover={{ scale: 1.05, y: -5 }}
-                className="absolute -bottom-3 -right-4 sm:-right-6 bg-white rounded-xl shadow-2xl p-2.5 sm:p-3 w-[160px] sm:w-[180px] h-[125px] sm:h-[140px] border-2 border-gray-100 overflow-hidden flex flex-col cursor-pointer transition-all duration-300"
-              >
-                <Badge
-                  className="mb-1 text-xs w-fit flex-shrink-0"
-                  style={{
-                    backgroundColor: "#FFF5F0",
-                    color: "#FF6B2B",
-                  }}
-                >
-                  Live Ads
-                </Badge>
-
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={currentIndex}
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: -20 }}
-                    transition={{ duration: 0.5 }}
-                    className="flex-1 flex flex-col min-h-0 overflow-hidden"
-                  >
-                    <div className="text-lg sm:text-xl mb-0.5 flex-shrink-0">
-                      {currentAd.logo}
-                    </div>
-
-                    <div className="flex-1 flex flex-col justify-center min-h-0 space-y-0.5">
-                      <p className="font-bold text-xs sm:text-sm line-clamp-1 leading-tight">
-                        {currentAd.brand}
-                      </p>
-                      <p className="font-semibold text-[10px] sm:text-xs line-clamp-2 leading-tight">
-                        {currentAd.message}
-                      </p>
-                      <p className="text-[10px] sm:text-xs text-muted-foreground line-clamp-1 leading-tight">
-                        {currentAd.tagline}
-                      </p>
-                    </div>
-                  </motion.div>
-                </AnimatePresence>
-
-                <div className="flex gap-1 justify-center mt-1.5 flex-shrink-0">
-                  {HERO_ADS.map((_, index) => (
-                    <div
-                      key={index}
-                      className="h-1 rounded-full transition-all duration-300"
-                      style={{
-                        width:
-                          index === currentIndex % HERO_ADS.length
-                            ? "12px"
-                            : "4px",
-                        backgroundColor:
-                          index === currentIndex % HERO_ADS.length
-                            ? "#FF6B2B"
-                            : "#D1D5DB",
-                      }}
-                    />
-                  ))}
-                </div>
-              </motion.div>
             </div>
           </motion.div>
 
@@ -220,7 +154,12 @@ export default function HeroMobile() {
                 asChild
               >
                 <Link href="#download-app">
-                  <Smartphone className="mr-2 h-4 w-4 group-hover:animate-pulse" />
+                  <Image
+                    src="/icons/download_icon.svg"
+                    alt="download"
+                    width={30}
+                    height={30}
+                  />
                   Download the App
                   <span className="ml-2 group-hover:translate-x-1 transition-transform">
                     →
@@ -268,10 +207,11 @@ export default function HeroMobile() {
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-orange-100/50 via-orange-100/30 to-orange-100/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-                <MapPin
-                  className="relative w-3.5 h-3.5 group-hover:scale-110 transition-transform duration-300"
-                  style={{ color: "#FF6B2B" }}
-                  strokeWidth={2.5}
+                <Image
+                  src="/icons/location_icon.svg"
+                  alt="Location"
+                  width={20}
+                  height={20}
                 />
 
                 <span
@@ -320,9 +260,12 @@ export default function HeroMobile() {
               <div className="relative flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
                 <div>
                   <p className="font-semibold text-sm sm:text-base mb-1 flex items-center gap-2">
-                    <Smartphone
-                      className="w-4 h-4"
-                      style={{ color: "#FF6B2B" }}
+                    <Image
+                      src="/icons/smartphones_icon.svg"
+                      alt="Smartphone"
+                      width={20}
+                      height={20}
+                      className="inline-block"
                     />
                     <span style={{ color: "#FF6B2B" }}>
                       Your store in your pocket
@@ -342,7 +285,13 @@ export default function HeroMobile() {
                   asChild
                 >
                   <Link href="#download-app">
-                    <Download className="w-3.5 h-3.5 sm:w-4 sm:h-4 mr-2 group-hover:animate-bounce" />
+                    <Image
+                      src="/icons/download_app_icon.svg"
+                      alt="Download"
+                      width={30}
+                      height={30}
+                      className="inline-block"
+                    />
                     Download App Now
                   </Link>
                 </Button>

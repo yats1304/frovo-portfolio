@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Sparkles, Target, Zap, Users, Globe } from "lucide-react";
+import Image from "next/image";
 
 export default function AboutUs() {
   return (
@@ -69,14 +69,13 @@ export default function AboutUs() {
             className="bg-white/60 backdrop-blur-sm rounded-2xl p-4 md:p-5 lg:p-6 border border-orange-100/50 shadow-lg"
           >
             <div className="flex items-center gap-2 mb-3">
-              <div
-                className="w-9 h-9 rounded-lg flex items-center justify-center"
-                style={{
-                  background:
-                    "linear-gradient(135deg, rgba(255, 107, 43, 0.2) 0%, rgba(255, 215, 0, 0.15) 100%)",
-                }}
-              >
-                <Sparkles className="w-4 h-4" style={{ color: "#FF6B2B" }} />
+              <div className="w-9 h-9 rounded-lg flex items-center justify-center">
+                <Image
+                  src="/icons/story_icon.svg"
+                  alt="Mission"
+                  width={40}
+                  height={40}
+                />
               </div>
               <h3 className="text-lg md:text-xl lg:text-2xl font-bold">
                 Our Story
@@ -126,7 +125,7 @@ export default function AboutUs() {
 
               <p className="font-medium">
                 So next time you see a Frovo machine, don&apos;t just walk past
-               tap, grab, and enjoy. Smart snacking starts here.
+                tap, grab, and enjoy. Smart snacking starts here.
               </p>
             </div>
           </motion.div>
@@ -153,7 +152,12 @@ export default function AboutUs() {
 
               <div className="relative">
                 <div className="flex items-center gap-2.5 mb-3">
-                  <Target className="w-6 h-6 text-white" />
+                  <Image
+                    src="/icons/target_icon.svg"
+                    alt="Target"
+                    width={40}
+                    height={40}
+                  />
                   <h3 className="text-xl md:text-2xl lg:text-3xl font-bold text-white">
                     Our Mission
                   </h3>
@@ -192,14 +196,13 @@ export default function AboutUs() {
                 transition={{ duration: 0.5, delay: 0.1 }}
                 className="bg-white/60 backdrop-blur-sm rounded-xl p-4 border border-orange-100/50 shadow-sm hover:shadow-md transition-all duration-300"
               >
-                <div
-                  className="w-10 h-10 rounded-lg flex items-center justify-center mb-2 mx-auto"
-                  style={{
-                    background:
-                      "linear-gradient(135deg, rgba(255, 107, 43, 0.2) 0%, rgba(255, 215, 0, 0.15) 100%)",
-                  }}
-                >
-                  <Zap className="w-5 h-5" style={{ color: "#FF6B2B" }} />
+                <div className="w-10 h-10 rounded-lg flex items-center justify-center mb-2 mx-auto">
+                  <Image
+                    src="/icons/open_icon.svg"
+                    alt="Open"
+                    width={40}
+                    height={40}
+                  />
                 </div>
                 <h4 className="text-base md:text-lg font-bold mb-1 text-center">
                   24/7
@@ -216,14 +219,13 @@ export default function AboutUs() {
                 transition={{ duration: 0.5, delay: 0.2 }}
                 className="bg-white/60 backdrop-blur-sm rounded-xl p-4 border border-orange-100/50 shadow-sm hover:shadow-md transition-all duration-300"
               >
-                <div
-                  className="w-10 h-10 rounded-lg flex items-center justify-center mb-2 mx-auto"
-                  style={{
-                    background:
-                      "linear-gradient(135deg, rgba(255, 107, 43, 0.2) 0%, rgba(255, 215, 0, 0.15) 100%)",
-                  }}
-                >
-                  <Users className="w-5 h-5" style={{ color: "#FF6B2B" }} />
+                <div className="w-14 h-14 rounded-lg flex items-center justify-center  mx-auto">
+                  <Image
+                    src="/icons/cashless_icon.svg"
+                    alt="Open"
+                    width={60}
+                    height={60}
+                  />
                 </div>
                 <h4 className="text-base md:text-lg font-bold mb-1 text-center">
                   Cashless
@@ -247,7 +249,12 @@ export default function AboutUs() {
                       "linear-gradient(135deg, rgba(255, 107, 43, 0.2) 0%, rgba(255, 215, 0, 0.15) 100%)",
                   }}
                 >
-                  <Globe className="w-5 h-5" style={{ color: "#FF6B2B" }} />
+                  <Image
+                    src="/icons/brand_icon.svg"
+                    alt="Brand"
+                    width={40}
+                    height={40}
+                  />
                 </div>
                 <h4 className="text-base md:text-lg font-bold mb-1 text-center">
                   Top Brands

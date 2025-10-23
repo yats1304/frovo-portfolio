@@ -4,7 +4,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import { MessageCircle, Send, CheckCircle2 } from "lucide-react";
+import { CheckCircle2 } from "lucide-react";
 import { toast } from "sonner";
 
 export default function Contact() {
@@ -397,16 +397,9 @@ export default function Contact() {
                   type="submit"
                   size="default"
                   disabled={isSubmitting}
-                  className="
-    w-full flex items-center justify-center gap-2
-    bg-white border-2 border-[#FF8A4C]
-    text-[#FF6B2B] font-semibold text-base
-    rounded-full shadow-none
-    hover:bg-[#FFFAF6] hover:border-[#FF6B2B] hover:text-[#FF7C38]
-    disabled:opacity-60 disabled:cursor-not-allowed
-    transition-all duration-200
-    py-3
-  "
+                  className="w-full flex items-center justify-center gap-2 bg-white border-2 border-[#FF8A4C] text-[#FF6B2B] 
+                  font-semibold text-base rounded-full shadow-none hover:bg-[#FFFAF6] hover:border-[#FF6B2B] hover:text-[#FF7C38] 
+                  disabled:opacity-60 disabled:cursor-not-allowed transition-all duration-200 py-3"
                   style={{
                     boxShadow: "0 4px 18px 0 rgba(255,107,43,0.09)",
                   }}

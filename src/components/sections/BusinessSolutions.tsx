@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Sparkles } from "lucide-react";
+
 import {
   BUSINESS_LOCATIONS,
   BUSINESS_IMAGES,
@@ -101,19 +101,15 @@ export default function BusinessSolutions() {
                     transition={{ duration: 0.4, delay: index * 0.05 }}
                     className="flex items-center gap-2 bg-white/60 backdrop-blur-sm rounded-lg p-2.5 border border-orange-100/50 shadow-sm hover:shadow-md hover:scale-105 transition-all duration-300"
                   >
-                    <div
-                      className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0"
-                      style={{
-                        background:
-                          "linear-gradient(135deg, rgba(255, 107, 43, 0.2) 0%, rgba(255, 215, 0, 0.15) 100%)",
-                      }}
-                    >
-                      <location.icon
-                        className="w-4 h-4"
-                        style={{ color: "#FF6B2B" }}
+                    <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <Image
+                        src={location.icon}
+                        alt={location.name}
+                        width={30}
+                        height={30}
                       />
                     </div>
-                    <span className="text-xs font-medium">{location.name}</span>
+                    <span className="text-sm font-medium">{location.name}</span>
                   </motion.div>
                 ))}
               </div>
@@ -135,10 +131,6 @@ export default function BusinessSolutions() {
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
 
               <p className="relative text-base sm:text-lg font-bold text-center flex items-center justify-center gap-2">
-                <Sparkles
-                  className="w-5 h-5 flex-shrink-0"
-                  style={{ color: "#FF6B2B" }}
-                />
                 <span
                   style={{
                     backgroundImage:
@@ -146,7 +138,7 @@ export default function BusinessSolutions() {
                   }}
                   className="bg-clip-text text-transparent"
                 >
-                  Your community + Frovo = instant 24/7 smart retail.
+                  Your community + Frovo = instant 24/7 smart retail
                 </span>
               </p>
             </motion.div>
@@ -160,9 +152,9 @@ export default function BusinessSolutions() {
               }}
               asChild
             >
-              <Link href="/">
+              <Link href="https://forms.gle/jdpXENfo3iFogJyh7">
                 Request a Business Quote
-                <span className="ml-2 group-hover:translate-x-1 transition-transform">
+                <span className="ml-2 group-hover:translate-x-1 transition-transform text-xl">
                   →
                 </span>
               </Link>

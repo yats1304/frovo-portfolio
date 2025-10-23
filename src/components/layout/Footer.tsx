@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { MapPin, Mail, Phone } from "lucide-react";
 
 // Footer links
 const FOOTER_LINKS = [
@@ -157,7 +156,7 @@ export default function Footer() {
               <li className="flex items-start gap-2.5">
                 <Image
                   src="/icons/email_icon.svg"
-                  alt="Instagram"
+                  alt="Email"
                   width={20}
                   height={20}
                 />
@@ -177,7 +176,7 @@ export default function Footer() {
               <li className="flex items-start gap-2.5">
                 <Image
                   src="/icons/phone_icon.svg"
-                  alt="Instagram"
+                  alt="Phone"
                   width={20}
                   height={20}
                 />

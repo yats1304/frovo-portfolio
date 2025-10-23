@@ -1,16 +1,10 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import {
-  MapPin,
-  Mail,
-  Phone,
-  MessageCircle,
-  Send,
-  CheckCircle2,
-} from "lucide-react";
+import Image from "next/image";
+import { MessageCircle, Send, CheckCircle2 } from "lucide-react";
 import { toast } from "sonner";
 
 export default function Contact() {
@@ -107,7 +101,7 @@ export default function Contact() {
   };
 
   const handleWhatsApp = () => {
-    window.open("https://wa.me/91XXXXXXXXXX?text=Hello%20Frovo!", "_blank");
+    window.open("https://wa.me/919035598876?text=Hello%20Frovo!", "_blank");
   };
 
   return (
@@ -182,21 +176,17 @@ export default function Contact() {
                 <div className="space-y-4">
                   {/* Location */}
                   <div className="flex items-start gap-3">
-                    <div
-                      className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0"
-                      style={{
-                        background:
-                          "linear-gradient(135deg, rgba(255, 107, 43, 0.2) 0%, rgba(255, 215, 0, 0.1) 100%)",
-                      }}
-                    >
-                      <MapPin
-                        className="w-5 h-5"
-                        style={{ color: "#FF6B2B" }}
+                    <div className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 ">
+                      <Image
+                        src="/icons/location_icon.svg"
+                        alt="Instagram"
+                        width={30}
+                        height={30}
                       />
                     </div>
                     <div>
                       <p className="font-semibold text-sm mb-0.5">Location</p>
-                      <p className="text-xs text-muted-foreground">
+                      <p className="text-sm text-muted-foreground">
                         Bangalore, India
                       </p>
                     </div>
@@ -204,20 +194,19 @@ export default function Contact() {
 
                   {/* Email */}
                   <div className="flex items-start gap-3">
-                    <div
-                      className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0"
-                      style={{
-                        background:
-                          "linear-gradient(135deg, rgba(255, 107, 43, 0.2) 0%, rgba(255, 215, 0, 0.1) 100%)",
-                      }}
-                    >
-                      <Mail className="w-5 h-5" style={{ color: "#FF6B2B" }} />
+                    <div className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 ">
+                      <Image
+                        src="/icons/email_icon.svg"
+                        alt="Instagram"
+                        width={30}
+                        height={30}
+                      />
                     </div>
                     <div>
                       <p className="font-semibold text-sm mb-0.5">Email</p>
                       <a
                         href="mailto:contact@frovo.in"
-                        className="text-xs hover:underline"
+                        className="text-sm hover:underline text-muted-foreground"
                       >
                         contact@frovo.in
                       </a>
@@ -226,22 +215,21 @@ export default function Contact() {
 
                   {/* Phone */}
                   <div className="flex items-start gap-3">
-                    <div
-                      className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0"
-                      style={{
-                        background:
-                          "linear-gradient(135deg, rgba(255, 107, 43, 0.2) 0%, rgba(255, 215, 0, 0.1) 100%)",
-                      }}
-                    >
-                      <Phone className="w-5 h-5" style={{ color: "#FF6B2B" }} />
+                    <div className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 pt-2">
+                      <Image
+                        src="/icons/phone_icon.svg"
+                        alt="Instagram"
+                        width={30}
+                        height={30}
+                      />
                     </div>
                     <div>
                       <p className="font-semibold text-sm mb-0.5">Phone</p>
                       <a
-                        href="tel:+91XXXXXXXXXX"
-                        className="text-xs hover:underline"
+                        href="tel:+919035598876"
+                        className="text-sm hover:underline text-muted-foreground"
                       >
-                        +91-XXXXXXXXXX
+                        +91-9035598876
                       </a>
                     </div>
                   </div>
@@ -252,10 +240,17 @@ export default function Contact() {
               <Button
                 onClick={handleWhatsApp}
                 size="default"
-                className="w-full bg-[#25D366] hover:bg-[#20BA5A] text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 group"
+                className="flex items-center gap-2 w-full py-5 bg-white border-2 border-[#25D366] text-[#25D366] 
+                font-semibold rounded-lg shadow-sm hover:bg-gray-50 hover:scale-102 transition-all duration-200 focus:outline-none "
               >
-                <MessageCircle className="w-4 h-4 mr-2 group-hover:rotate-12 transition-transform" />
-                Chat With Us on WhatsApp
+                <Image
+                  src="/icons/whatsapp_icon.svg"
+                  alt="WhatsApp"
+                  width={28}
+                  height={28}
+                  className="inline-block"
+                />
+                <span className="ml-2">Chat With Us on WhatsApp</span>
               </Button>
             </motion.div>
 
@@ -302,7 +297,6 @@ export default function Contact() {
                     <p className="text-xs text-red-500 mt-1">{errors.name}</p>
                   )}
                 </div>
-
                 {/* Email */}
                 <div>
                   <label className="block text-xs font-semibold mb-1.5">
@@ -335,7 +329,6 @@ export default function Contact() {
                     <p className="text-xs text-red-500 mt-1">{errors.email}</p>
                   )}
                 </div>
-
                 {/* I am a... */}
                 <div>
                   <label className="block text-xs font-semibold mb-1.5">
@@ -364,7 +357,6 @@ export default function Contact() {
                     <option value="Business">Business</option>
                   </select>
                 </div>
-
                 {/* Message */}
                 <div>
                   <label className="block text-xs font-semibold mb-1.5">
@@ -399,27 +391,41 @@ export default function Contact() {
                     </p>
                   )}
                 </div>
-
                 {/* Submit Button */}
+
                 <Button
                   type="submit"
                   size="default"
                   disabled={isSubmitting}
-                  className="w-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 group disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+                  className="
+    w-full flex items-center justify-center gap-2
+    bg-white border-2 border-[#FF8A4C]
+    text-[#FF6B2B] font-semibold text-base
+    rounded-full shadow-none
+    hover:bg-[#FFFAF6] hover:border-[#FF6B2B] hover:text-[#FF7C38]
+    disabled:opacity-60 disabled:cursor-not-allowed
+    transition-all duration-200
+    py-3
+  "
                   style={{
-                    background:
-                      "linear-gradient(135deg, #FF6B2B 0%, #FF8A4C 100%)",
+                    boxShadow: "0 4px 18px 0 rgba(255,107,43,0.09)",
                   }}
                 >
                   {isSubmitting ? (
                     <>
-                      <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin mr-2" />
+                      <div className="w-4 h-4 border-2 border-[#FF6B2B] border-t-transparent rounded-full animate-spin mr-2" />
                       Sending...
                     </>
                   ) : (
                     <>
                       Send Message
-                      <Send className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                      <Image
+                        src="/icons/send_icon.svg"
+                        alt="Send"
+                        width={22}
+                        height={22}
+                        className="ml-1"
+                      />
                     </>
                   )}
                 </Button>
@@ -431,7 +437,7 @@ export default function Contact() {
 
       {/* Sticky WhatsApp Button */}
       <a
-        href="https://wa.me/91XXXXXXXXXX?text=Hello%20Frovo!"
+        href="https://wa.me/919035598876?text=Hello%20Frovo!"
         target="_blank"
         rel="noopener noreferrer"
         className="fixed bottom-6 right-6 w-14 h-14 bg-[#25D366] hover:bg-[#128C7E] text-white rounded-full flex items-center justify-center shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-110 z-50 group"

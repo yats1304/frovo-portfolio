@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import { CheckCircle2 } from "lucide-react";
 import { toast } from "sonner";
 
 export default function Contact() {
@@ -160,7 +159,7 @@ export default function Contact() {
               </span>
             </h2>
             <p className="text-sm text-muted-foreground">
-              Let&apos;s build the future of shopping together.
+              Let&apos;s build the future of shopping together
             </p>
           </motion.div>
 

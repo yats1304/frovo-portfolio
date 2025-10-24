@@ -59,7 +59,7 @@ export default function HowItWorks() {
           </h2>
           <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
             Get what you need in 4 smart steps powered by Frovo, available round
-            the clock.
+            the clock
           </p>
         </motion.div>
 

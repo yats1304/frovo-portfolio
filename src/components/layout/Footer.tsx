@@ -144,21 +144,21 @@ export default function Footer() {
               ></span>
             </h3>
             <ul className="space-y-3">
-              <li className="flex items-start gap-2.5 text-sm text-muted-foreground">
+              <li className="flex items-start gap-3 text-sm text-muted-foreground">
                 <Image
                   src="/icons/location_icon.svg"
                   alt="Instagram"
-                  width={20}
-                  height={20}
+                  width={25}
+                  height={25}
                 />
-                <span>Bangalore, India</span>
+                <span className="">Bangalore, India</span>
               </li>
-              <li className="flex items-start gap-2.5">
+              <li className="flex items-start gap-3">
                 <Image
                   src="/icons/email_icon.svg"
                   alt="Email"
-                  width={20}
-                  height={20}
+                  width={25}
+                  height={25}
                 />
                 <a
                   href="mailto:hello@frovo.in"
@@ -177,8 +177,8 @@ export default function Footer() {
                 <Image
                   src="/icons/phone_icon.svg"
                   alt="Phone"
-                  width={20}
-                  height={20}
+                  width={25}
+                  height={25}
                 />
                 <a
                   href="tel:+919035598876"

@@ -208,7 +208,7 @@ export default function HeroMobile() {
                 <div className="absolute inset-0 bg-gradient-to-r from-orange-100/50 via-orange-100/30 to-orange-100/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
                 <Image
-                  src="/icons/location_icon.svg"
+                  src="/icons/location_hero_icon.svg"
                   alt="Location"
                   width={20}
                   height={20}

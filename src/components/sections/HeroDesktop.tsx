@@ -20,7 +20,6 @@ export default function HeroDesktop() {
     return () => clearInterval(interval);
   }, []);
 
-  
   const currentImage = HERO_IMAGES[currentIndex % HERO_IMAGES.length];
 
   return (
@@ -67,14 +66,14 @@ export default function HeroDesktop() {
                       "linear-gradient(135deg, #FF6B2B 0%, #FF8A4C 40%, #FFD700 70%, #9ACD32 100%)",
                   }}
                 >
-                  Life Can&apos;t Wait.
+                  Life Can&apos;t Wait
                 </span>
                 <br />
                 Grab & Go with Frovo
               </h1>
 
               <p className="text-lg xl:text-xl text-muted-foreground leading-relaxed max-w-xl">
-                Your everyday essentials, one tap away.
+                Your everyday essentials, one tap away
               </p>
             </div>
 
@@ -149,7 +148,7 @@ export default function HeroDesktop() {
                 <div className="absolute inset-0 bg-gradient-to-r from-orange-100/50 via-orange-100/30 to-orange-100/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
                 <Image
-                  src="/icons/location_icon.svg"
+                  src="/icons/location_hero_icon.svg"
                   alt="Location"
                   width={20}
                   height={20}
@@ -206,13 +205,10 @@ export default function HeroDesktop() {
                       height={20}
                       className="inline-block"
                     />
-                    <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#FF6B2B] to-[#FFD700]">
+                    <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#FF6B2B] to-[#ff00006f]">
                       Your store in your pocket
                     </span>
                   </h4>
-                  <p className="text-sm text-muted-foreground mt-0.5">
-                    Download the Frovo App
-                  </p>
                 </div>
 
                 {/* CTA Button */}

@@ -62,53 +62,44 @@ export default function Contact() {
     e.preventDefault();
 
     if (!validateForm()) {
-      toast.error("Please fix the errors in the form", {
-        description: "Check all required fields",
-        duration: 3000,
-      });
+      toast.error("Please fix the errors");
       return;
     }
 
     setIsSubmitting(true);
 
     try {
-      // Call Resend API
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
+      console.log("Sending email...");
+
+      const response = await fetch(
+        "https://email-service-eta.vercel.app/send-email",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name: formData.name,
+            email: formData.email,
+            role: formData.userType,
+            message: formData.message,
+          }),
+        }
+      );
 
       const data = await response.json();
+      console.log("Response:", data);
 
-      if (response.ok) {
-        // Success toast
-        toast.success("Message sent successfully!", {
-          description: "We'll get back to you within 24 hours",
-          duration: 4000,
-          icon: <CheckCircle2 className="w-5 h-5 text-green-500" />,
-        });
-
-        // Reset form (no phone field)
-        setFormData({
-          name: "",
-          email: "",
-          userType: "Consumer",
-          message: "",
-        });
+      if (response.ok && data.success) {
+        toast.success("Message sent successfully!");
+        setFormData({ name: "", email: "", userType: "Consumer", message: "" });
         setErrors({ name: "", email: "", message: "" });
       } else {
-        toast.error("Failed to send message", {
-          description: data.error || "Please try again later",
-          duration: 3000,
-        });
+        toast.error(data.message || "Failed to send message");
       }
     } catch (error) {
-      console.error("Error:", error);
-      toast.error("Network error", {
-        description: "Please check your connection",
-        duration: 3000,
-      });
+      console.error("Network error:", error);
+      toast.error("Failed to send message. Please try again.");
     } finally {
       setIsSubmitting(false);
     }

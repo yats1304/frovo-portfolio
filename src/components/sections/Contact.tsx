@@ -1,6 +1,6 @@
 "use client";
 
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
@@ -71,28 +71,42 @@ export default function Contact() {
 
     setIsSubmitting(true);
 
-    // Simulate API call
     try {
-      await new Promise((resolve) => setTimeout(resolve, 1500));
-
-      // Success toast
-      toast.success("Message sent successfully!", {
-        description: "We'll get back to you within 24 hours",
-        duration: 4000,
-        icon: <CheckCircle2 className="w-5 h-5 text-green-500" />,
+      // Call Resend API
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
       });
 
-      // Reset form
-      setFormData({
-        name: "",
-        email: "",
-        userType: "Consumer",
-        message: "",
-      });
-      setErrors({ name: "", email: "", message: "" });
-    } catch (_error) {
-      toast.error("Failed to send message", {
-        description: "Please try again later",
+      const data = await response.json();
+
+      if (response.ok) {
+        // Success toast
+        toast.success("Message sent successfully!", {
+          description: "We'll get back to you within 24 hours",
+          duration: 4000,
+          icon: <CheckCircle2 className="w-5 h-5 text-green-500" />,
+        });
+
+        // Reset form (no phone field)
+        setFormData({
+          name: "",
+          email: "",
+          userType: "Consumer",
+          message: "",
+        });
+        setErrors({ name: "", email: "", message: "" });
+      } else {
+        toast.error("Failed to send message", {
+          description: data.error || "Please try again later",
+          duration: 3000,
+        });
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      toast.error("Network error", {
+        description: "Please check your connection",
         duration: 3000,
       });
     } finally {

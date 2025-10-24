@@ -20,7 +20,7 @@ export default function HeroDesktop() {
     return () => clearInterval(interval);
   }, []);
 
-  const currentAd = HERO_ADS[currentIndex % HERO_ADS.length];
+  
   const currentImage = HERO_IMAGES[currentIndex % HERO_IMAGES.length];
 
   return (

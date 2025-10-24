@@ -4,7 +4,6 @@ import { useState } from "react";
 import dynamic from "next/dynamic";
 import Hero from "@/components/sections/Hero";
 import WelcomeGreeting from "@/components/WelcomeGreeting";
-import Franchise from "@/components/sections/Franchise";
 
 // Lazy load all below sections
 

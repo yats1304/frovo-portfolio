@@ -208,7 +208,7 @@ export default function Contact() {
                         href="mailto:contact@frovo.in"
                         className="text-sm hover:underline text-muted-foreground"
                       >
-                        contact@frovo.in
+                        hello@frovo.in
                       </a>
                     </div>
                   </div>

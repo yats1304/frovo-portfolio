@@ -275,9 +275,9 @@ export default function NavbarMobile() {
                   asChild
                 >
                   <Link
-                    href="#franchise"
+                    href="https://forms.gle/jdpXENfo3iFogJyh7"
                     onClick={(e) => {
-                      handleNavClick(e, "#franchise");
+                      handleNavClick(e, "https://forms.gle/jdpXENfo3iFogJyh7");
                     }}
                   >
                     Become a Partner

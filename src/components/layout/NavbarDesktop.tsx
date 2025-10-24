@@ -11,7 +11,7 @@ export default function NavbarDesktop() {
   // Active scroll tracker with NAV_SECTIONS
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPosition = window.scrollY + 200;
+      const scrollPosition = window.scrollY + 100;
 
       if (window.scrollY < 100) {
         setActiveSection("/");
@@ -57,7 +57,7 @@ export default function NavbarDesktop() {
       e.preventDefault();
       const target = document.querySelector(href);
       if (target) {
-        const offset = 80;
+        const offset = 65;
         const top =
           target.getBoundingClientRect().top + window.scrollY - offset;
         window.scrollTo({ top, behavior: "smooth" });

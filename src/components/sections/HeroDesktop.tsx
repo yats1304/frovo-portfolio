@@ -93,8 +93,9 @@ export default function HeroDesktop() {
                   <Image
                     src="/icons/download_icon.svg"
                     alt="download"
-                    width={30}
-                    height={30}
+                    width={40}
+                    height={40}
+                    className="brightness-0 invert"
                   />
                   Download the App
                   <span className="ml-2 group-hover:translate-x-1 transition-transform">
@@ -226,7 +227,7 @@ export default function HeroDesktop() {
                       alt="Download"
                       width={30}
                       height={30}
-                      className="inline-block"
+                      className="inline-block brightness-0 invert"
                     />
                     Download App
                   </motion.button>

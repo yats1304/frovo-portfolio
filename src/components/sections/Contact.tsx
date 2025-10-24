@@ -108,7 +108,7 @@ export default function Contact() {
     <>
       <section
         id="contact"
-        className="relative py-8 md:py-10 overflow-hidden min-h-[800px] md:min-h-[700px]"
+        className="relative py-8 md:py-20 overflow-hidden min-h-[800px] md:min-h-[700px]"
       >
         {/* Background */}
         <div className="absolute inset-0 bg-gradient-to-b from-[#FFEDE5] via-white to-[#FFF8F3] -z-10" />
@@ -133,7 +133,7 @@ export default function Contact() {
           />
         </div>
 
-        <div className="container max-w-[1200px] mx-auto px-4 sm:px-6 md:px-10">
+        <div className="container max-w-[1200px] mx-auto px-4 sm:px-6 md:px-10 mt-[-24px]">
           {/* Section Title */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}

@@ -242,13 +242,7 @@ export default function AboutUs() {
                 transition={{ duration: 0.5, delay: 0.3 }}
                 className="bg-white/60 backdrop-blur-sm rounded-xl p-4 border border-orange-100/50 shadow-sm hover:shadow-md transition-all duration-300"
               >
-                <div
-                  className="w-10 h-10 rounded-lg flex items-center justify-center mb-2 mx-auto"
-                  style={{
-                    background:
-                      "linear-gradient(135deg, rgba(255, 107, 43, 0.2) 0%, rgba(255, 215, 0, 0.15) 100%)",
-                  }}
-                >
+                <div className="w-10 h-10 rounded-lg flex items-center justify-center mb-2 mx-auto">
                   <Image
                     src="/icons/brand_icon.svg"
                     alt="Brand"

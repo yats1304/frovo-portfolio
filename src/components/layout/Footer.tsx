@@ -182,7 +182,7 @@ export default function Footer() {
                 />
                 <a
                   href="tel:+919035598876"
-                  className="text-sm text-muted-foreground hover:underline underline-offset-4 transition-colors duration-300"
+                  className="text-sm text-muted-foreground hover:underline underline-offset-4 transition-colors duration-300 mt-0.5"
                   onMouseEnter={(e) => {
                     e.currentTarget.style.color = "#FF6B2B";
                   }}

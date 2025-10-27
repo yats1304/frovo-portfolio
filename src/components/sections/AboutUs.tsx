@@ -13,7 +13,7 @@ export default function AboutUs() {
   return (
     <section
       id="about-us"
-      className="relative py-8 md:py-12 lg:py-12 overflow-hidden"
+      className="relative py-8 md:py-12 lg:py-14 overflow-hidden"
     >
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#FFEDE5] via-white to-[#FFF8F3] -z-10" />

@@ -6,9 +6,15 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
 import { HERO_ADS, HERO_IMAGES } from "@/constants/hero";
+import "aos/dist/aos.css";
+import AOS from "aos";
 
 export default function HeroDesktop() {
   const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    AOS.init({ once: true });
+  }, []);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -29,33 +35,20 @@ export default function HeroDesktop() {
 
       {/* Floating Shapes Animation */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10">
-        <motion.div
-          animate={{
-            y: [0, -20, 0],
-            x: [0, 10, 0],
-          }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+        <div
           className="absolute top-20 left-10 w-32 h-32 bg-[#FF6B2B]/10 rounded-full blur-3xl"
+          style={{ animation: "aos-shape-1 8s ease-in-out infinite" }}
         />
-        <motion.div
-          animate={{
-            y: [0, 20, 0],
-            x: [0, -10, 0],
-          }}
-          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+        <div
           className="absolute bottom-20 right-20 w-40 h-40 bg-yellow-400/10 rounded-full blur-3xl"
+          style={{ animation: "aos-shape-2 10s ease-in-out infinite" }}
         />
       </div>
 
       <div className="container max-w-[1400px] mx-auto px-16 xl:px-20">
         <div className="grid grid-cols-[58%_42%] gap-10 items-center min-h-[calc(100vh-180px)]">
           {/* Left Column */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="space-y-8"
-          >
+          <div data-aos="fade-right" className="space-y-8">
             {/* Headline */}
             <div className="space-y-4">
               <h1 className="text-5xl xl:text-6xl font-bold font-poppins leading-[1.1]">
@@ -134,17 +127,13 @@ export default function HeroDesktop() {
             </div>
 
             {/* Badges */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2, duration: 0.6 }}
+            <div
+              data-aos="fade-up"
+              data-aos-delay="150"
               className="flex items-center gap-3 pt-4"
             >
               {/* Location Badge */}
-              <motion.div
-                whileHover={{ scale: 1.05, y: -2 }}
-                className="relative group inline-flex items-center gap-2 px-5 py-3 rounded-full bg-orange-50 border-2 border-orange-300 hover:border-orange-400 transition-all duration-300 cursor-pointer shadow-sm hover:shadow-md overflow-hidden"
-              >
+              <div className="relative group inline-flex items-center gap-2 px-5 py-3 rounded-full bg-orange-50 border-2 border-orange-300 hover:border-orange-400 transition-all duration-300 cursor-pointer shadow-sm hover:shadow-md overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-r from-orange-100/50 via-orange-100/30 to-orange-100/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
                 <Image
@@ -162,13 +151,10 @@ export default function HeroDesktop() {
                 </span>
 
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
-              </motion.div>
+              </div>
 
               {/* 24/7 Badge  */}
-              <motion.div
-                whileHover={{ scale: 1.05, y: -2 }}
-                className="relative group inline-flex items-center gap-2 px-5 py-3 rounded-full bg-gradient-to-r from-yellow-50 to-lime-50 border-2 border-yellow-300 hover:border-yellow-400 transition-all duration-300 shadow-sm hover:shadow-md overflow-hidden"
-              >
+              <div className="relative group inline-flex items-center gap-2 px-5 py-3 rounded-full bg-gradient-to-r from-yellow-50 to-lime-50 border-2 border-yellow-300 hover:border-yellow-400 transition-all duration-300 shadow-sm hover:shadow-md overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-r from-yellow-100/50 via-lime-100/50 to-yellow-100/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
                 <div className="relative flex items-center justify-center">
@@ -181,14 +167,13 @@ export default function HeroDesktop() {
                 </span>
 
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
-              </motion.div>
-            </motion.div>
+              </div>
+            </div>
 
             {/* Download Banner */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4, duration: 0.6 }}
+            <div
+              data-aos="zoom-in-up"
+              data-aos-delay="250"
               className="relative group overflow-hidden rounded-2xl border border-orange-200 bg-gradient-to-r from-orange-50/80 via-amber-50 to-yellow-50 p-5 shadow-sm hover:shadow-lg transition-all duration-300 max-w-md"
             >
               {/* Hover shimmer */}
@@ -213,11 +198,7 @@ export default function HeroDesktop() {
 
                 {/* CTA Button */}
                 <Link href="#download-app" className="flex-none">
-                  <motion.button
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold text-white bg-gradient-to-r from-[#FF6B2B] via-[#FF8A4C] to-[#FFD700] shadow-md hover:shadow-lg transition-all duration-300"
-                  >
+                  <button className="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold text-white bg-gradient-to-r from-[#FF6B2B] via-[#FF8A4C] to-[#FFD700] shadow-md hover:shadow-lg transition-all duration-300">
                     <Image
                       src="/icons/download_app_icon.svg"
                       alt="Download"
@@ -226,17 +207,15 @@ export default function HeroDesktop() {
                       className="inline-block brightness-0 invert"
                     />
                     Download App
-                  </motion.button>
+                  </button>
                 </Link>
               </div>
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
 
           {/* Right Column */}
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
+          <div
+            data-aos="fade-left"
             className="relative flex items-center justify-center"
           >
             <div className="relative w-full max-w-[380px] group">
@@ -301,7 +280,7 @@ export default function HeroDesktop() {
                 </div>
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

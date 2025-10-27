@@ -1,13 +1,20 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { CAREER_ROLES } from "@/constants/careers";
+import "aos/dist/aos.css";
+import AOS from "aos";
+import { motion } from "framer-motion";
 
 export default function Careers() {
+  useEffect(() => {
+    AOS.init({ once: true });
+  }, []);
+
   return (
     <section
       id="careers"
@@ -18,57 +25,40 @@ export default function Careers() {
 
       {/* Floating Shapes */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10">
-        <motion.div
-          animate={{
-            y: [0, 30, 0],
-            x: [0, -20, 0],
-          }}
-          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+        <div
           className="absolute top-20 left-10 w-56 h-56 bg-[#FF6B2B]/10 rounded-full blur-3xl"
+          style={{ animation: "careers-shape-1 12s ease-in-out infinite" }}
         />
-        <motion.div
-          animate={{
-            y: [0, -30, 0],
-            x: [0, 20, 0],
-          }}
-          transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+        <div
           className="absolute bottom-20 right-20 w-64 h-64 bg-yellow-400/10 rounded-full blur-3xl"
+          style={{ animation: "careers-shape-2 15s ease-in-out infinite" }}
         />
       </div>
 
       <div className="container max-w-[1200px] mx-auto px-4 sm:px-6 md:px-10 mt-[-24px]">
         {/* Hero Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-8"
-        >
+        <div data-aos="fade-up" className="text-center mb-8">
           <div className="flex items-center justify-center gap-2 mb-3">
             <h2 className="text-3xl sm:text-4xl font-bold font-poppins">
-              Join the Future of Smart Retail - build with Frovo.
+              Join the Future of Smart Retail - build with Frovo
             </h2>
           </div>
           <p className="text-sm text-muted-foreground">
             We&apos;re building something amazing - come grow with us!
           </p>
-        </motion.div>
+        </div>
 
         {/* Roles Card Grid */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-6">
           {CAREER_ROLES.map((role, index) => (
-            <motion.div
+            <div
               key={role.role}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: index * 0.05 }}
+              data-aos="fade-up"
+              data-aos-delay={100 + index * 75}
               className="bg-white/60 backdrop-blur-sm rounded-xl p-5 border border-orange-100/50 shadow-lg hover:shadow-xl transition-all duration-300 group relative overflow-hidden"
             >
               {/* Orange hover accent */}
               <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#FF6B2B] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-
               <div
                 className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold mb-3"
                 style={{
@@ -79,15 +69,12 @@ export default function Careers() {
               >
                 {role.department}
               </div>
-
               <h3 className="text-lg font-bold mb-2 transition-colors group-hover:text-[#FF6B2B]">
                 {role.role}
               </h3>
-
               <p className="text-xs text-muted-foreground leading-relaxed mb-4">
                 {role.description}
               </p>
-
               {/* Apply Button */}
               <Button
                 size="sm"
@@ -103,7 +90,7 @@ export default function Careers() {
                   <ArrowRight className="w-3.5 h-3.5 ml-1.5 group-hover/btn:translate-x-1 transition-transform" />
                 </Link>
               </Button>
-            </motion.div>
+            </div>
           ))}
         </div>
 
@@ -133,11 +120,10 @@ export default function Careers() {
               className="flex items-center gap-2 py-4"
             >
               <Image
-                src="/icons/email_icon.svg"
+                src="/icons/email_icon2.svg"
                 alt="Email"
                 width={22}
                 height={22}
-                className="mb-1"
               />
               join@frovo.in
             </a>

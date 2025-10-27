@@ -1,6 +1,5 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
@@ -10,11 +9,17 @@ import {
   BUSINESS_LOCATIONS,
   BUSINESS_IMAGES,
 } from "@/constants/businessSolutions";
+import "aos/dist/aos.css";
+import AOS from "aos";
+import { AnimatePresence, motion } from "framer-motion";
 
 export default function BusinessSolutions() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-  // Auto-rotate images
+  useEffect(() => {
+    AOS.init({ once: true });
+  }, []);
+
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImageIndex((prev) => (prev + 1) % BUSINESS_IMAGES.length);
@@ -33,33 +38,19 @@ export default function BusinessSolutions() {
 
       {/* Floating Shapes */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10">
-        <motion.div
-          animate={{
-            y: [0, 30, 0],
-            x: [0, -20, 0],
-          }}
-          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+        <div
           className="absolute top-20 left-10 w-56 h-56 bg-yellow-400/10 rounded-full blur-3xl"
+          style={{ animation: "aos-business-shape-1 12s ease-in-out infinite" }}
         />
-        <motion.div
-          animate={{
-            y: [0, -30, 0],
-            x: [0, 20, 0],
-          }}
-          transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+        <div
           className="absolute bottom-20 right-20 w-64 h-64 bg-[#FF6B2B]/10 rounded-full blur-3xl"
+          style={{ animation: "aos-business-shape-2 15s ease-in-out infinite" }}
         />
       </div>
 
       <div className="container max-w-[1400px] mx-auto px-4 sm:px-6 md:px-10 lg:px-16 xl:px-20">
         {/* Section Title  */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-8"
-        >
+        <div data-aos="fade-up" className="text-center mb-8">
           <h2 className="text-3xl sm:text-4xl font-bold font-poppins mb-2">
             <span
               className="bg-clip-text text-transparent"
@@ -75,17 +66,11 @@ export default function BusinessSolutions() {
           <p className="text-sm sm:text-base text-muted-foreground">
             Rentals & Corporate Solutions
           </p>
-        </motion.div>
+        </div>
 
         <div className="grid lg:grid-cols-2 gap-6 lg:gap-8 items-center">
           {/* Left Column */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="space-y-5"
-          >
+          <div data-aos="fade-right" className="space-y-5">
             {/* Perfect For Section */}
             <div>
               <h3 className="text-lg font-bold mb-3 flex items-center gap-2">
@@ -93,12 +78,10 @@ export default function BusinessSolutions() {
               </h3>
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
                 {BUSINESS_LOCATIONS.map((location, index) => (
-                  <motion.div
+                  <div
                     key={location.name}
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.4, delay: index * 0.05 }}
+                    data-aos="fade-up"
+                    data-aos-delay={100 + index * 75}
                     className="flex items-center gap-2 bg-white/60 backdrop-blur-sm rounded-lg p-2.5 border border-orange-100/50 shadow-sm hover:shadow-md hover:scale-105 transition-all duration-300"
                   >
                     <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0">
@@ -110,17 +93,15 @@ export default function BusinessSolutions() {
                       />
                     </div>
                     <span className="text-sm font-medium">{location.name}</span>
-                  </motion.div>
+                  </div>
                 ))}
               </div>
             </div>
 
             {/* Tagline */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.3 }}
+            <div
+              data-aos="zoom-in"
+              data-aos-delay="350"
               className="relative rounded-lg p-4 border-2 overflow-hidden group hover:shadow-lg transition-all duration-300"
               style={{
                 background:
@@ -129,7 +110,6 @@ export default function BusinessSolutions() {
               }}
             >
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
-
               <p className="relative text-base sm:text-lg font-bold text-center flex items-center justify-center gap-2">
                 <span
                   style={{
@@ -141,7 +121,7 @@ export default function BusinessSolutions() {
                   Your community + Frovo = instant 24/7 smart retail
                 </span>
               </p>
-            </motion.div>
+            </div>
 
             {/* CTA Button */}
             <Button
@@ -159,16 +139,10 @@ export default function BusinessSolutions() {
                 </span>
               </Link>
             </Button>
-          </motion.div>
+          </div>
 
           {/* Right Column */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="relative"
-          >
+          <div data-aos="fade-left" className="relative">
             <div className="relative max-w-[420px] mx-auto">
               {/* Animated Orange Glow */}
               <motion.div
@@ -220,7 +194,7 @@ export default function BusinessSolutions() {
                 </div>
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

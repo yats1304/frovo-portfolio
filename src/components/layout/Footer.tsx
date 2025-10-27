@@ -218,28 +218,12 @@ export default function Footer() {
                 <div className="relative flex items-center gap-2 h-12 px-3.5 bg-black hover:bg-gray-900 rounded-lg transition-all duration-300 hover:scale-[1.03] hover:shadow-lg cursor-pointer overflow-hidden">
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000"></div>
 
-                  <svg
-                    className="w-6 h-6 flex-shrink-0 relative z-10"
-                    viewBox="0 0 48 48"
-                    fill="none"
-                  >
-                    <path
-                      d="M9.93 2.4C9.2 2.75 8.8 3.7 8.8 5.1V42.9C8.8 44.3 9.2 45.25 9.93 45.6L10.15 45.75L29.8 26.1V25.85V25.6L10.15 5.95L9.93 2.4Z"
-                      fill="#00D6FF"
-                    />
-                    <path
-                      d="M36.35 32.65L29.8 26.1V25.85V25.6L36.4 19.05L36.65 19.2L44.55 23.65C46.8 25 46.8 27.35 44.55 28.7L36.65 33.15L36.35 32.65Z"
-                      fill="#00E676"
-                    />
-                    <path
-                      d="M36.65 33.15L29.8 26.1L10.15 45.75C10.85 46.45 12.05 46.55 13.45 45.75L36.65 33.15Z"
-                      fill="#FFD600"
-                    />
-                    <path
-                      d="M36.65 19.2L13.45 6.6C12.05 5.8 10.85 5.9 10.15 6.6L29.8 26.1L36.65 19.2Z"
-                      fill="#FF3D00"
-                    />
-                  </svg>
+                  <Image
+                    src="icons/play_store_icon.svg"
+                    alt="play store"
+                    height={25}
+                    width={25}
+                  />
 
                   <div className="flex flex-col items-start relative z-10 flex-1">
                     <span className="text-[9px] text-gray-300 leading-none uppercase tracking-wide">
@@ -258,7 +242,7 @@ export default function Footer() {
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000"></div>
 
                   <svg
-                    className="w-6 h-6 flex-shrink-0 text-white relative z-10"
+                    className="w-8 h-8 flex-shrink-0 text-white relative z-10"
                     viewBox="0 0 24 24"
                     fill="currentColor"
                   >

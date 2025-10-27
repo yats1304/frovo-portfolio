@@ -1,49 +1,44 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { HOW_IT_WORKS_STEPS } from "@/constants/howItWorks";
+import "aos/dist/aos.css";
+import AOS from "aos";
 
 export default function HowItWorks() {
+  useEffect(() => {
+    AOS.init({ once: true });
+  }, []);
+
   return (
     <section
       id="how-it-works"
       className="relative py-16 md:py-18 overflow-hidden min-h-[1333px] md:min-h-[885px]"
     >
-      {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#FFEDE5] via-white to-[#FFF8F3] -z-10" />
 
       {/* Floating Shapes */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10">
-        <motion.div
-          animate={{
-            y: [0, 30, 0],
-            x: [0, -20, 0],
-          }}
-          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+        <div
           className="absolute top-40 right-20 w-64 h-64 bg-yellow-400/10 rounded-full blur-3xl"
-        />
-        <motion.div
-          animate={{
-            y: [0, -30, 0],
-            x: [0, 20, 0],
+          style={{
+            animation: "aos-howitworks-shape-1 12s ease-in-out infinite",
           }}
-          transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+        />
+        <div
           className="absolute bottom-20 left-10 w-80 h-80 bg-[#FF6B2B]/10 rounded-full blur-3xl"
+          style={{
+            animation: "aos-howitworks-shape-2 15s ease-in-out infinite",
+          }}
         />
       </div>
 
       <div className="container max-w-[1400px] mx-auto px-4 sm:px-6 md:px-10 lg:px-16 xl:px-20">
         {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-12 md:mb-16"
-        >
+        <div data-aos="fade-up" className="text-center mb-12 md:mb-16">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold font-poppins mb-4">
             How{" "}
             <span
@@ -53,15 +48,15 @@ export default function HowItWorks() {
                   "linear-gradient(135deg, #FF6B2B 0%, #FF8A4C 40%, #FFD700 70%, #9ACD32 100%)",
               }}
             >
-              Frovo
-            </span>{" "}
+              Frovo{" "}
+            </span>
             Works
           </h2>
           <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
             Get what you need in 4 smart steps powered by Frovo, available round
             the clock
           </p>
-        </motion.div>
+        </div>
 
         {/* Steps */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 relative">
@@ -69,16 +64,12 @@ export default function HowItWorks() {
             className="hidden lg:block absolute top-24 left-0 w-full h-1 pointer-events-none"
             style={{ zIndex: 0 }}
           >
-            <motion.path
+            <path
               d="M 0 0 Q 25 -10, 50 0 T 100 0"
               stroke="url(#orangeGradient)"
               strokeWidth="2"
               fill="none"
               strokeDasharray="8 4"
-              initial={{ pathLength: 0 }}
-              whileInView={{ pathLength: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 2, ease: "easeInOut" }}
             />
             <defs>
               <linearGradient
@@ -96,15 +87,12 @@ export default function HowItWorks() {
           </svg>
 
           {HOW_IT_WORKS_STEPS.map((step, index) => (
-            <motion.div
+            <div
               key={step.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.15 }}
+              data-aos="fade-up"
+              data-aos-delay={100 + index * 100}
               className="relative z-10"
             >
-              {/* Cards */}
               <div className="relative bg-white/60 backdrop-blur-sm rounded-2xl p-6 border border-orange-100/50 shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 group h-full">
                 <div className="w-16 h-16 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-all duration-300 shadow-md">
                   <Image
@@ -114,21 +102,12 @@ export default function HowItWorks() {
                     height={50}
                   />
                 </div>
-
-                {/* Content */}
-                <h3
-                  className="text-lg font-bold mb-2 transition-colors duration-300"
-                  style={{
-                    color: "group-hover:#FF6B2B",
-                  }}
-                >
+                <h3 className="text-lg font-bold mb-2 transition-colors duration-300">
                   {step.title}
                 </h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">
                   {step.description}
                 </p>
-
-                {/* Orange Bottom Accent */}
                 <div
                   className="absolute bottom-0 left-0 right-0 h-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-b-2xl"
                   style={{
@@ -137,19 +116,12 @@ export default function HowItWorks() {
                   }}
                 />
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
 
         {/* CTA Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.6 }}
-          className="mt-12 md:mt-16"
-        >
-          {/* Orange Gradient Banner */}
+        <div data-aos="zoom-in" data-aos-delay="600" className="mt-12 md:mt-16">
           <div
             className="relative rounded-2xl p-6 md:p-8 border-2 overflow-hidden group hover:shadow-lg transition-all duration-300 max-w-4xl mx-auto"
             style={{
@@ -158,7 +130,6 @@ export default function HowItWorks() {
               borderColor: "rgba(255, 107, 43, 0.2)",
             }}
           >
-            {/* Animated shine effect */}
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
 
             <div className="relative flex flex-col md:flex-row items-center justify-between gap-4">
@@ -190,7 +161,7 @@ export default function HowItWorks() {
               </Button>
             </div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

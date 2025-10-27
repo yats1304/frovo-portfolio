@@ -1,9 +1,15 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useEffect } from "react";
 import Image from "next/image";
+import "aos/dist/aos.css";
+import AOS from "aos";
 
 export default function AboutUs() {
+  useEffect(() => {
+    AOS.init({ once: true });
+  }, []);
+
   return (
     <section
       id="about-us"
@@ -14,33 +20,19 @@ export default function AboutUs() {
 
       {/* Floating Shapes */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10">
-        <motion.div
-          animate={{
-            y: [0, 30, 0],
-            x: [0, -20, 0],
-          }}
-          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+        <div
           className="absolute top-20 right-10 w-56 h-56 bg-[#FF6B2B]/10 rounded-full blur-3xl"
+          style={{ animation: "aboutus-shape-1 12s ease-in-out infinite" }}
         />
-        <motion.div
-          animate={{
-            y: [0, -30, 0],
-            x: [0, 20, 0],
-          }}
-          transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+        <div
           className="absolute bottom-20 left-20 w-64 h-64 bg-yellow-400/10 rounded-full blur-3xl"
+          style={{ animation: "aboutus-shape-2 15s ease-in-out infinite" }}
         />
       </div>
 
       <div className="container max-w-[1400px] mx-auto px-4 sm:px-6 md:px-10 lg:px-16 xl:px-20">
         {/* Section Title */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-6 md:mb-8"
-        >
+        <div data-aos="fade-up" className="text-center mb-6 md:mb-8">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold font-poppins mb-1.5">
             About{" "}
             <span
@@ -56,16 +48,13 @@ export default function AboutUs() {
           <p className="text-xs md:text-sm text-muted-foreground">
             Smart snacking, made simple
           </p>
-        </motion.div>
+        </div>
 
         {/* Main Grid: Story Left, Mission + Features Right */}
         <div className="grid lg:grid-cols-2 gap-5 lg:gap-6">
           {/* Left side - Our Story */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
+          <div
+            data-aos="fade-right"
             className="bg-white/60 backdrop-blur-sm rounded-2xl p-4 md:p-5 lg:p-6 border border-orange-100/50 shadow-lg"
           >
             <div className="flex items-center gap-2 mb-3">
@@ -81,7 +70,6 @@ export default function AboutUs() {
                 Our Story
               </h3>
             </div>
-
             <div className="space-y-2.5 text-xs md:text-sm leading-relaxed text-foreground">
               <p>
                 We started Frovo with one simple thought snacking shouldn&apos;t
@@ -128,16 +116,13 @@ export default function AboutUs() {
                 tap, grab, and enjoy. Smart snacking starts here.
               </p>
             </div>
-          </motion.div>
+          </div>
 
           {/* Right side */}
           <div className="space-y-5 lg:space-y-6">
             {/* Mission Box */}
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
+            <div
+              data-aos="fade-left"
               className="relative rounded-2xl p-5 md:p-6 lg:p-7 shadow-2xl overflow-hidden group"
               style={{
                 background:
@@ -185,15 +170,13 @@ export default function AboutUs() {
                   </p>
                 </div>
               </div>
-            </motion.div>
+            </div>
 
             {/* Feature Cards */}
             <div className="grid grid-cols-3 gap-3 md:gap-4">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.1 }}
+              <div
+                data-aos="fade-up"
+                data-aos-delay="100"
                 className="bg-white/60 backdrop-blur-sm rounded-xl p-4 border border-orange-100/50 shadow-sm hover:shadow-md transition-all duration-300"
               >
                 <div className="w-10 h-10 rounded-lg flex items-center justify-center mb-2 mx-auto">
@@ -210,16 +193,13 @@ export default function AboutUs() {
                 <p className="text-xs text-muted-foreground text-center">
                   Always Open
                 </p>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.2 }}
+              </div>
+              <div
+                data-aos="fade-up"
+                data-aos-delay="200"
                 className="bg-white/60 backdrop-blur-sm rounded-xl p-4 border border-orange-100/50 shadow-sm hover:shadow-md transition-all duration-300"
               >
-                <div className="w-14 h-14 rounded-lg flex items-center justify-center  mx-auto">
+                <div className="w-14 h-14 rounded-lg flex items-center justify-center mx-auto">
                   <Image
                     src="/icons/cashless_icon.svg"
                     alt="Open"
@@ -233,13 +213,10 @@ export default function AboutUs() {
                 <p className="text-xs text-muted-foreground text-center">
                   Tap & Go
                 </p>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.3 }}
+              </div>
+              <div
+                data-aos="fade-up"
+                data-aos-delay="300"
                 className="bg-white/60 backdrop-blur-sm rounded-xl p-4 border border-orange-100/50 shadow-sm hover:shadow-md transition-all duration-300"
               >
                 <div className="w-10 h-10 rounded-lg flex items-center justify-center mb-2 mx-auto">
@@ -256,7 +233,7 @@ export default function AboutUs() {
                 <p className="text-xs text-muted-foreground text-center">
                   Quality Products
                 </p>
-              </motion.div>
+              </div>
             </div>
           </div>
         </div>

@@ -30,6 +30,30 @@ export const metadata: Metadata = {
     "Always Open. Tap & Pay. Every Need - Your trusted partner for smart vending machines",
   viewport: "width=device-width, initial-scale=1",
   themeColor: "#1E40AF",
+  icons: {
+    icon: "/icon.svg",
+  },
+  openGraph: {
+    title: "Frovo - Grab & Go 24/7",
+    description:
+      "Tap, Pay, Snack. India's smart vending solution - always open, always fresh.",
+    url: "https://www.frovo.in",
+    siteName: "Frovo",
+    images: [
+      {
+        url: "/images/user_using_machine.webp",
+        width: 1200,
+        height: 630,
+        alt: "Frovo vending solutions Hero Banner",
+      },
+    ],
+    locale: "en_IN",
+    type: "website",
+  },
+
+  appleWebApp: {
+    statusBarStyle: "black-translucent",
+  },
 };
 
 export default function RootLayout({

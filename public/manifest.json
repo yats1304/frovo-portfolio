@@ -1,0 +1,43 @@
+{
+  "name": "Frovo - Smart Vending Solutions",
+  "short_name": "Frovo",
+  "description": "India's leading smart vending machine solutions provider. 24/7 access to snacks, beverages, and essentials with tap-to-pay technology.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#1E40AF",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "en-IN",
+  "dir": "ltr",
+  "categories": ["business", "productivity", "shopping"],
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/images/logo.webp",
+      "sizes": "192x192",
+      "type": "image/webp"
+    },
+    {
+      "src": "/images/logo.webp", 
+      "sizes": "512x512",
+      "type": "image/webp"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/images/vending-machine-hero.webp",
+      "sizes": "1280x720",
+      "type": "image/webp",
+      "form_factor": "wide",
+      "label": "Frovo Smart Vending Machine"
+    }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false
+}

@@ -1,5 +1,5 @@
 {
-  "name": "Frovo - Smart Vending Solutions",
+  "name": "Frovo - Grab & Go 24/7",
   "short_name": "Frovo",
   "description": "India's leading smart vending machine solutions provider. 24/7 access to snacks, beverages, and essentials with tap-to-pay technology.",
   "start_url": "/",
@@ -24,7 +24,7 @@
       "type": "image/webp"
     },
     {
-      "src": "/images/logo.webp", 
+      "src": "/images/logo.webp",
       "sizes": "512x512",
       "type": "image/webp"
     }

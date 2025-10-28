@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     siteName: "Frovo",
     images: [
       {
-        url: "/images/user_using_machine.webp",
+        url: "/images/logo.webp",
         width: 1200,
         height: 630,
         alt: "Frovo vending solutions Hero Banner",

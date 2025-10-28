@@ -6,11 +6,13 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
 import { HERO_ADS, HERO_IMAGES } from "@/constants/hero";
+import { ComingSoonDialog } from "@/components/ui/coming-soon-dialog";
 import "aos/dist/aos.css";
 import AOS from "aos";
 
 export default function HeroDesktop() {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   useEffect(() => {
     AOS.init({ once: true });
@@ -27,6 +29,11 @@ export default function HeroDesktop() {
   }, []);
 
   const currentImage = HERO_IMAGES[currentIndex % HERO_IMAGES.length];
+
+  const handleAppDownload = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setIsDialogOpen(true);
+  };
 
   return (
     <section className="relative min-h-screen pt-20 pb-32 overflow-visible">
@@ -79,21 +86,19 @@ export default function HeroDesktop() {
                   background:
                     "linear-gradient(135deg, #FF6B2B 0%, #FF8A4C 100%)",
                 }}
-                asChild
+                onClick={handleAppDownload}
               >
-                <Link href="#download-app">
-                  <Image
-                    src="/icons/download_icon.svg"
-                    alt="download"
-                    width={40}
-                    height={40}
-                    className="brightness-0 invert"
-                  />
-                  Download the App
-                  <span className="ml-2 group-hover:translate-x-1 transition-transform">
-                    →
-                  </span>
-                </Link>
+                <Image
+                  src="/icons/download_icon.svg"
+                  alt="download"
+                  width={40}
+                  height={40}
+                  className="brightness-0 invert"
+                />
+                Download the App
+                <span className="ml-2 group-hover:translate-x-1 transition-transform">
+                  →
+                </span>
               </Button>
 
               {/* Partner Button */}
@@ -197,18 +202,19 @@ export default function HeroDesktop() {
                 </div>
 
                 {/* CTA Button */}
-                <Link href="#download-app" className="flex-none">
-                  <button className="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold text-white bg-gradient-to-r from-[#FF6B2B] via-[#FF8A4C] to-[#FFD700] shadow-md hover:shadow-lg transition-all duration-300">
-                    <Image
-                      src="/icons/download_app_icon.svg"
-                      alt="Download"
-                      width={30}
-                      height={30}
-                      className="inline-block brightness-0 invert"
-                    />
-                    Download App
-                  </button>
-                </Link>
+                <button 
+                  onClick={handleAppDownload}
+                  className="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold text-white bg-gradient-to-r from-[#FF6B2B] via-[#FF8A4C] to-[#FFD700] shadow-md hover:shadow-lg transition-all duration-300"
+                >
+                  <Image
+                    src="/icons/download_app_icon.svg"
+                    alt="Download"
+                    width={30}
+                    height={30}
+                    className="inline-block brightness-0 invert"
+                  />
+                  Download App
+                </button>
               </div>
             </div>
           </div>
@@ -283,6 +289,9 @@ export default function HeroDesktop() {
           </div>
         </div>
       </div>
+
+      {/* Coming Soon Dialog */}
+      <ComingSoonDialog isOpen={isDialogOpen} onOpenChange={setIsDialogOpen} />
     </section>
   );
 }

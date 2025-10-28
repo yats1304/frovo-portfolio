@@ -5,8 +5,16 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Check } from "lucide-react";
 import { USER_TYPES } from "@/constants/frovoForYou";
+import { useState } from "react";
+import { ComingSoonDialog } from "@/components/ui/coming-soon-dialog";
 
 export default function FrovoForYou() {
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+
+  const handleAppDownload = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setIsDialogOpen(true);
+  };
   return (
     <section
       id="for-you"
@@ -126,17 +134,18 @@ export default function FrovoForYou() {
               <Button
                 size="sm"
                 className="bg-gradient-to-r from-primary to-blue-600 hover:from-primary/90 hover:to-blue-700 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 text-xs"
-                asChild
+                onClick={handleAppDownload}
               >
-                <Link href="#download-app">
-                  Download the Frovo App
-                  <span className="ml-2">→</span>
-                </Link>
+                Download the Frovo App
+                <span className="ml-2">→</span>
               </Button>
             </div>
           </div>
         </motion.div>
       </div>
+
+      {/* Coming Soon Dialog */}
+      <ComingSoonDialog isOpen={isDialogOpen} onOpenChange={setIsDialogOpen} />
     </section>
   );
 }

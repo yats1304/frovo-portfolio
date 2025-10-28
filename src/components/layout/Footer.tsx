@@ -2,6 +2,8 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { useState } from "react";
+import { ComingSoonDialog } from "@/components/ui/coming-soon-dialog";
 
 // Footer links
 const FOOTER_LINKS = [
@@ -15,6 +17,8 @@ const FOOTER_LINKS = [
 ];
 
 export default function Footer() {
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+
   //smooth scrolling to home page
   const handleClick = (e: { preventDefault: () => void }) => {
     e.preventDefault();
@@ -23,6 +27,10 @@ export default function Footer() {
     } else {
       window.location.href = "/";
     }
+  };
+
+  const handleAppStoreClick = () => {
+    setIsDialogOpen(true);
   };
 
   return (
@@ -214,7 +222,7 @@ export default function Footer() {
 
             <div className="flex flex-col gap-3 max-w-[200px]">
               {/* Google Play Button */}
-              <a target="_blank" rel="noopener noreferrer" className="group">
+              <button onClick={handleAppStoreClick} className="group">
                 <div className="relative flex items-center gap-2 h-12 px-3.5 bg-black hover:bg-gray-900 rounded-lg transition-all duration-300 hover:scale-[1.03] hover:shadow-lg cursor-pointer overflow-hidden">
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000"></div>
 
@@ -234,10 +242,10 @@ export default function Footer() {
                     </span>
                   </div>
                 </div>
-              </a>
+              </button>
 
               {/* App Store Button */}
-              <a target="_blank" rel="noopener noreferrer" className="group">
+              <button onClick={handleAppStoreClick} className="group">
                 <div className="relative flex items-center gap-2 h-12 px-3.5 bg-black hover:bg-gray-900 rounded-lg transition-all duration-300 hover:scale-[1.03] hover:shadow-lg cursor-pointer overflow-hidden">
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000"></div>
 
@@ -258,7 +266,7 @@ export default function Footer() {
                     </span>
                   </div>
                 </div>
-              </a>
+              </button>
             </div>
           </div>
         </div>
@@ -297,6 +305,9 @@ export default function Footer() {
           </p>
         </div>
       </div>
+
+      {/* Coming Soon Dialog */}
+      <ComingSoonDialog isOpen={isDialogOpen} onOpenChange={setIsDialogOpen} />
     </footer>
   );
 }

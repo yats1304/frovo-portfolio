@@ -17,7 +17,11 @@ export default function BusinessSolutions() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   useEffect(() => {
-    AOS.init({ once: true });
+    AOS.init({
+      once: true,
+      duration: 500,
+      easing: "ease-out",
+    });
   }, []);
 
   useEffect(() => {
@@ -35,18 +39,6 @@ export default function BusinessSolutions() {
     >
       {/* Background  */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#FFEDE5] via-white to-[#FFF8F3] -z-10" />
-
-      {/* Floating Shapes */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10">
-        <div
-          className="absolute top-20 left-10 w-56 h-56 bg-yellow-400/10 rounded-full blur-3xl"
-          style={{ animation: "aos-business-shape-1 12s ease-in-out infinite" }}
-        />
-        <div
-          className="absolute bottom-20 right-20 w-64 h-64 bg-[#FF6B2B]/10 rounded-full blur-3xl"
-          style={{ animation: "aos-business-shape-2 15s ease-in-out infinite" }}
-        />
-      </div>
 
       <div className="container max-w-[1400px] mx-auto px-4 sm:px-6 md:px-10 lg:px-16 xl:px-20">
         {/* Section Title  */}

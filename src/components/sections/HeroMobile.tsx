@@ -14,9 +14,13 @@ export default function HeroMobile() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
-  useEffect(() => {
-    AOS.init({ once: true });
-  }, []);
+    useEffect(() => {
+      AOS.init({
+        once: true,
+        duration: 500,
+        easing: "ease-out",
+      });
+    }, []);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -37,20 +41,8 @@ export default function HeroMobile() {
 
   return (
     <section className="relative min-h-screen pt-20 pb-12 overflow-hidden">
-      {/* Background Gradient */}
+      {/* Background  */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#FFEDE5] via-white to-[#FFF8F3] -z-10" />
-
-      {/* Floating Shapes Animation */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10">
-        <div
-          className="absolute top-20 left-10 w-32 h-32 bg-[#FF6B2B]/10 rounded-full blur-3xl"
-          style={{ animation: "aos-shape-1 8s ease-in-out infinite" }}
-        />
-        <div
-          className="absolute bottom-20 right-20 w-40 h-40 bg-yellow-400/10 rounded-full blur-3xl"
-          style={{ animation: "aos-shape-2 10s ease-in-out infinite" }}
-        />
-      </div>
 
       <div className="container max-w-[1400px] mx-auto px-4 sm:px-6">
         <div className="space-y-8 min-h-[calc(100vh-160px)] flex flex-col justify-center">

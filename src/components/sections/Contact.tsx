@@ -9,7 +9,11 @@ import AOS from "aos";
 
 export default function Contact() {
   useEffect(() => {
-    AOS.init({ once: true });
+    AOS.init({
+      once: true,
+      duration: 500,
+      easing: "ease-out",
+    });
   }, []);
 
   const [formData, setFormData] = useState({
@@ -117,22 +121,10 @@ export default function Contact() {
     <>
       <section
         id="contact"
-        className="relative py-8 md:py-20 overflow-hidden min-h-[800px] md:min-h-[700px]"
+        className="relative py-12 md:py-20 overflow-hidden min-h-[800px] md:min-h-[700px]"
       >
-        {/* Background */}
+        {/* Background  */}
         <div className="absolute inset-0 bg-gradient-to-b from-[#FFEDE5] via-white to-[#FFF8F3] -z-10" />
-
-        {/* Floating Shapes */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10">
-          <div
-            className="absolute top-20 left-10 w-56 h-56 bg-[#FF6B2B]/10 rounded-full blur-3xl"
-            style={{ animation: "careers-shape-1 12s ease-in-out infinite" }}
-          />
-          <div
-            className="absolute bottom-20 right-20 w-64 h-64 bg-yellow-400/10 rounded-full blur-3xl"
-            style={{ animation: "careers-shape-2 15s ease-in-out infinite" }}
-          />
-        </div>
 
         <div className="container max-w-[1200px] mx-auto px-4 sm:px-6 md:px-10 mt-[-24px]">
           {/* Section Title */}

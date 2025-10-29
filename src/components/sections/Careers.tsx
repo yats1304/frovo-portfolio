@@ -33,7 +33,7 @@ export default function Careers() {
             className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-[#FF6B2B]/10 to-[#FFD700]/10 rounded-full border border-[#FF6B2B]/20 mb-6"
           >
             <span className="text-sm font-semibold text-[#FF6B2B]">
-              We're Hiring!
+              We&apos;re Hiring!
             </span>
           </div>
 

@@ -1,9 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import Link from "next/link";
 import Image from "next/image";
-import { ArrowLeft } from "lucide-react";
 import { JOBS_ROLES, JobsRole } from "@/constants/jobs";
 import "aos/dist/aos.css";
 import AOS from "aos";
@@ -123,10 +121,10 @@ export default function JobsPage() {
       <div className="bg-transparent border-t py-16">
         <div className="max-w-5xl mx-auto px-6 lg:px-8 text-center">
           <h3 className="text-2xl font-bold text-gray-900 mb-3">
-            Don't see the right role?
+            Don&apos;t see the right role?
           </h3>
           <p className="text-gray-600 mb-8">
-            Send us your resume and let's talk
+            Send us your resume and let&apos;s talk
           </p>
           <Button
             size="sm"

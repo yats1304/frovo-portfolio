@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname, useRouter } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -19,6 +20,8 @@ import { NAV_ITEMS, NAV_SECTIONS } from "@/constants/navigation";
 export default function NavbarMobile() {
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
+  const pathname = usePathname();
+  const router = useRouter();
 
   useEffect(() => {
     if (isOpen) {
@@ -67,30 +70,51 @@ export default function NavbarMobile() {
   ) => {
     if (href === "/") {
       e.preventDefault();
-      window.scrollTo({ top: 0, behavior: "smooth" });
-      setActiveSection("/");
+      if (pathname !== "/") {
+        router.push("/");
+      } else {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        setActiveSection("/");
+      }
       setIsOpen(false);
       return;
     }
 
     if (href.startsWith("#")) {
       e.preventDefault();
-      const element = document.querySelector(href);
-      if (element) {
-        const offset = 80;
-        const elementPosition = element.getBoundingClientRect().top;
-        const offsetPosition = elementPosition + window.pageYOffset - offset;
-        window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+      if (pathname !== "/") {
+        // Navigate to home page with hash
+        router.push(`/${href}`);
+      } else {
+        // Smooth scroll on same page
+        const element = document.querySelector(href);
+        if (element) {
+          const offset = 80;
+          const elementPosition = element.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - offset;
+          window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+        }
       }
       setIsOpen(false);
     }
   };
 
-  const isActive = (href: string) => {
-    if (href === "/") {
-      return activeSection === "/" || activeSection === "";
+  const isActive = (href: string, itemName: string) => {
+    // Prioritize route-based detection
+    if (itemName === "Careers" && pathname === "/jobs") {
+      return true;
     }
-    return activeSection === href;
+    
+    // Only use scroll-based detection if we're on the home page
+    if (pathname === "/") {
+      if (href === "/") {
+        return activeSection === "/" || activeSection === "";
+      }
+      return activeSection === href;
+    }
+    
+    // For other routes, no items should be active except route-specific ones
+    return false;
   };
 
   return (
@@ -196,28 +220,28 @@ export default function NavbarMobile() {
                       handleNavClick(e, item.href);
                     }}
                     className={`group px-3.5 py-3 rounded-lg border flex items-center justify-between transition-all duration-300 ${
-                      isActive(item.href)
+                      isActive(item.href, item.name)
                         ? "bg-orange-50 border-orange-300"
                         : "bg-gray-50 border-gray-200 hover:bg-orange-50 hover:border-orange-200"
                     }`}
-                    aria-current={isActive(item.href) ? "page" : undefined}
+                    aria-current={isActive(item.href, item.name) ? "page" : undefined}
                   >
                     <span
                       className={`text-sm font-medium ${
-                        isActive(item.href) ? "font-semibold" : "text-gray-900"
+                        isActive(item.href, item.name) ? "font-semibold" : "text-gray-900"
                       }`}
                       style={{
-                        color: isActive(item.href) ? "#FF6B2B" : undefined,
+                        color: isActive(item.href, item.name) ? "#FF6B2B" : undefined,
                       }}
                     >
                       {item.name}
                     </span>
                     <svg
                       className={`w-4 h-4 transition-colors ${
-                        isActive(item.href) ? "" : "text-gray-400"
+                        isActive(item.href, item.name) ? "" : "text-gray-400"
                       }`}
                       style={{
-                        color: isActive(item.href) ? "#FF6B2B" : undefined,
+                        color: isActive(item.href, item.name) ? "#FF6B2B" : undefined,
                       }}
                       fill="none"
                       strokeLinecap="round"

@@ -14,13 +14,13 @@ export default function HeroMobile() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
-    useEffect(() => {
-      AOS.init({
-        once: true,
-        duration: 500,
-        easing: "ease-out",
-      });
-    }, []);
+  useEffect(() => {
+    AOS.init({
+      once: true,
+      duration: 500,
+      easing: "ease-out",
+    });
+  }, []);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -162,7 +162,7 @@ export default function HeroMobile() {
                 }}
                 asChild
               >
-                <Link href="#business-solutions" className="relative z-10">
+                <Link href="/partner" className="relative z-10">
                   <span
                     className="absolute inset-0 -z-10 transition-transform duration-300 ease-out scale-x-0 group-hover:scale-x-100 origin-left"
                     style={{

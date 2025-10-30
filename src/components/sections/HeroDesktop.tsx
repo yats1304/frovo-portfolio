@@ -104,10 +104,7 @@ export default function HeroDesktop() {
                 }}
                 asChild
               >
-                <Link
-                  href="https://forms.gle/jdpXENfo3iFogJyh7"
-                  className="relative z-10"
-                >
+                <Link href="/partner" className="relative z-10">
                   {/* Background Fill Animation */}
                   <span
                     className="absolute inset-0 -z-10 transition-transform duration-300 ease-out scale-x-0 group-hover:scale-x-100 origin-left"

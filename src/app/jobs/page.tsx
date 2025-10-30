@@ -69,7 +69,7 @@ export default function JobsPage() {
             </Link>
           </div>
 
-          {/* Title - Centered */}
+          {/* Title */}
           <div className="text-center mb-6">
             <h1 className="text-xl md:text-2xl font-bold text-gray-900 tracking-tight">
               Open Positions{" "}
@@ -77,7 +77,7 @@ export default function JobsPage() {
             </h1>
           </div>
 
-          {/* Filters - Full Width on Mobile */}
+          {/* Filters */}
           <div className="w-full max-w-lg mx-auto">
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4">
               <label

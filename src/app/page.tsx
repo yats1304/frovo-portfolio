@@ -16,21 +16,23 @@ export default function Home() {
 
   useEffect(() => {
     setHasMounted(true);
-    const greetingShown = localStorage.getItem("frovo_greeting_shown");
 
-    if (!greetingShown) {
-      // First time visitor show greeting
+    // Check if this is a new session
+    const isNewSession = !sessionStorage.getItem("session_started");
+
+    if (isNewSession) {
+      // Mark session as started
+      sessionStorage.setItem("session_started", "true");
+
+      // Show greeting on fresh load/new session
       setShowGreeting(true);
     } else {
-      // Already visited skip greeting and show content directly
+      // User navigated via back button or link within existing session
       setGreetingComplete(true);
     }
   }, []);
 
   const handleGreetingComplete = () => {
-    // Mark greeting as shown in localStorage
-    localStorage.setItem("frovo_greeting_shown", "true");
-
     setShowGreeting(false);
 
     // Small delay before showing content

@@ -44,31 +44,30 @@ export default function JobsPage() {
       <div className="absolute inset-0 bg-gradient-to-b from-[#FFEDE5] via-white to-[#FFF8F3] -z-10" />
 
       {/* Header */}
-      <div className="border-b bg-transparent z-10 mt-16">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 py-6 md:py-10">
-          {/* Back Button - Separate on Mobile */}
-          <div className="mb-4">
-            <Link
-              href="/#careers"
-              className="inline-flex items-center gap-2 text-gray-600 hover:text-[#FF6B2B] transition-colors group"
+      <div className="bg-transparent z-10 mt-16">
+        {/* Back Button  */}
+        <div className="lg:pt-6 lg:px-18 pt-6 px-6 mb-2">
+          <Link
+            href="/#careers"
+            className="inline-flex items-center gap-2 text-gray-600 hover:text-[#FF6B2B] transition-colors group"
+          >
+            <svg
+              className="w-5 h-5 transform group-hover:-translate-x-1 transition-transform"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
             >
-              <svg
-                className="w-5 h-5 transform group-hover:-translate-x-1 transition-transform"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M15 19l-7-7 7-7"
-                />
-              </svg>
-              <span className="font-medium">Back to Careers</span>
-            </Link>
-          </div>
-
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M10 19l-7-7m0 0l7-7m-7 7h18"
+              />
+            </svg>
+            <span className="font-medium text-sm">Back to Careers</span>
+          </Link>
+        </div>
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
           {/* Title */}
           <div className="text-center mb-6">
             <h1 className="text-xl md:text-2xl font-bold text-gray-900 tracking-tight">

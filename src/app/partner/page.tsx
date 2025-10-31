@@ -79,8 +79,8 @@ export default function PartnerPage() {
         return;
       }
 
-      // Validate file size (10MB max)
-      const maxSize = 10 * 1024 * 1024; // 10MB in bytes
+      // file size 10MB max
+      const maxSize = 10 * 1024 * 1024;
       if (file.size > maxSize) {
         alert("File size must be less than 10MB");
         return;
@@ -208,7 +208,6 @@ export default function PartnerPage() {
 
   const handleInputChange = (name: keyof FormErrors, value: string) => {
     setFormData({ ...formData, [name]: value });
-    // Clear error when user starts typing
     if (errors[name]) {
       setErrors({ ...errors, [name]: undefined });
     }
@@ -223,7 +222,6 @@ export default function PartnerPage() {
 
     // Validate form
     if (!validateForm()) {
-      // Scroll to first error
       const firstError = Object.keys(errors).find(
         (key) => errors[key as keyof FormErrors]
       );
@@ -253,10 +251,6 @@ export default function PartnerPage() {
       }
 
       // Add your API call here
-      // await fetch('/api/partner', {
-      //   method: 'POST',
-      //   body: formDataToSend,
-      // });
 
       await new Promise((resolve) => setTimeout(resolve, 2000));
 
@@ -272,63 +266,36 @@ export default function PartnerPage() {
   // Success Screen
   if (isSubmitted) {
     return (
-      <main className="relative min-h-screen pt-20 pb-16">
-        {/* Background Pattern */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#FFEDE5] via-white to-[#FFF8F3] -z-10" />
-
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          {/* Success Header */}
-          <div className="text-center mb-8">
-            <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-2">
-              Partner with Frovo
-            </h1>
-            <p className="text-base text-gray-600">
-              We&apos;re excited to work with you
-            </p>
+      <main className="min-h-screen bg-[#f8f7f4] flex items-center justify-center px-4">
+        <div className="text-center max-w-2xl">
+          <div className="inline-flex items-center justify-center w-20 h-20 bg-green-100 rounded-full mb-6">
+            <svg
+              className="w-10 h-10 text-green-600"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={3}
+                d="M5 13l4 4L19 7"
+              />
+            </svg>
           </div>
-
-          {/* Success Card */}
-          <div className="bg-white rounded-2xl shadow-lg p-8 sm:p-12">
-            <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl p-8 sm:p-12 text-center border border-green-100">
-              {/* Success Icon */}
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-green-500 rounded-full mb-6">
-                <svg
-                  className="w-8 h-8 text-white"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={3}
-                    d="M5 13l4 4L19 7"
-                  />
-                </svg>
-              </div>
-
-              {/* Success Message */}
-              <h2 className="text-3xl font-bold text-green-800 mb-4">
-                Partnership Submitted!
-              </h2>
-              <p className="text-lg text-gray-700 mb-8 max-w-2xl mx-auto">
-                Thank you for your interest in partnering with Frovo. We&apos;ll
-                review your submission and get back to you soon.
-              </p>
-
-              {/* Back to Home Button */}
-              <Button
-                asChild
-                className="h-12 px-8 font-semibold rounded-full shadow-md hover:shadow-lg transition-all"
-                style={{
-                  background:
-                    "linear-gradient(135deg, #FF6B2B 0%, #FF8F5C 100%)",
-                }}
-              >
-                <Link href="/">Back to Home</Link>
-              </Button>
-            </div>
-          </div>
+          <h1 className="text-4xl font-bold text-gray-900 mb-4">
+            Partnership Submitted!
+          </h1>
+          <p className="text-lg text-gray-600 mb-8">
+            Thank you for your interest in partnering with Frovo. We&apos;ll
+            review your submission and get back to you soon.
+          </p>
+          <Button
+            asChild
+            className="h-12 px-8 bg-[#FF6B2B] hover:bg-[#ff5212] text-white rounded-full font-semibold"
+          >
+            <Link href="/">Back to Home</Link>
+          </Button>
         </div>
       </main>
     );
@@ -338,13 +305,13 @@ export default function PartnerPage() {
   return (
     <main className="relative min-h-screen pt-20 pb-16">
       {/* Back Button */}
-      <div className="lg:mx-20 lg:pt-4 py-4 px-4">
+      <div className="lg:mx-14 lg:pt-2xxxx py-4 px-4">
         <Link
           href="/"
-          className="inline-flex items-center gap-2 text-gray-600 hover:text-[#FF6B2B] transition-colors group font-medium"
+          className="inline-flex items-center gap-2 text-gray-600 hover:text-[#FF6B2B] transition-colors group"
         >
           <svg
-            className="w-4 h-4 transform group-hover:-translate-x-1 transition-transform"
+            className="w-5 h-5 transform group-hover:-translate-x-1 transition-transform"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -352,11 +319,11 @@ export default function PartnerPage() {
             <path
               strokeLinecap="round"
               strokeLinejoin="round"
-              strokeWidth={2.5}
-              d="M15 19l-7-7 7-7"
+              strokeWidth={2}
+              d="M10 19l-7-7m0 0l7-7m-7 7h18"
             />
           </svg>
-          Back to Home
+          <span className="font-medium text-sm">Back to Home</span>
         </Link>
       </div>
       {/* Background Pattern */}
@@ -368,7 +335,16 @@ export default function PartnerPage() {
           {/* Header */}
           <div className="text-center mb-8">
             <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-3">
-              Partner with <span className="text-[#FF6B2B]">Frovo</span>
+              Partner with{" "}
+              <span
+                className="bg-clip-text text-transparent"
+                style={{
+                  backgroundImage:
+                    "linear-gradient(135deg, #FF6B2B 0%, #FF8A4C 40%, #FFD700 70%, #9ACD32 100%)",
+                }}
+              >
+                Frovo{" "}
+              </span>
             </h1>
             <p className="text-base text-gray-600 max-w-xl mx-auto">
               We&apos;re excited to collaborate with like-minded individuals and

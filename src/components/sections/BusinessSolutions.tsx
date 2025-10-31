@@ -124,7 +124,7 @@ export default function BusinessSolutions() {
               }}
               asChild
             >
-              <Link href="https://forms.gle/jdpXENfo3iFogJyh7">
+              <Link href="/partner">
                 Request a Business Quote
                 <span className="ml-2 group-hover:translate-x-1 transition-transform text-xl">
                   →

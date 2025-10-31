@@ -1,21 +1,28 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { HOW_IT_WORKS_STEPS } from "@/constants/howItWorks";
 import "aos/dist/aos.css";
 import AOS from "aos";
+import { ComingSoonDialog } from "../ui/coming-soon-dialog";
 
 export default function HowItWorks() {
-    useEffect(() => {
-      AOS.init({
-        once: true,
-        duration: 500,
-        easing: "ease-out",
-      });
-    }, []);
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  useEffect(() => {
+    AOS.init({
+      once: true,
+      duration: 500,
+      easing: "ease-out",
+    });
+  }, []);
+
+  const handleAppDownload = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setIsDialogOpen(true);
+  };
 
   return (
     <section
@@ -139,6 +146,7 @@ export default function HowItWorks() {
                   background:
                     "linear-gradient(135deg, #FF6B2B 0%, #FF8A4C 100%)",
                 }}
+                onClick={handleAppDownload}
                 asChild
               >
                 <Link href="#download-app">
@@ -152,6 +160,9 @@ export default function HowItWorks() {
           </div>
         </div>
       </div>
+
+      {/* Coming Soon Dialog */}
+      <ComingSoonDialog isOpen={isDialogOpen} onOpenChange={setIsDialogOpen} />
     </section>
   );
 }

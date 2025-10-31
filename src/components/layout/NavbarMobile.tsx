@@ -104,7 +104,7 @@ export default function NavbarMobile() {
     if (itemName === "Careers" && pathname === "/jobs") {
       return true;
     }
-    
+
     // Only use scroll-based detection if we're on the home page
     if (pathname === "/") {
       if (href === "/") {
@@ -112,7 +112,7 @@ export default function NavbarMobile() {
       }
       return activeSection === href;
     }
-    
+
     // For other routes, no items should be active except route-specific ones
     return false;
   };
@@ -224,14 +224,20 @@ export default function NavbarMobile() {
                         ? "bg-orange-50 border-orange-300"
                         : "bg-gray-50 border-gray-200 hover:bg-orange-50 hover:border-orange-200"
                     }`}
-                    aria-current={isActive(item.href, item.name) ? "page" : undefined}
+                    aria-current={
+                      isActive(item.href, item.name) ? "page" : undefined
+                    }
                   >
                     <span
                       className={`text-sm font-medium ${
-                        isActive(item.href, item.name) ? "font-semibold" : "text-gray-900"
+                        isActive(item.href, item.name)
+                          ? "font-semibold"
+                          : "text-gray-900"
                       }`}
                       style={{
-                        color: isActive(item.href, item.name) ? "#FF6B2B" : undefined,
+                        color: isActive(item.href, item.name)
+                          ? "#FF6B2B"
+                          : undefined,
                       }}
                     >
                       {item.name}
@@ -241,7 +247,9 @@ export default function NavbarMobile() {
                         isActive(item.href, item.name) ? "" : "text-gray-400"
                       }`}
                       style={{
-                        color: isActive(item.href, item.name) ? "#FF6B2B" : undefined,
+                        color: isActive(item.href, item.name)
+                          ? "#FF6B2B"
+                          : undefined,
                       }}
                       fill="none"
                       strokeLinecap="round"
@@ -296,16 +304,12 @@ export default function NavbarMobile() {
                     borderColor: "#FF6B2B",
                     color: "#FF6B2B",
                   }}
-                  asChild
+                  onClick={() => {
+                    setIsOpen(false);
+                    router.push("/partner");
+                  }}
                 >
-                  <Link
-                    href="https://forms.gle/jdpXENfo3iFogJyh7"
-                    onClick={(e) => {
-                      handleNavClick(e, "https://forms.gle/jdpXENfo3iFogJyh7");
-                    }}
-                  >
-                    Become a Partner
-                  </Link>
+                  Become a Partner
                 </Button>
               </div>
 
@@ -325,82 +329,6 @@ export default function NavbarMobile() {
           </Sheet>
         </nav>
       </header>
-
-      <style jsx global>{`
-        [data-radix-dialog-overlay] {
-          animation: overlayFadeIn 0.25s ease-out !important;
-        }
-
-        [data-radix-sheet-content] {
-          animation: menuFadeIn 0.3s ease-out !important;
-          transform: translateX(0) !important;
-          right: 0 !important;
-        }
-
-        /* Closing animations */
-        [data-radix-dialog-overlay][data-state="closed"] {
-          animation: overlayFadeOut 0.3s ease-in !important;
-        }
-
-        [data-radix-sheet-content][data-state="closed"] {
-          animation: menuFadeOut 0.3s ease-in !important;
-        }
-
-        /* Fade in animations */
-        @keyframes overlayFadeIn {
-          from {
-            opacity: 0;
-          }
-          to {
-            opacity: 1;
-          }
-        }
-
-        @keyframes menuFadeIn {
-          from {
-            opacity: 0;
-            transform: translateX(0) scale(0.98);
-          }
-          to {
-            opacity: 1;
-            transform: translateX(0) scale(1);
-          }
-        }
-
-        /* Fade out animations */
-        @keyframes overlayFadeOut {
-          from {
-            opacity: 1;
-          }
-          to {
-            opacity: 0;
-          }
-        }
-
-        @keyframes menuFadeOut {
-          from {
-            opacity: 1;
-            transform: translateX(0) scale(1);
-          }
-          to {
-            opacity: 0;
-            transform: translateX(0) scale(0.98);
-          }
-        }
-
-        /* Mobile optimizations */
-        @media (max-width: 768px) {
-          * {
-            -webkit-tap-highlight-color: transparent;
-          }
-
-          [data-radix-sheet-content] {
-            position: fixed !important;
-            right: 0 !important;
-            transform: none !important;
-          }
-        }
-      `}</style>
     </>
   );
 }

@@ -19,6 +19,7 @@ interface FormErrors {
   emailAddress?: string;
   phoneNumber?: string;
   organization?: string;
+  website?: string;
   collaborationType?: string;
   description?: string;
   location?: string;
@@ -29,6 +30,7 @@ export default function PartnerPage() {
     fullName: "",
     emailAddress: "",
     phoneNumber: "",
+    website: "",
     organization: "",
     collaborationType: "",
     description: "",
@@ -125,6 +127,14 @@ export default function PartnerPage() {
     return undefined;
   };
 
+  const validateWebsite = (url: string): string | undefined => {
+    if (!url.trim()) return undefined; // Optional field
+    const urlRegex =
+      /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/;
+    if (!urlRegex.test(url)) return "Please enter a valid website URL";
+    return undefined;
+  };
+
   const validateOrganization = (org: string): string | undefined => {
     if (!org.trim()) return "Organization name is required";
     if (org.trim().length < 2)
@@ -165,6 +175,9 @@ export default function PartnerPage() {
         break;
       case "phoneNumber":
         error = validatePhone(value);
+        break;
+      case "website":
+        error = validateWebsite(value);
         break;
       case "organization":
         error = validateOrganization(value);
@@ -241,6 +254,7 @@ export default function PartnerPage() {
       formDataToSend.append("fullName", formData.fullName);
       formDataToSend.append("emailAddress", formData.emailAddress);
       formDataToSend.append("phoneNumber", formData.phoneNumber);
+      formDataToSend.append("website", formData.website);
       formDataToSend.append("organization", formData.organization);
       formDataToSend.append("collaborationType", formData.collaborationType);
       formDataToSend.append("description", formData.description);
@@ -466,6 +480,33 @@ export default function PartnerPage() {
                 <p className="text-sm text-red-600 mt-1">
                   {errors.organization}
                 </p>
+              )}
+            </div>
+
+            {/* Website */}
+            <div className="space-y-2">
+              <Label
+                htmlFor="website"
+                className="text-sm font-medium text-gray-700"
+              >
+                Website{" "}
+                <span className="text-gray-500 text-xs">(Optional)</span>
+              </Label>
+              <Input
+                id="website"
+                type="url"
+                value={formData.website}
+                onChange={(e) => handleInputChange("website", e.target.value)}
+                onBlur={(e) => handleBlur("website", e.target.value)}
+                placeholder="https://www.yourwebsite.com"
+                className={`h-11 border-gray-300 focus:border-[#FF6B2B] focus:ring-[#FF6B2B] rounded-lg ${
+                  errors.website
+                    ? "border-red-500 focus:border-red-500 focus:ring-red-500"
+                    : ""
+                }`}
+              />
+              {errors.website && (
+                <p className="text-sm text-red-600 mt-1">{errors.website}</p>
               )}
             </div>
 
@@ -703,6 +744,7 @@ export default function PartnerPage() {
                     fullName: "",
                     emailAddress: "",
                     phoneNumber: "",
+                    website: "",
                     organization: "",
                     collaborationType: "",
                     description: "",

@@ -193,7 +193,6 @@ export default function ApplyJobPage() {
         throw new Error("Failed to submit application");
       }
 
-      const data = await response.json();
       setIsSubmitted(true);
     } catch (error) {
       console.error("Error:", error);

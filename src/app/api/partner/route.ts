@@ -204,10 +204,11 @@ export async function POST(req: NextRequest) {
       success: true,
       message: "Emails sent successfully to both parties",
     });
-  } catch (error: any) {
-    console.error("Email error:", error);
+  } catch (error) {
+    const err = error instanceof Error ? error : new Error(String(error));
+
     return NextResponse.json(
-      { error: "Failed to send emails", details: error.message },
+      { error: "Failed to send emails", details: err.message },
       { status: 500 }
     );
   }

@@ -169,13 +169,14 @@ export async function POST(req: NextRequest) {
       success: true,
       message: "Message sent successfully",
     });
-  } catch (error: any) {
-    console.error("Email error:", error);
+  } catch (error) {
+    const err = error instanceof Error ? error : new Error(String(error));
+
     return NextResponse.json(
       {
         success: false,
         message: "Failed to send message",
-        error: error.message,
+        error: err.message,
       },
       { status: 500 }
     );

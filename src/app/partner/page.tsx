@@ -264,9 +264,19 @@ export default function PartnerPage() {
         formDataToSend.append("file", selectedFile);
       }
 
-      // Add your API call here
+      // Send to API
+      const response = await fetch("/api/partner", {
+        method: "POST",
+        body: formDataToSend,
+      });
 
-      await new Promise((resolve) => setTimeout(resolve, 2000));
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.error || "Failed to submit form");
+      }
+
+      console.log("Email sent successfully:", result);
 
       setIsSubmitted(true);
       setSelectedFile(null);

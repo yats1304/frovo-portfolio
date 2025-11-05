@@ -77,26 +77,20 @@ export default function Contact() {
     setIsSubmitting(true);
 
     try {
-      console.log("Sending email...");
-
-      const response = await fetch(
-        "https://email-service-eta.vercel.app/send-email",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            name: formData.name,
-            email: formData.email,
-            role: formData.userType,
-            message: formData.message,
-          }),
-        }
-      );
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          role: formData.userType,
+          message: formData.message,
+        }),
+      });
 
       const data = await response.json();
-      console.log("Response:", data);
 
       if (response.ok && data.success) {
         toast.success("Message sent successfully!");

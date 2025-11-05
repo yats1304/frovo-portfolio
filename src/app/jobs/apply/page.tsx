@@ -170,11 +170,34 @@ export default function ApplyJobPage() {
     e.preventDefault();
     if (!validateForm()) return;
     setIsSubmitting(true);
+
     try {
-      await new Promise((resolve) => setTimeout(resolve, 2000));
+      const formDataToSend = new FormData();
+      formDataToSend.append("fullName", formData.fullName);
+      formDataToSend.append("email", formData.email);
+      formDataToSend.append("phoneNumber", formData.phoneNumber);
+      formDataToSend.append("position", formData.position);
+      formDataToSend.append("experience", formData.experience);
+      formDataToSend.append("linkedin", formData.linkedin);
+      if (selectedResume) {
+        formDataToSend.append("resume", selectedResume);
+      }
+
+      // Send to API
+      const response = await fetch("/api/jobs", {
+        method: "POST",
+        body: formDataToSend,
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to submit application");
+      }
+
+      const data = await response.json();
       setIsSubmitted(true);
     } catch (error) {
       console.error("Error:", error);
+      alert("Failed to submit application. Please try again.");
     } finally {
       setIsSubmitting(false);
     }

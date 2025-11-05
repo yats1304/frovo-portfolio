@@ -139,9 +139,9 @@ export async function POST(req: NextRequest) {
               <p><strong>Frovo - Grab & Go 24/7</strong></p>
               <p>© 2025 Frovo. All rights reserved.</p>
               <div class="social">
-                <a href="https://twitter.com/frovo">Twitter</a>
-                <a href="https://linkedin.com/company/frovo">LinkedIn</a>
-                <a href="https://instagram.com/frovo">Instagram</a>
+                <a href="https://www.instagram.com/frovo.in/">YouTube</a>
+                <a href="https://www.linkedin.com/company/frovo/posts/?feedView=all">LinkedIn</a>
+                <a href="https://www.instagram.com/frovo.in/">Instagram</a>
               </div>
             </div>
           </div>

@@ -3,10 +3,13 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname, useRouter } from "next/navigation";
 import { NAV_ITEMS, NAV_SECTIONS } from "@/constants/navigation";
 
 export default function NavbarDesktop() {
   const [activeSection, setActiveSection] = useState("");
+  const pathname = usePathname();
+  const router = useRouter();
 
   // Active scroll tracker with NAV_SECTIONS
   useEffect(() => {
@@ -47,20 +50,30 @@ export default function NavbarDesktop() {
     // Handle Home link
     if (href === "/") {
       e.preventDefault();
-      window.scrollTo({ top: 0, behavior: "smooth" });
-      setActiveSection("/");
+      if (pathname !== "/") {
+        router.push("/");
+      } else {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        setActiveSection("/");
+      }
       return;
     }
 
     // Handle section links
     if (href.startsWith("#")) {
       e.preventDefault();
-      const target = document.querySelector(href);
-      if (target) {
-        const offset = 65;
-        const top =
-          target.getBoundingClientRect().top + window.scrollY - offset;
-        window.scrollTo({ top, behavior: "smooth" });
+      if (pathname !== "/") {
+        // Navigate to home page with hash
+        router.push(`/${href}`);
+      } else {
+        // Smooth scroll on same page
+        const target = document.querySelector(href);
+        if (target) {
+          const offset = 65;
+          const top =
+            target.getBoundingClientRect().top + window.scrollY - offset;
+          window.scrollTo({ top, behavior: "smooth" });
+        }
       }
     }
   };
@@ -77,7 +90,7 @@ export default function NavbarDesktop() {
           <Image
             src="/images/logo.svg"
             alt="Frovo Logo"
-            width={80}
+            width={100}
             height={60}
             className="h-10 object-contain group-hover:scale-105 transition-transform duration-300"
           />
@@ -91,15 +104,19 @@ export default function NavbarDesktop() {
                 href={item.href}
                 onClick={(e) => handleClick(e, item.href)}
                 className={`relative px-2 py-1 text-[15px] font-medium transition-all duration-300 ${
-                  activeSection === item.href ||
-                  (item.href === "/" && activeSection === "")
+                  (item.name === "Careers" && pathname === "/jobs") ||
+                  (pathname === "/" &&
+                    (activeSection === item.href ||
+                      (item.href === "/" && activeSection === "")))
                     ? "text-[#FF6B2B]"
                     : "text-gray-700 hover:text-[#FF6B2B]"
                 }`}
               >
                 {item.name}
-                {(activeSection === item.href ||
-                  (item.href === "/" && activeSection === "")) && (
+                {((item.name === "Careers" && pathname === "/jobs") ||
+                  (pathname === "/" &&
+                    (activeSection === item.href ||
+                      (item.href === "/" && activeSection === "")))) && (
                   <span
                     className="absolute bottom-0 left-0 w-full h-[2px] rounded-full transition-all duration-500"
                     style={{

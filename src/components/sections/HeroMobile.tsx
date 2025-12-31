@@ -15,7 +15,11 @@ export default function HeroMobile() {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   useEffect(() => {
-    AOS.init({ once: true });
+    AOS.init({
+      once: true,
+      duration: 500,
+      easing: "ease-out",
+    });
   }, []);
 
   useEffect(() => {
@@ -37,20 +41,8 @@ export default function HeroMobile() {
 
   return (
     <section className="relative min-h-screen pt-20 pb-12 overflow-hidden">
-      {/* Background Gradient */}
+      {/* Background  */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#FFEDE5] via-white to-[#FFF8F3] -z-10" />
-
-      {/* Floating Shapes Animation */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10">
-        <div
-          className="absolute top-20 left-10 w-32 h-32 bg-[#FF6B2B]/10 rounded-full blur-3xl"
-          style={{ animation: "aos-shape-1 8s ease-in-out infinite" }}
-        />
-        <div
-          className="absolute bottom-20 right-20 w-40 h-40 bg-yellow-400/10 rounded-full blur-3xl"
-          style={{ animation: "aos-shape-2 10s ease-in-out infinite" }}
-        />
-      </div>
 
       <div className="container max-w-[1400px] mx-auto px-4 sm:px-6">
         <div className="space-y-8 min-h-[calc(100vh-160px)] flex flex-col justify-center">
@@ -170,7 +162,7 @@ export default function HeroMobile() {
                 }}
                 asChild
               >
-                <Link href="#business-solutions" className="relative z-10">
+                <Link href="/partner" className="relative z-10">
                   <span
                     className="absolute inset-0 -z-10 transition-transform duration-300 ease-out scale-x-0 group-hover:scale-x-100 origin-left"
                     style={{

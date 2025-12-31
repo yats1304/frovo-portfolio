@@ -15,7 +15,11 @@ export default function HeroDesktop() {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   useEffect(() => {
-    AOS.init({ once: true });
+    AOS.init({
+      once: true,
+      duration: 500,
+      easing: "ease-out",
+    });
   }, []);
 
   useEffect(() => {
@@ -37,20 +41,8 @@ export default function HeroDesktop() {
 
   return (
     <section className="relative min-h-screen pt-20 pb-32 overflow-visible">
-      {/* Background Gradient */}
+      {/* Background  */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#FFEDE5] via-white to-[#FFF8F3] -z-10" />
-
-      {/* Floating Shapes Animation */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10">
-        <div
-          className="absolute top-20 left-10 w-32 h-32 bg-[#FF6B2B]/10 rounded-full blur-3xl"
-          style={{ animation: "aos-shape-1 8s ease-in-out infinite" }}
-        />
-        <div
-          className="absolute bottom-20 right-20 w-40 h-40 bg-yellow-400/10 rounded-full blur-3xl"
-          style={{ animation: "aos-shape-2 10s ease-in-out infinite" }}
-        />
-      </div>
 
       <div className="container max-w-[1400px] mx-auto px-16 xl:px-20">
         <div className="grid grid-cols-[58%_42%] gap-10 items-center min-h-[calc(100vh-180px)]">
@@ -81,7 +73,7 @@ export default function HeroDesktop() {
             <div className="flex gap-3">
               <Button
                 size="lg"
-                className="text-base h-12 px-6 font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 group"
+                className="text-base h-12 px-6 font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 group cursor-pointer"
                 style={{
                   background:
                     "linear-gradient(135deg, #FF6B2B 0%, #FF8A4C 100%)",
@@ -112,10 +104,7 @@ export default function HeroDesktop() {
                 }}
                 asChild
               >
-                <Link
-                  href="https://forms.gle/jdpXENfo3iFogJyh7"
-                  className="relative z-10"
-                >
+                <Link href="/partner" className="relative z-10">
                   {/* Background Fill Animation */}
                   <span
                     className="absolute inset-0 -z-10 transition-transform duration-300 ease-out scale-x-0 group-hover:scale-x-100 origin-left"
@@ -202,9 +191,9 @@ export default function HeroDesktop() {
                 </div>
 
                 {/* CTA Button */}
-                <button 
+                <button
                   onClick={handleAppDownload}
-                  className="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold text-white bg-gradient-to-r from-[#FF6B2B] via-[#FF8A4C] to-[#FFD700] shadow-md hover:shadow-lg transition-all duration-300"
+                  className="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold text-white bg-gradient-to-r from-[#FF6B2B] via-[#FF8A4C] to-[#FFD700] shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer"
                 >
                   <Image
                     src="/icons/download_app_icon.svg"

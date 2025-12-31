@@ -114,7 +114,7 @@ export const metadata: Metadata = {
     capable: true,
   },
   verification: {
-    google: "your-google-site-verification-code",
+    google: "ACcqAOI1hobNDV9gp5hX9YvJpTjmYzvLQS6utGQSxy",
   },
   category: "technology",
 };

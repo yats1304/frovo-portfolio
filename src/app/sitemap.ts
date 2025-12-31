@@ -1,45 +1,27 @@
-import type { MetadataRoute } from 'next'
+import type { MetadataRoute } from "next";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = 'https://www.frovo.in'
-  const currentDate = new Date()
+  const baseUrl = "https://www.frovo.in";
+  const currentDate = new Date();
 
   return [
     {
       url: baseUrl,
       lastModified: currentDate,
-      changeFrequency: 'weekly',
+      changeFrequency: "daily",
       priority: 1.0,
     },
     {
-      url: `${baseUrl}/#about`,
+      url: `${baseUrl}/jobs`,
       lastModified: currentDate,
-      changeFrequency: 'monthly',
+      changeFrequency: "weekly",
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/#how-it-works`,
+      url: `${baseUrl}/partner`,
       lastModified: currentDate,
-      changeFrequency: 'monthly',
+      changeFrequency: "monthly",
       priority: 0.8,
     },
-    {
-      url: `${baseUrl}/#business-solutions`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/#careers`,
-      lastModified: currentDate,
-      changeFrequency: 'weekly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/#contact`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly',
-      priority: 0.6,
-    },
-  ]
+  ];
 }

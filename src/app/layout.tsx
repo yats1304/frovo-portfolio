@@ -33,12 +33,15 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   title: {
-    default: "Frovo - Grab & Go 24/7",
-    template: "%s | Frovo - Grab & Go 24/7",
+    default: "Frovo - Smart Vending Machines | India's #1 Vending Solution",
+    template: "%s | Frovo",
   },
   description:
-    "Frovo delivers India's most advanced smart vending machines. 24/7 access to snacks, beverages, and essentials with tap-to-pay technology. Perfect for offices, colleges, and public spaces.",
+    "Frovo is India's most advanced smart vending machine company. Get 24/7 access to snacks, beverages, and essentials with Frovo's tap-to-pay technology. Perfect for offices, colleges, and public spaces.", // ✅ Added "Frovo is"
   keywords: [
+    "Frovo",
+    "Frovo India",
+    "Frovo vending",
     "smart vending machines",
     "vending solutions India",
     "24/7 vending",
@@ -49,7 +52,6 @@ export const metadata: Metadata = {
     "cashless vending",
     "snack vending machines",
     "beverage vending",
-    "Frovo vending",
     "contactless payment vending",
   ],
   authors: [{ name: "Frovo Team" }],
@@ -90,7 +92,7 @@ export const metadata: Metadata = {
     siteName: "Frovo",
     images: [
       {
-        url: "/images/logo.webp",
+        url: "https://www.frovo.in/images/logo.webp", //
         width: 1200,
         height: 630,
         alt: "Frovo Smart Vending Machines - 24/7 Automated Retail Solutions",
@@ -104,7 +106,7 @@ export const metadata: Metadata = {
     title: "Frovo - Smart Vending Machines | Grab & Go 24/7",
     description:
       "India's most advanced smart vending solutions. 24/7 access with tap-to-pay technology.",
-    images: ["/images/logo.webp"],
+    images: ["https://www.frovo.in/images/logo.webp"], //
     creator: "@frovo_in",
     site: "@frovo_in",
   },
@@ -127,46 +129,58 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        {/*  Changed Organization to Corporation for better brand recognition */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "Organization",
+              "@type": "Corporation",
               name: "Frovo",
+              alternateName: "Frovo India",
+              legalName: "Frovo Marketplace Private Limited",
               description:
-                "India's leading smart vending machine solutions provider",
+                "Frovo is India's leading smart vending machine solutions provider, delivering 24/7 access to snacks and beverages through innovative tap-to-pay technology.",
               url: "https://www.frovo.in",
               logo: "https://www.frovo.in/images/logo.webp",
+              image: "https://www.frovo.in/images/logo.webp",
+              foundingDate: "2023",
+              foundingLocation: {
+                "@type": "Place",
+                address: {
+                  "@type": "PostalAddress",
+                  addressCountry: "IN",
+                },
+              },
+              slogan: "Grab & Go 24/7",
               contactPoint: {
                 "@type": "ContactPoint",
                 contactType: "customer service",
+                areaServed: "IN",
                 availableLanguage: ["English", "Hindi"],
               },
               sameAs: [
                 "https://www.linkedin.com/company/frovo",
                 "https://twitter.com/frovo_in",
                 "https://www.instagram.com/frovo_official",
+                "https://www.facebook.com/frovo",
               ],
-              foundingDate: "2023",
-              founder: {
-                "@type": "Person",
-                name: "Frovo Team",
-              },
               areaServed: {
                 "@type": "Country",
                 name: "India",
               },
-              serviceType: "Smart Vending Solutions",
               knowsAbout: [
                 "Smart Vending Machines",
                 "Automated Retail",
                 "Contactless Payment Systems",
                 "24/7 Retail Solutions",
+                "Tap to Pay Technology",
               ],
             }),
           }}
         />
+
+        {/*  Website Schema */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -174,21 +188,104 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "WebSite",
               name: "Frovo",
+              alternateName: "Frovo India",
               url: "https://www.frovo.in",
               description:
-                "Smart vending machines and automated retail solutions",
+                "Frovo delivers smart vending machines and automated retail solutions across India",
               publisher: {
                 "@type": "Organization",
                 name: "Frovo",
               },
               potentialAction: {
                 "@type": "SearchAction",
-                target: "https://www.frovo.in/search?q={search_term_string}",
+                target: {
+                  "@type": "EntryPoint",
+                  urlTemplate:
+                    "https://www.frovo.in/search?q={search_term_string}",
+                },
                 "query-input": "required name=search_term_string",
               },
             }),
           }}
         />
+
+        {/*  Brand Schema for Knowledge Graph */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Brand",
+              name: "Frovo",
+              alternateName: ["Frovo India", "Frovo Vending"],
+              description: "India's most advanced smart vending machine brand",
+              url: "https://www.frovo.in",
+              logo: "https://www.frovo.in/images/logo.webp",
+              slogan: "Grab & Go 24/7",
+            }),
+          }}
+        />
+
+        {/*  Product Schema */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Product",
+              name: "Frovo Smart Vending Machines",
+              description:
+                "24/7 smart vending machines with tap-to-pay technology for offices, colleges, and public spaces across India",
+              brand: {
+                "@type": "Brand",
+                name: "Frovo",
+              },
+              manufacturer: {
+                "@type": "Organization",
+                name: "Frovo",
+              },
+              offers: {
+                "@type": "AggregateOffer",
+                availability: "https://schema.org/InStock",
+                priceCurrency: "INR",
+              },
+              image: "https://www.frovo.in/images/vending-machine-hero.webp",
+            }),
+          }}
+        />
+
+        {/* BreadcrumbList Schema */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              itemListElement: [
+                {
+                  "@type": "ListItem",
+                  position: 1,
+                  name: "Home",
+                  item: "https://www.frovo.in",
+                },
+                {
+                  "@type": "ListItem",
+                  position: 2,
+                  name: "Jobs",
+                  item: "https://www.frovo.in/jobs",
+                },
+                {
+                  "@type": "ListItem",
+                  position: 3,
+                  name: "Partner",
+                  item: "https://www.frovo.in/partner",
+                },
+              ],
+            }),
+          }}
+        />
+
+        {/* Existing preload links */}
         <link
           rel="preload"
           as="image"
@@ -215,8 +312,19 @@ export default function RootLayout({
           href="/images/user_collecting_item.webp"
           type="image/webp"
         />
+
+        {/*  Preconnect for better performance */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
+
         <link rel="dns-prefetch" href="//www.google-analytics.com" />
         <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+
+        {/* Existing geo meta tags */}
         <meta name="geo.region" content="IN" />
         <meta name="geo.placename" content="India" />
         <meta name="ICBM" content="20.5937, 78.9629" />

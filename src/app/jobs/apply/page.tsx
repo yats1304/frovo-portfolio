@@ -285,7 +285,7 @@ export default function ApplyJobPage() {
               className={`pb-4 font-medium transition-colors ${
                 activeTab === "overview"
                   ? "border-b-2 border-[#FF6B2B] text-[#FF6B2B]"
-                  : "text-gray-500 hover:text-gray-900"
+                  : "text-gray-500 hover:text-gray-900 cursor-pointer "
               }`}
             >
               Overview
@@ -295,7 +295,7 @@ export default function ApplyJobPage() {
               className={`pb-4 font-medium transition-colors ${
                 activeTab === "application"
                   ? "border-b-2 border-[#FF6B2B] text-[#FF6B2B]"
-                  : "text-gray-500 hover:text-gray-900"
+                  : "text-gray-500 hover:text-gray-900 cursor-pointer"
               }`}
             >
               Application
@@ -374,7 +374,7 @@ export default function ApplyJobPage() {
                       window.scrollTo({ top: 0, behavior: "smooth" });
                     }, 100);
                   }}
-                  className="w-full h-12 bg-[#FF7A59] hover:bg-[#ff6340] text-white rounded-full font-semibold text-base"
+                  className="w-full h-12 bg-[#FF7A59] hover:bg-[#ff6340] text-white rounded-full font-semibold text-base cursor-pointer"
                 >
                   Apply for this Job
                 </Button>
@@ -612,7 +612,7 @@ export default function ApplyJobPage() {
               <Button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full h-12 bg-[#FF7A59] hover:bg-[#ff6340] text-white rounded-full font-semibold text-base"
+                className="w-full h-12 bg-[#FF7A59] hover:bg-[#ff6340] text-white rounded-full font-semibold text-base cursor-pointer"
               >
                 {isSubmitting ? "Submitting..." : "Apply for this Job"}
               </Button>

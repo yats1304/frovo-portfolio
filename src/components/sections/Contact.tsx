@@ -216,7 +216,7 @@ export default function Contact() {
                 onClick={handleWhatsApp}
                 size="default"
                 className="flex items-center gap-2 w-full py-5 bg-white border-2 border-[#25D366] text-[#25D366] 
-                font-semibold rounded-lg shadow-sm hover:bg-gray-50 hover:scale-102 transition-all duration-200 focus:outline-none "
+                font-semibold rounded-lg shadow-sm hover:bg-gray-50 hover:scale-102 transition-all duration-200 focus:outline-none cursor-pointer"
               >
                 <Image
                   src="/icons/whatsapp_icon.svg"
@@ -311,7 +311,7 @@ export default function Contact() {
                     onChange={(e) =>
                       setFormData({ ...formData, userType: e.target.value })
                     }
-                    className="w-full px-3 py-2 text-sm rounded-lg border border-gray-200 bg-white focus:outline-none focus:ring-2 focus:border-transparent transition-all duration-300"
+                    className="w-full px-2 py-2 text-sm rounded-lg border border-gray-200 bg-white focus:outline-none focus:ring-2 focus:border-transparent transition-all duration-300"
                     onFocus={(e) => {
                       e.target.style.boxShadow =
                         "0 0 0 2px rgba(255, 107, 43, 0.2)";
@@ -371,7 +371,7 @@ export default function Contact() {
                   disabled={isSubmitting}
                   className="w-full flex items-center justify-center gap-2 bg-white border-2 border-[#FF8A4C] text-[#FF6B2B] 
                   font-semibold text-base rounded-full shadow-none hover:bg-[#FFFAF6] hover:border-[#FF6B2B] hover:text-[#FF7C38] 
-                  disabled:opacity-60 disabled:cursor-not-allowed transition-all duration-200 py-3"
+                  disabled:opacity-60 disabled:cursor-not-allowed transition-all duration-200 py-3 cursor-pointer"
                   style={{
                     boxShadow: "0 4px 18px 0 rgba(255,107,43,0.09)",
                   }}

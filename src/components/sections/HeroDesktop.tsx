@@ -73,7 +73,7 @@ export default function HeroDesktop() {
             <div className="flex gap-3">
               <Button
                 size="lg"
-                className="text-base h-12 px-6 font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 group"
+                className="text-base h-12 px-6 font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 group cursor-pointer"
                 style={{
                   background:
                     "linear-gradient(135deg, #FF6B2B 0%, #FF8A4C 100%)",
@@ -193,7 +193,7 @@ export default function HeroDesktop() {
                 {/* CTA Button */}
                 <button
                   onClick={handleAppDownload}
-                  className="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold text-white bg-gradient-to-r from-[#FF6B2B] via-[#FF8A4C] to-[#FFD700] shadow-md hover:shadow-lg transition-all duration-300"
+                  className="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold text-white bg-gradient-to-r from-[#FF6B2B] via-[#FF8A4C] to-[#FFD700] shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer"
                 >
                   <Image
                     src="/icons/download_app_icon.svg"

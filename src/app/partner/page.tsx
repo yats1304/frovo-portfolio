@@ -731,7 +731,7 @@ export default function PartnerPage() {
               <Button
                 type="submit"
                 disabled={isSubmitting}
-                className="flex-1 h-12 text-base font-semibold rounded-full shadow-md hover:shadow-lg transition-all"
+                className="flex-1 h-12 text-base font-semibold rounded-full shadow-md hover:shadow-lg transition-all cursor-pointer"
                 style={{
                   background:
                     "linear-gradient(135deg, #FF6B2B 0%, #FF8F5C 100%)",
@@ -766,7 +766,7 @@ export default function PartnerPage() {
                     fileInputRef.current.value = "";
                   }
                 }}
-                className="h-12 border-gray-300 text-gray-700 hover:bg-gray-50 font-medium rounded-full"
+                className="h-12 border-gray-300 text-gray-700 hover:bg-gray-50 font-medium rounded-full cursor-pointer"
               >
                 Clear Form
               </Button>

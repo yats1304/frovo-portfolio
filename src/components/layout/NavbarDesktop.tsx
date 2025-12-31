@@ -90,7 +90,7 @@ export default function NavbarDesktop() {
           <Image
             src="/images/logo.svg"
             alt="Frovo Logo"
-            width={80}
+            width={100}
             height={60}
             className="h-10 object-contain group-hover:scale-105 transition-transform duration-300"
           />
@@ -105,14 +105,18 @@ export default function NavbarDesktop() {
                 onClick={(e) => handleClick(e, item.href)}
                 className={`relative px-2 py-1 text-[15px] font-medium transition-all duration-300 ${
                   (item.name === "Careers" && pathname === "/jobs") ||
-                  (pathname === "/" && (activeSection === item.href || (item.href === "/" && activeSection === "")))
+                  (pathname === "/" &&
+                    (activeSection === item.href ||
+                      (item.href === "/" && activeSection === "")))
                     ? "text-[#FF6B2B]"
                     : "text-gray-700 hover:text-[#FF6B2B]"
                 }`}
               >
                 {item.name}
                 {((item.name === "Careers" && pathname === "/jobs") ||
-                  (pathname === "/" && (activeSection === item.href || (item.href === "/" && activeSection === "")))) && (
+                  (pathname === "/" &&
+                    (activeSection === item.href ||
+                      (item.href === "/" && activeSection === "")))) && (
                   <span
                     className="absolute bottom-0 left-0 w-full h-[2px] rounded-full transition-all duration-500"
                     style={{

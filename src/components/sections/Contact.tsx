@@ -9,7 +9,11 @@ import AOS from "aos";
 
 export default function Contact() {
   useEffect(() => {
-    AOS.init({ once: true });
+    AOS.init({
+      once: true,
+      duration: 500,
+      easing: "ease-out",
+    });
   }, []);
 
   const [formData, setFormData] = useState({
@@ -73,26 +77,20 @@ export default function Contact() {
     setIsSubmitting(true);
 
     try {
-      console.log("Sending email...");
-
-      const response = await fetch(
-        "https://email-service-eta.vercel.app/send-email",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            name: formData.name,
-            email: formData.email,
-            role: formData.userType,
-            message: formData.message,
-          }),
-        }
-      );
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          role: formData.userType,
+          message: formData.message,
+        }),
+      });
 
       const data = await response.json();
-      console.log("Response:", data);
 
       if (response.ok && data.success) {
         toast.success("Message sent successfully!");
@@ -117,22 +115,10 @@ export default function Contact() {
     <>
       <section
         id="contact"
-        className="relative py-8 md:py-20 overflow-hidden min-h-[800px] md:min-h-[700px]"
+        className="relative py-12 md:py-20 overflow-hidden min-h-[800px] md:min-h-[700px]"
       >
-        {/* Background */}
+        {/* Background  */}
         <div className="absolute inset-0 bg-gradient-to-b from-[#FFEDE5] via-white to-[#FFF8F3] -z-10" />
-
-        {/* Floating Shapes */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10">
-          <div
-            className="absolute top-20 left-10 w-56 h-56 bg-[#FF6B2B]/10 rounded-full blur-3xl"
-            style={{ animation: "careers-shape-1 12s ease-in-out infinite" }}
-          />
-          <div
-            className="absolute bottom-20 right-20 w-64 h-64 bg-yellow-400/10 rounded-full blur-3xl"
-            style={{ animation: "careers-shape-2 15s ease-in-out infinite" }}
-          />
-        </div>
 
         <div className="container max-w-[1200px] mx-auto px-4 sm:px-6 md:px-10 mt-[-24px]">
           {/* Section Title */}
@@ -230,7 +216,7 @@ export default function Contact() {
                 onClick={handleWhatsApp}
                 size="default"
                 className="flex items-center gap-2 w-full py-5 bg-white border-2 border-[#25D366] text-[#25D366] 
-                font-semibold rounded-lg shadow-sm hover:bg-gray-50 hover:scale-102 transition-all duration-200 focus:outline-none "
+                font-semibold rounded-lg shadow-sm hover:bg-gray-50 hover:scale-102 transition-all duration-200 focus:outline-none cursor-pointer"
               >
                 <Image
                   src="/icons/whatsapp_icon.svg"
@@ -325,7 +311,7 @@ export default function Contact() {
                     onChange={(e) =>
                       setFormData({ ...formData, userType: e.target.value })
                     }
-                    className="w-full px-3 py-2 text-sm rounded-lg border border-gray-200 bg-white focus:outline-none focus:ring-2 focus:border-transparent transition-all duration-300"
+                    className="w-full px-2 py-2 text-sm rounded-lg border border-gray-200 bg-white focus:outline-none focus:ring-2 focus:border-transparent transition-all duration-300"
                     onFocus={(e) => {
                       e.target.style.boxShadow =
                         "0 0 0 2px rgba(255, 107, 43, 0.2)";
@@ -385,7 +371,7 @@ export default function Contact() {
                   disabled={isSubmitting}
                   className="w-full flex items-center justify-center gap-2 bg-white border-2 border-[#FF8A4C] text-[#FF6B2B] 
                   font-semibold text-base rounded-full shadow-none hover:bg-[#FFFAF6] hover:border-[#FF6B2B] hover:text-[#FF7C38] 
-                  disabled:opacity-60 disabled:cursor-not-allowed transition-all duration-200 py-3"
+                  disabled:opacity-60 disabled:cursor-not-allowed transition-all duration-200 py-3 cursor-pointer"
                   style={{
                     boxShadow: "0 4px 18px 0 rgba(255,107,43,0.09)",
                   }}

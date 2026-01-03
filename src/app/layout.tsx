@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     template: "%s | Frovo",
   },
   description:
-    "Frovo is India's most advanced smart vending machine company. Get 24/7 access to snacks, beverages, and essentials with Frovo's tap-to-pay technology. Perfect for offices, colleges, and public spaces.", // ✅ Added "Frovo is"
+    "Frovo is India's most advanced smart vending machine company. Get 24/7 access to snacks, beverages, and essentials with Frovo's tap-to-pay technology. Perfect for offices, colleges, and public spaces.",
   keywords: [
     "Frovo",
     "Frovo India",
@@ -116,7 +116,7 @@ export const metadata: Metadata = {
     capable: true,
   },
   verification: {
-    google: "ACcqAOI1hobNDV9gp5hX9YvJpTjmYzvLQS6utGQSxyI",
+    google: "e9xJhMGXQD1dTwXcDQdvXEVBGcoPUNrQWjbIyDB1SP0",
   },
   category: "technology",
 };

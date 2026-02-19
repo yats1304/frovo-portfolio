@@ -4,70 +4,68 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
-import { Menu, X } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { X } from "lucide-react";
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import {
   Sheet,
   SheetContent,
-  SheetTrigger,
   SheetHeader,
   SheetTitle,
   SheetDescription,
 } from "@/components/ui/sheet";
-import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import { NAV_ITEMS, NAV_SECTIONS } from "@/constants/navigation";
 
 export default function NavbarMobile() {
   const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("");
   const pathname = usePathname();
   const router = useRouter();
 
+  // Lock body scroll when open
   useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
-    }
+    document.body.style.overflow = isOpen ? "hidden" : "unset";
     return () => {
       document.body.style.overflow = "unset";
     };
   }, [isOpen]);
 
+  // Scroll detection
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPosition = window.scrollY + 200;
+      setScrolled(window.scrollY > 60);
 
+      const scrollPosition = window.scrollY + 200;
       if (window.scrollY < 100) {
         setActiveSection("/");
         return;
       }
 
       for (let i = NAV_SECTIONS.length - 1; i >= 0; i--) {
-        const sectionId = NAV_SECTIONS[i];
-        const element = document.getElementById(sectionId);
+        const element = document.getElementById(NAV_SECTIONS[i]);
         if (element) {
           const offsetTop = element.offsetTop;
-          const offsetBottom = offsetTop + element.offsetHeight;
-
-          if (scrollPosition >= offsetTop && scrollPosition < offsetBottom) {
-            setActiveSection(`#${sectionId}`);
+          if (
+            scrollPosition >= offsetTop &&
+            scrollPosition < offsetTop + element.offsetHeight
+          ) {
+            setActiveSection(`#${NAV_SECTIONS[i]}`);
             return;
           }
         }
       }
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll();
-
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const handleNavClick = (
     e: React.MouseEvent<HTMLAnchorElement>,
-    href: string
+    href: string,
   ) => {
+    setIsOpen(false);
     if (href === "/") {
       e.preventDefault();
       if (pathname !== "/") {
@@ -76,259 +74,147 @@ export default function NavbarMobile() {
         window.scrollTo({ top: 0, behavior: "smooth" });
         setActiveSection("/");
       }
-      setIsOpen(false);
       return;
     }
-
     if (href.startsWith("#")) {
       e.preventDefault();
       if (pathname !== "/") {
-        // Navigate to home page with hash
         router.push(`/${href}`);
       } else {
-        // Smooth scroll on same page
-        const element = document.querySelector(href);
-        if (element) {
-          const offset = 80;
-          const elementPosition = element.getBoundingClientRect().top;
-          const offsetPosition = elementPosition + window.pageYOffset - offset;
-          window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+        const el = document.querySelector(href);
+        if (el) {
+          const top = el.getBoundingClientRect().top + window.pageYOffset - 80;
+          window.scrollTo({ top, behavior: "smooth" });
         }
       }
-      setIsOpen(false);
     }
   };
 
   const isActive = (href: string, itemName: string) => {
-    // Prioritize route-based detection
-    if (itemName === "Careers" && pathname === "/jobs") {
-      return true;
-    }
-
-    // Only use scroll-based detection if we're on the home page
+    if (itemName === "Careers" && pathname === "/jobs") return true;
     if (pathname === "/") {
-      if (href === "/") {
-        return activeSection === "/" || activeSection === "";
-      }
+      if (href === "/") return activeSection === "/" || activeSection === "";
       return activeSection === href;
     }
-
-    // For other routes, no items should be active except route-specific ones
     return false;
   };
 
   return (
     <>
-      <header
-        className="fixed top-0 w-full backdrop-blur-lg shadow-[0_1px_10px_rgba(255,107,43,0.05)] z-50 border-b border-orange-100 lg:hidden"
-        style={{
-          background:
-            "linear-gradient(to right, rgba(255, 245, 240, 0.95), rgba(255, 255, 255, 0.95), rgba(255, 250, 247, 0.95))",
-        }}
-      >
-        <nav className="max-w-[1400px] mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
+      {/* ── Trigger bar ── */}
+      <header className="lg:hidden fixed top-0 left-0 w-full z-50 flex justify-center pointer-events-none transition-all duration-300 ease-in-out pt-3">
+        <div
+          className={`pointer-events-auto flex items-center justify-between transition-all duration-300 ${
+            scrolled
+              ? "w-[92%] max-w-[500px] px-5 py-3 rounded-2xl bg-white/90 backdrop-blur-xl shadow-[0_4px_20px_rgba(255,107,43,0.12),0_1px_6px_rgba(0,0,0,0.07)] border border-orange-100"
+              : "w-[92%] max-w-[500px] px-5 py-3 rounded-2xl bg-white/75 backdrop-blur-md shadow-[0_2px_12px_rgba(0,0,0,0.08)] border border-white/60"
+          }`}
+        >
+          {/* Logo */}
           <Link
             href="/"
             onClick={(e) => handleNavClick(e, "/")}
-            className="flex items-center hover:opacity-80 transition-opacity"
+            className="flex items-center"
           >
             <Image
               src="/images/logo.svg"
               alt="Frovo Logo"
-              width={80}
-              height={60}
-              className="object-contain h-10"
+              width={72}
+              height={44}
+              className="h-8 w-auto object-contain"
               priority
             />
           </Link>
 
-          <Sheet open={isOpen} onOpenChange={setIsOpen}>
-            <SheetTrigger asChild>
-              <Button
-                variant="ghost"
-                size="icon"
-                aria-label="Toggle menu"
-                className="h-10 w-10 rounded-lg hover:bg-orange-50 transition-colors"
-              >
-                <Menu
-                  className="h-6 w-6"
-                  style={{ color: "#FF6B2B" }}
-                  strokeWidth={2.5}
-                />
-              </Button>
-            </SheetTrigger>
+          {/* Hamburger — three lines, styled */}
+          <button
+            onClick={() => setIsOpen(true)}
+            aria-label="Open menu"
+            className="flex flex-col gap-[5px] p-1 group"
+          >
+            <span className="block w-5 h-[2px] rounded-full bg-gray-700 group-hover:bg-[#FF6B2B] transition-colors duration-200" />
+            <span className="block w-5 h-[2px] rounded-full bg-gray-700 group-hover:bg-[#FF6B2B] transition-colors duration-200" />
+          </button>
+        </div>
+      </header>
 
-            <SheetContent
-              side="right"
-              className="w-[320px] sm:w-[380px] p-0 border-l border-orange-100 flex flex-col [&>button]:hidden will-change-transform"
+      {/* ── Drawer panel ── */}
+      <Sheet open={isOpen} onOpenChange={setIsOpen}>
+        <SheetContent
+          side="top"
+          className="lg:hidden w-full p-0 border-0 rounded-b-3xl shadow-2xl [&>button]:hidden"
+          style={{ background: "#fff", maxHeight: "auto" }}
+        >
+          <VisuallyHidden>
+            <SheetHeader>
+              <SheetTitle>Navigation Menu</SheetTitle>
+              <SheetDescription>
+                Browse Frovo&apos;s main navigation links.
+              </SheetDescription>
+            </SheetHeader>
+          </VisuallyHidden>
+
+          {/* Panel Header: logo + close */}
+          <div className="flex items-center justify-between px-6 pt-6 pb-4">
+            <Link
+              href="/"
+              onClick={(e) => handleNavClick(e, "/")}
+              className="flex items-center"
+            >
+              <Image
+                src="/images/logo.svg"
+                alt="Frovo Logo"
+                width={80}
+                height={48}
+                className="h-9 w-auto object-contain"
+              />
+            </Link>
+
+            <button
+              onClick={() => setIsOpen(false)}
+              aria-label="Close menu"
+              className="w-9 h-9 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center transition-colors duration-200"
+            >
+              <X className="w-5 h-5 text-gray-700" strokeWidth={2.5} />
+            </button>
+          </div>
+
+          {/* Nav links — centered */}
+          <nav className="flex flex-col items-center gap-0 py-3">
+            {NAV_ITEMS.map((item) => (
+              <Link
+                key={item.name}
+                href={item.href}
+                onClick={(e) => handleNavClick(e, item.href)}
+                className={`w-full text-center py-4 text-[17px] font-medium transition-colors duration-200 ${
+                  isActive(item.href, item.name)
+                    ? "text-[#FF6B2B]"
+                    : "text-gray-500 hover:text-gray-800"
+                }`}
+              >
+                {item.name}
+              </Link>
+            ))}
+          </nav>
+
+          {/* CTA button */}
+          <div className="px-6 pb-8 pt-4">
+            <Link
+              href="/partner"
+              onClick={(e) => {
+                setIsOpen(false);
+              }}
+              className="flex items-center justify-center gap-2 w-full py-4 rounded-2xl text-white text-[16px] font-semibold transition-opacity hover:opacity-90"
               style={{
-                background:
-                  "linear-gradient(to bottom, rgba(255, 250, 247, 1), rgba(255, 255, 255, 1))",
+                background: "linear-gradient(135deg, #1a1a1a 0%, #333 100%)",
               }}
             >
-              <VisuallyHidden>
-                <SheetHeader>
-                  <SheetTitle>Navigation Menu</SheetTitle>
-                  <SheetDescription>
-                    Browse Frovo&apos;s main navigation links, discover our
-                    vending solutions, and access contact information.
-                  </SheetDescription>
-                </SheetHeader>
-              </VisuallyHidden>
-
-              {/* Header */}
-              <div
-                className="relative p-5 pb-6 flex-shrink-0"
-                style={{
-                  background:
-                    "linear-gradient(135deg, #FF6B2B 0%, #FF8A4C 50%, #FFD700 100%)",
-                }}
-              >
-                <button
-                  onClick={() => setIsOpen(false)}
-                  className="absolute top-3 right-3 w-9 h-9 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center transition-colors"
-                  aria-label="Close menu"
-                  type="button"
-                >
-                  <X className="h-5 w-5 text-white" strokeWidth={2.5} />
-                </button>
-
-                <div className="pr-10">
-                  <h2 className="text-xl font-bold text-white font-poppins mb-1">
-                    Menu
-                  </h2>
-                  <p className="text-white/90 text-xs">
-                    Discover Frovo&apos;s smart vending solutions
-                  </p>
-                </div>
-              </div>
-
-              {/* Navigation Links */}
-              <nav
-                className="flex-1 overflow-y-auto px-4 py-4 space-y-1.5"
-                aria-label="Main navigation"
-                style={{
-                  background:
-                    "linear-gradient(to bottom, rgba(255, 250, 247, 1), rgba(255, 255, 255, 1))",
-                }}
-              >
-                {NAV_ITEMS.map((item) => (
-                  <Link
-                    key={item.name}
-                    href={item.href}
-                    onClick={(e) => {
-                      handleNavClick(e, item.href);
-                    }}
-                    className={`group px-3.5 py-3 rounded-lg border flex items-center justify-between transition-all duration-300 ${
-                      isActive(item.href, item.name)
-                        ? "bg-orange-50 border-orange-300"
-                        : "bg-gray-50 border-gray-200 hover:bg-orange-50 hover:border-orange-200"
-                    }`}
-                    aria-current={
-                      isActive(item.href, item.name) ? "page" : undefined
-                    }
-                  >
-                    <span
-                      className={`text-sm font-medium ${
-                        isActive(item.href, item.name)
-                          ? "font-semibold"
-                          : "text-gray-900"
-                      }`}
-                      style={{
-                        color: isActive(item.href, item.name)
-                          ? "#FF6B2B"
-                          : undefined,
-                      }}
-                    >
-                      {item.name}
-                    </span>
-                    <svg
-                      className={`w-4 h-4 transition-colors ${
-                        isActive(item.href, item.name) ? "" : "text-gray-400"
-                      }`}
-                      style={{
-                        color: isActive(item.href, item.name)
-                          ? "#FF6B2B"
-                          : undefined,
-                      }}
-                      fill="none"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      aria-hidden="true"
-                    >
-                      <path d="M9 5l7 7-7 7" />
-                    </svg>
-                  </Link>
-                ))}
-              </nav>
-
-              {/* Divider */}
-              <div
-                className="h-px bg-orange-100 mx-5 flex-shrink-0"
-                role="separator"
-              />
-
-              {/* CTA Buttons */}
-              <div
-                className="p-5 space-y-2.5 flex-shrink-0"
-                style={{
-                  background:
-                    "linear-gradient(to bottom, rgba(255, 255, 255, 1), rgba(255, 250, 247, 1))",
-                }}
-              >
-                <Button
-                  className="w-full h-11 text-sm font-semibold shadow-md"
-                  style={{
-                    background:
-                      "linear-gradient(135deg, #FF6B2B 0%, #FF8A4C 100%)",
-                  }}
-                  asChild
-                >
-                  <Link
-                    href="#contact"
-                    onClick={(e) => {
-                      handleNavClick(e, "#contact");
-                    }}
-                  >
-                    Contact Us →
-                  </Link>
-                </Button>
-
-                <Button
-                  variant="outline"
-                  className="w-full h-11 text-sm font-semibold border-2 hover:bg-orange-50"
-                  style={{
-                    borderColor: "#FF6B2B",
-                    color: "#FF6B2B",
-                  }}
-                  onClick={() => {
-                    setIsOpen(false);
-                    router.push("/partner");
-                  }}
-                >
-                  Become a Partner
-                </Button>
-              </div>
-
-              {/* Footer */}
-              <div
-                className="py-3 border-t border-orange-100 flex-shrink-0"
-                style={{
-                  background:
-                    "linear-gradient(to bottom, rgba(255, 250, 247, 0.5), rgba(255, 245, 240, 0.5))",
-                }}
-              >
-                <p className="text-xs text-gray-500 text-center">
-                  &copy; 2025 Frovo. All rights reserved.
-                </p>
-              </div>
-            </SheetContent>
-          </Sheet>
-        </nav>
-      </header>
+              Become a Partner
+              <span className="text-lg leading-none">↗</span>
+            </Link>
+          </div>
+        </SheetContent>
+      </Sheet>
     </>
   );
 }

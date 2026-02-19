@@ -32,7 +32,7 @@ export default function HowItWorks() {
       {/* Background  */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#FFEDE5] via-white to-[#FFF8F3] -z-10" />
 
-      <div className="container max-w-[1400px] mx-auto px-4 sm:px-6 md:px-10 lg:px-16 xl:px-20">
+      <div className="container xl:py-10 max-w-[1400px] mx-auto px-4 sm:px-6 md:px-10 lg:px-16 xl:px-20">
         {/* Section Header */}
         <div data-aos="fade-up" className="text-center mb-12 md:mb-16">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold font-poppins mb-4">

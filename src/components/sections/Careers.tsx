@@ -2,154 +2,148 @@
 
 import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Users, Rocket, Lightbulb } from "lucide-react";
-import "aos/dist/aos.css";
-import AOS from "aos";
+import {
+  Users,
+  Rocket,
+  Lightbulb,
+  ArrowRight,
+  Zap,
+  Target,
+  Briefcase,
+} from "lucide-react";
 import Link from "next/link";
+import AOS from "aos";
+import "aos/dist/aos.css";
+
+const BENEFITS = [
+  {
+    icon: Users,
+    title: "Collaborative Culture",
+    description: "Work with passionate individuals who lift each other up.",
+  },
+  {
+    icon: Rocket,
+    title: "Fast Growth",
+    description:
+      "Accelerate your career in a high-velocity startup environment.",
+  },
+  {
+    icon: Lightbulb,
+    title: "Innovation First",
+    description: "We don't follow trends, we set them with smart tech.",
+  },
+];
 
 export default function Careers() {
   useEffect(() => {
     AOS.init({
       once: true,
-      duration: 500,
-      easing: "ease-out",
+      duration: 800,
+      easing: "ease-out-cubic",
     });
   }, []);
 
   return (
     <section
       id="careers"
-      className="relative py-8 md:py-14 overflow-hidden min-h-screen flex flex-col"
+      className="relative py-24 min-h-screen overflow-hidden flex flex-col justify-center"
     >
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#FFEDE5] via-white to-[#FFF8F3] -z-10" />
+      {/* Background Gradients */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#FFF8F3] via-[#FFEDE5]/30 to-white -z-20" />
 
-      <div className="container max-w-[1200px] mx-auto px-4 sm:px-6 md:px-10 w-full relative z-10">
-        <div className="text-center pt-8 pb-12">
-          {/* Badge */}
+      {/* Static Background Orbs (Replaced Motion) */}
+      <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-orange-400/5 rounded-full blur-[100px] -translate-x-1/2 -translate-y-1/2 -z-10 animate-pulse" />
+      <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-yellow-400/5 rounded-full blur-[120px] translate-x-1/3 translate-y-1/3 -z-10 animate-pulse" />
+
+      <div className="container px-4 sm:px-6 md:px-10 max-w-7xl mx-auto relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+          {/* Left Column: Content */}
           <div
-            data-aos="fade-up"
-            data-aos-delay="100"
-            className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-[#FF6B2B]/10 to-[#FFD700]/10 rounded-full border border-[#FF6B2B]/20 mb-6"
+            data-aos="fade-right"
+            className="text-center lg:text-left space-y-8"
           >
-            <span className="text-sm font-semibold text-[#FF6B2B]">
-              We&apos;re Hiring!
-            </span>
-          </div>
-
-          {/* Main Heading */}
-          <h2
-            data-aos="zoom-in"
-            data-aos-delay="200"
-            className="text-3xl sm:text-4xl lg:text-5xl font-bold font-poppins mb-4"
-          >
-            <span className="bg-gradient-to-r from-[#FF6B2B] via-[#FF8C42] to-[#FFD700] bg-clip-text text-transparent">
-              Join the Future of Smart Retail
-            </span>
-            <br />
-            <div className="mt-2">
-              <span className="text-gray-900">build with </span>
-              <span
-                className="bg-clip-text text-transparent"
-                style={{
-                  backgroundImage:
-                    "linear-gradient(135deg, #FF6B2B 0%, #FF8A4C 40%, #FFD700 70%, #9ACD32 100%)",
-                }}
-              >
-                Frovo
+            {/* Badge */}
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-orange-50 border border-orange-100/50 shadow-sm mx-auto lg:mx-0">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-orange-500"></span>
+              </span>
+              <span className="text-xs font-semibold text-orange-600 tracking-wide uppercase">
+                We're Hiring
               </span>
             </div>
-          </h2>
 
-          {/* Subtitle */}
-          <p
-            data-aos="fade-up"
-            data-aos-delay="300"
-            className="text-lg text-gray-600 max-w-2xl mx-auto"
-          >
-            We&apos;re building something amazing - come grow with us!
-          </p>
-
-          {/* Feature Pills */}
-          <div className="flex flex-wrap justify-center gap-3 mt-8">
-            <div
-              data-aos="fade-up"
-              data-aos-delay="400"
-              className="flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full shadow-sm border border-gray-200"
-            >
-              <Users className="w-4 h-4 text-[#9ACD32]" />
-              <span className="text-sm font-medium text-gray-700">
-                Growing Team
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold font-poppins leading-tight">
+              Build the <br className="hidden lg:block" />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF6B2B] via-[#FF8C42] to-[#FFD700]">
+                Future of Retail
               </span>
-            </div>
-            <div
-              data-aos="fade-up"
-              data-aos-delay="500"
-              className="flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full shadow-sm border border-gray-200"
-            >
-              <Rocket className="w-4 h-4 text-[#FF6B2B]" />
-              <span className="text-sm font-medium text-gray-700">
-                Fast-Paced Environment
-              </span>
-            </div>
-            <div
-              data-aos="fade-up"
-              data-aos-delay="600"
-              className="flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full shadow-sm border border-gray-200"
-            >
-              <Lightbulb className="w-4 h-4 text-[#dacb20]" />
-              <span className="text-sm font-medium text-gray-700">
-                Innovation First
-              </span>
-            </div>
-          </div>
-        </div>
+            </h2>
 
-        {/* CTA Button Section */}
-        <div className="flex-1 flex justify-center items-center flex-col">
-          <div
-            data-aos="fade-down"
-            data-aos-delay="700"
-            className="relative mb-6"
-          >
-            <h3 className="relative text-2xl md:text-3xl font-bold bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent mb-10">
-              Ready to join us?
-            </h3>
-          </div>
-
-          {/* Button */}
-          <div data-aos="flip-up" data-aos-delay="800">
-            <Button
-              size="lg"
-              variant="outline"
-              className="text-base h-14 px-8 font-bold border-2 transition-all duration-300 hover:scale-105 hover:shadow-2xl group relative overflow-hidden"
-              style={{
-                borderColor: "#FF6B2B",
-                color: "#FF6B2B",
-              }}
-              asChild
-            >
-              <Link href="/jobs">
-                <span
-                  className="absolute inset-0 -z-10 transition-transform duration-500 ease-out scale-x-0 group-hover:scale-x-100 origin-left"
-                  style={{
-                    background:
-                      "linear-gradient(135deg, #FFD700 0%, #9ACD32 100%)",
-                  }}
-                />
-                <span className="relative z-10 transition-colors duration-300 group-hover:text-white flex items-center gap-2">
-                  View Open Positions
-                </span>
-              </Link>
-            </Button>
-          </div>
-
-          {/* Additional Info */}
-          <div data-aos="fade-up" data-aos-delay="800">
-            <p className="mt-6 text-sm text-gray-500">
-              Join <span className="font-semibold text-[#FF6B2B]">20+</span>{" "}
-              talented people building the future
+            <p className="text-lg text-muted-foreground leading-relaxed max-w-xl mx-auto lg:mx-0">
+              Join a team of visionaries, builders, and dreamers. At Frovo,
+              we're not just selling products; we're redefining how the world
+              shops.
             </p>
+
+            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4">
+              <Button
+                size="lg"
+                className="h-14 w-56 px-16 text-base rounded-full bg-gradient-to-r from-[#FF6B2B] to-[#FF8A4C] hover:shadow-lg hover:shadow-orange-500/25 transition-all duration-300 hover:scale-[1.02] group"
+                asChild
+              >
+                <Link href="/jobs">
+                  View Open Positions
+                  <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </Button>
+            </div>
+
+            <div className="pt-8 flex items-center justify-center lg:justify-start gap-8 text-sm text-gray-500 font-medium">
+              <div className="flex items-center gap-2">
+                <Target className="w-5 h-5 text-orange-500" />
+                <span>Mission Driven</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Zap className="w-5 h-5 text-yellow-500" />
+                <span>High Impact</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Briefcase className="w-5 h-5 text-lime-500" />
+                <span>Remote Friendly</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Right Column: Cards Grid */}
+          <div className="relative">
+            {/* Decorative Elements */}
+            <div className="absolute inset-0 bg-gradient-to-tr from-orange-100/40 to-yellow-100/40 rounded-[3rem] blur-3xl -z-10" />
+
+            <div className="grid gap-5 relative z-10">
+              {BENEFITS.map((item, i) => (
+                <div
+                  key={i}
+                  data-aos="fade-left"
+                  data-aos-delay={i * 100}
+                  className="group bg-white/70 backdrop-blur-xl border border-white/60 p-6 rounded-3xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 hover:scale-[1.02]"
+                >
+                  <div className="flex items-start gap-5">
+                    <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-orange-50 to-orange-100 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform duration-300 shadow-sm border border-orange-100/50">
+                      <item.icon className="w-6 h-6 text-orange-600" />
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-bold text-gray-900 mb-1 group-hover:text-orange-600 transition-colors">
+                        {item.title}
+                      </h3>
+                      <p className="text-sm text-gray-500 leading-relaxed">
+                        {item.description}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>

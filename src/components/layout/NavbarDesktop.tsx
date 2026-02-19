@@ -8,12 +8,15 @@ import { NAV_ITEMS, NAV_SECTIONS } from "@/constants/navigation";
 
 export default function NavbarDesktop() {
   const [activeSection, setActiveSection] = useState("");
+  const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
 
-  // Active scroll tracker with NAV_SECTIONS
+  // Scroll tracker: detect scroll position + active section
   useEffect(() => {
     const handleScroll = () => {
+      setScrolled(window.scrollY > 80);
+
       const scrollPosition = window.scrollY + 100;
 
       if (window.scrollY < 100) {
@@ -45,9 +48,8 @@ export default function NavbarDesktop() {
 
   const handleClick = (
     e: React.MouseEvent<HTMLAnchorElement>,
-    href: string
+    href: string,
   ) => {
-    // Handle Home link
     if (href === "/") {
       e.preventDefault();
       if (pathname !== "/") {
@@ -59,17 +61,14 @@ export default function NavbarDesktop() {
       return;
     }
 
-    // Handle section links
     if (href.startsWith("#")) {
       e.preventDefault();
       if (pathname !== "/") {
-        // Navigate to home page with hash
         router.push(`/${href}`);
       } else {
-        // Smooth scroll on same page
         const target = document.querySelector(href);
         if (target) {
-          const offset = 65;
+          const offset = 0;
           const top =
             target.getBoundingClientRect().top + window.scrollY - offset;
           window.scrollTo({ top, behavior: "smooth" });
@@ -79,8 +78,18 @@ export default function NavbarDesktop() {
   };
 
   return (
-    <header className="hidden lg:block fixed top-0 w-full z-50 bg-gradient-to-r from-[#FFF5F0]/95 via-white/95 to-[#FFFAF7]/95 backdrop-blur-lg border-b border-orange-100 shadow-[0_1px_10px_rgba(255,107,43,0.05)]">
-      <nav className="max-w-[1300px] mx-auto px-8 py-4 flex justify-between items-center">
+    <header
+      className={`hidden lg:flex fixed top-0 left-0 w-full z-50 justify-center transition-all duration-500 ease-in-out pointer-events-none ${
+        scrolled ? "pt-3" : "pt-0"
+      }`}
+    >
+      <nav
+        className={`pointer-events-auto flex items-center justify-between transition-all duration-500 ease-in-out ${
+          scrolled
+            ? "w-[88%] max-w-[860px] px-6 py-3 rounded-2xl bg-white/85 backdrop-blur-xl shadow-[0_6px_30px_rgba(255,107,43,0.10),0_2px_8px_rgba(0,0,0,0.08)] border border-orange-100"
+            : "w-full max-w-[1300px] px-8 py-5 rounded-none bg-transparent border-b border-transparent shadow-none"
+        }`}
+      >
         {/* Logo */}
         <Link
           href="/"
@@ -92,7 +101,9 @@ export default function NavbarDesktop() {
             alt="Frovo Logo"
             width={100}
             height={60}
-            className="h-10 object-contain group-hover:scale-105 transition-transform duration-300"
+            className={`object-contain group-hover:scale-105 transition-all duration-500 ${
+              scrolled ? "h-8" : "h-10"
+            }`}
           />
         </Link>
 
@@ -109,7 +120,9 @@ export default function NavbarDesktop() {
                     (activeSection === item.href ||
                       (item.href === "/" && activeSection === "")))
                     ? "text-[#FF6B2B]"
-                    : "text-gray-700 hover:text-[#FF6B2B]"
+                    : scrolled
+                      ? "text-gray-800 hover:text-[#FF6B2B]"
+                      : "text-gray-700 hover:text-[#FF6B2B]"
                 }`}
               >
                 {item.name}

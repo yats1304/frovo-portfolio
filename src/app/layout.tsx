@@ -78,9 +78,9 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: "/icon.svg",
-    shortcut: "/icon.svg",
-    apple: "/icon.svg",
+    icon: "/icons/icon.png",
+    shortcut: "/icons/icon.png",
+    apple: "/icons/icon.png",
   },
   manifest: "/manifest.json",
   openGraph: {
@@ -250,37 +250,6 @@ export default function RootLayout({
                 priceCurrency: "INR",
               },
               image: "https://www.frovo.in/images/vending-machine-hero.webp",
-            }),
-          }}
-        />
-
-        {/* BreadcrumbList Schema */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "BreadcrumbList",
-              itemListElement: [
-                {
-                  "@type": "ListItem",
-                  position: 1,
-                  name: "Home",
-                  item: "https://www.frovo.in",
-                },
-                {
-                  "@type": "ListItem",
-                  position: 2,
-                  name: "Jobs",
-                  item: "https://www.frovo.in/jobs",
-                },
-                {
-                  "@type": "ListItem",
-                  position: 3,
-                  name: "Partner",
-                  item: "https://www.frovo.in/partner",
-                },
-              ],
             }),
           }}
         />

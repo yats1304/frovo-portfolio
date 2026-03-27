@@ -1,0 +1,65 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  // url is configured in prisma.config.ts
+}
+
+model ContactSubmission {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String
+  role      String?
+  message   String
+  createdAt DateTime @default(now())
+}
+
+model PartnerSubmission {
+  id                Int      @id @default(autoincrement())
+  fullName          String
+  emailAddress      String
+  phoneNumber       String
+  website           String?
+  organization      String
+  collaborationType String
+  description       String
+  location          String
+  createdAt         DateTime @default(now())
+}
+
+model JobApplication {
+  id          Int      @id @default(autoincrement())
+  fullName    String
+  email       String
+  phoneNumber String
+  position    String
+  experience  String
+  linkedin    String?
+  resumeName  String?  // Store filename if uploaded
+  createdAt   DateTime @default(now())
+}
+
+model JobListing {
+  id             Int      @id @default(autoincrement())
+  role           String
+  department     String
+  location       String
+  employmentType String
+  description    String?
+  requirements   String?
+  isActive       Boolean  @default(true)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}
+
+model AdminUser {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  password  String
+  createdAt DateTime @default(now())
+}

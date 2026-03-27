@@ -100,8 +100,8 @@ export default function HeroDesktop() {
           <div data-aos="fade-right" className="space-y-8">
             {/* Eyebrow pill */}
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-orange-200 bg-orange-50/80 text-sm font-semibold text-orange-600">
-              <span className="w-2 h-2 rounded-full bg-lime-500 animate-pulse inline-block" />
-              Now live in Bangalore
+              <span className="w-2 h-2 rounded-full bg-orange-500 animate-pulse inline-block" />
+              Launching Soon in Bangalore
             </div>
 
             {/* Headline with cycling word */}

@@ -152,14 +152,32 @@ export default function Footer() {
               ></span>
             </h3>
             <ul className="space-y-3">
-              <li className="flex items-start gap-3 text-sm text-muted-foreground">
-                <Image
-                  src="/icons/location_icon.svg"
-                  alt="Instagram"
-                  width={25}
-                  height={25}
-                />
-                <span className="">Bangalore, India</span>
+              <li className="flex items-start gap-3">
+                <div className="mt-0.5 flex-shrink-0">
+                  <Image
+                    src="/icons/location_icon.svg"
+                    alt="Location"
+                    width={22}
+                    height={22}
+                  />
+                </div>
+                <a
+                  href="https://maps.app.goo.gl/Ruq8JVd1h2fQkviw6"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex flex-col gap-0.5 group cursor-pointer"
+                >
+                  <span className="text-sm font-semibold text-foreground transition-colors duration-300 group-hover:text-[#FF6B2B]">
+                    Office Address
+                  </span>
+                  <span className="text-sm text-muted-foreground leading-relaxed transition-colors duration-300 group-hover:text-[#FF6B2B]">
+                    Canvas Workspace, 502,
+                    <br />
+                    22nd Cross Rd, Sector 3,
+                    <br />
+                    HSR Layout, Bengaluru 560102
+                  </span>
+                </a>
               </li>
               <li className="flex items-start gap-3">
                 <Image

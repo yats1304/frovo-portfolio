@@ -78,71 +78,76 @@ export default function NavbarDesktop() {
   };
 
   return (
-    <header
-      className={`hidden lg:flex fixed top-0 left-0 w-full z-50 justify-center transition-all duration-500 ease-in-out pointer-events-none ${
-        scrolled ? "pt-3" : "pt-0"
-      }`}
-    >
-      <nav
-        className={`pointer-events-auto flex items-center justify-between transition-all duration-500 ease-in-out ${
-          scrolled
-            ? "w-[88%] max-w-[860px] px-6 py-3 rounded-2xl bg-white/85 backdrop-blur-xl shadow-[0_6px_30px_rgba(255,107,43,0.10),0_2px_8px_rgba(0,0,0,0.08)] border border-orange-100"
-            : "w-full max-w-[1300px] px-8 py-5 rounded-none bg-transparent border-b border-transparent shadow-none"
+    <>
+      {/* 1. Static Logo that stays on the hero page */}
+      <div className="hidden lg:flex absolute top-0 left-0 w-full z-[60] justify-center pointer-events-none">
+        <div className="w-full max-w-[1300px] px-8 py-5 flex items-center justify-start pointer-events-none">
+          <Link
+            href="/"
+            onClick={(e) => handleClick(e, "/")}
+            className="flex items-center space-x-2 group pointer-events-auto"
+          >
+            <Image
+              src="/images/logo.svg"
+              alt="Frovo Logo"
+              width={100}
+              height={60}
+              className="object-contain group-hover:scale-105 transition-transform duration-500 h-10"
+            />
+          </Link>
+        </div>
+      </div>
+
+      {/* 2. Fixed Navbar (Links only) that stays at the top */}
+      <header
+        className={`hidden lg:flex fixed top-0 left-0 w-full z-50 justify-center transition-all duration-500 ease-in-out pointer-events-none ${
+          scrolled ? "pt-3" : "pt-0"
         }`}
       >
-        {/* Logo */}
-        <Link
-          href="/"
-          onClick={(e) => handleClick(e, "/")}
-          className="flex items-center space-x-2 group"
+        <nav
+          className={`pointer-events-auto flex items-center transition-all duration-500 ease-in-out ${
+            scrolled
+              ? "justify-center w-max px-10 py-3 rounded-full bg-white/85 backdrop-blur-xl shadow-[0_8px_32px_rgba(255,107,43,0.12),0_2px_10px_rgba(0,0,0,0.08)] border border-orange-100/60"
+              : "justify-end w-full max-w-[1300px] px-8 py-5 rounded-none bg-transparent border-b border-transparent shadow-none"
+          }`}
         >
-          <Image
-            src="/images/logo.svg"
-            alt="Frovo Logo"
-            width={100}
-            height={60}
-            className={`object-contain group-hover:scale-105 transition-all duration-500 ${
-              scrolled ? "h-8" : "h-10"
-            }`}
-          />
-        </Link>
-
-        {/* Desktop Nav */}
-        <ul className="flex items-center space-x-6">
-          {NAV_ITEMS.map((item) => (
-            <li key={item.name}>
-              <Link
-                href={item.href}
-                onClick={(e) => handleClick(e, item.href)}
-                className={`relative px-2 py-1 text-[15px] font-medium transition-all duration-300 ${
-                  (item.name === "Careers" && pathname === "/jobs") ||
-                  (pathname === "/" &&
-                    (activeSection === item.href ||
-                      (item.href === "/" && activeSection === "")))
-                    ? "text-[#FF6B2B]"
-                    : scrolled
-                      ? "text-gray-800 hover:text-[#FF6B2B]"
-                      : "text-gray-700 hover:text-[#FF6B2B]"
-                }`}
-              >
-                {item.name}
-                {((item.name === "Careers" && pathname === "/jobs") ||
-                  (pathname === "/" &&
-                    (activeSection === item.href ||
-                      (item.href === "/" && activeSection === "")))) && (
-                  <span
-                    className="absolute bottom-0 left-0 w-full h-[2px] rounded-full transition-all duration-500"
-                    style={{
-                      backgroundImage:
-                        "linear-gradient(to right, #FF6B2B, #FFD700)",
-                    }}
-                  />
-                )}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </nav>
-    </header>
+          {/* Desktop Nav */}
+          <ul className="flex items-center space-x-6">
+            {NAV_ITEMS.map((item) => (
+              <li key={item.name} className="whitespace-nowrap">
+                <Link
+                  href={item.href}
+                  onClick={(e) => handleClick(e, item.href)}
+                  className={`relative px-2 py-1 text-[15px] font-medium transition-all duration-300 ${
+                    (item.name === "Careers" && pathname === "/jobs") ||
+                    (pathname === "/" &&
+                      (activeSection === item.href ||
+                        (item.href === "/" && activeSection === "")))
+                      ? "text-[#FF6B2B]"
+                      : scrolled
+                        ? "text-gray-800 hover:text-[#FF6B2B]"
+                        : "text-gray-700 hover:text-[#FF6B2B]"
+                  }`}
+                >
+                  {item.name}
+                  {((item.name === "Careers" && pathname === "/jobs") ||
+                    (pathname === "/" &&
+                      (activeSection === item.href ||
+                        (item.href === "/" && activeSection === "")))) && (
+                    <span
+                      className="absolute bottom-0 left-0 w-full h-[2px] rounded-full transition-all duration-500"
+                      style={{
+                        backgroundImage:
+                          "linear-gradient(to right, #FF6B2B, #FFD700)",
+                      }}
+                    />
+                  )}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </header>
+    </>
   );
 }

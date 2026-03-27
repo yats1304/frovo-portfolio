@@ -92,47 +92,52 @@ const WelcomeGreeting = ({ onComplete }: WelcomeGreetingProps) => {
   const cfg = TIME_CONFIG[tod];
 
   useEffect(() => {
-    const tl = gsap.timeline();
+    // Use gsap.context to properly clean up animations (crucial for React Strict Mode)
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline();
 
-    gsap.set([textRef.current, progressBarRef.current], { opacity: 0, y: 30 });
-    gsap.set(logoRef.current, { opacity: 0, scale: 0.7, y: -20 });
+      gsap.set([textRef.current, progressBarRef.current], { opacity: 0, y: 30 });
+      gsap.set(logoRef.current, { opacity: 0, scale: 0.7, y: -20 });
 
-    tl.to(logoRef.current, {
-      opacity: 1,
-      scale: 1,
-      y: 0,
-      duration: 0.9,
-      ease: "back.out(1.5)",
-    })
-      .to(
-        [textRef.current, progressBarRef.current],
-        { opacity: 1, y: 0, duration: 0.8, stagger: 0.2, ease: "power2.out" },
-        "-=0.4",
-      )
-      .to(progressBarRef.current, {
-        width: "100%",
-        duration: 2,
-        ease: "power2.out",
-        onUpdate: function () {
-          const progress = Math.round(this.progress() * 100);
-          if (percentRef.current)
-            percentRef.current.textContent = `${progress}%`;
-        },
+      tl.to(logoRef.current, {
+        opacity: 1,
+        scale: 1,
+        y: 0,
+        duration: 0.9,
+        ease: "back.out(1.5)",
       })
-      .to(
-        [textRef.current, progressBarRef.current, logoRef.current],
-        { opacity: 0, y: -30, duration: 0.6, ease: "power2.in", stagger: 0.1 },
-        "+=0.3",
-      )
-      .to(greetingRef.current, {
-        opacity: 0,
-        scale: 0.95,
-        duration: 0.8,
-        ease: "power2.inOut",
-        onComplete: () => {
-          if (onComplete) onComplete();
-        },
-      });
+        .to(
+          [textRef.current, progressBarRef.current],
+          { opacity: 1, y: 0, duration: 0.8, stagger: 0.2, ease: "power2.out" },
+          "-=0.4",
+        )
+        .to(progressBarRef.current, {
+          width: "100%",
+          duration: 2,
+          ease: "power2.out",
+          onUpdate: function () {
+            const progress = Math.round(this.progress() * 100);
+            if (percentRef.current)
+              percentRef.current.textContent = `${progress}%`;
+          },
+        })
+        .to(
+          [textRef.current, progressBarRef.current, logoRef.current],
+          { opacity: 0, y: -30, duration: 0.6, ease: "power2.in", stagger: 0.1 },
+          "+=0.3",
+        )
+        .to(greetingRef.current, {
+          opacity: 0,
+          scale: 0.95,
+          duration: 0.8,
+          ease: "power2.inOut",
+          onComplete: () => {
+            if (onComplete) onComplete();
+          },
+        });
+    }, greetingRef);
+
+    return () => ctx.revert(); // Cleanup timeline on unmount
   }, [onComplete]);
 
   return (
@@ -145,10 +150,11 @@ const WelcomeGreeting = ({ onComplete }: WelcomeGreetingProps) => {
       <div
         className="absolute inset-0 pointer-events-none"
         style={{ background: cfg.orb }}
+        aria-hidden="true"
       />
 
       {/* Stars / particles */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
         {[...Array(tod === "night" ? 60 : 18)].map((_, i) => (
           <div
             key={i}

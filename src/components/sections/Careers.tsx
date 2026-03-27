@@ -49,7 +49,7 @@ export default function Careers() {
       className="relative py-24 min-h-screen overflow-hidden flex flex-col justify-center"
     >
       {/* Background Gradients */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#FFF8F3] via-[#FFEDE5]/30 to-white -z-20" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#FFEDE5] via-white to-[#FFF8F3] -z-10" />
 
       {/* Static Background Orbs (Replaced Motion) */}
       <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-orange-400/5 rounded-full blur-[100px] -translate-x-1/2 -translate-y-1/2 -z-10 animate-pulse" />
@@ -86,7 +86,7 @@ export default function Careers() {
               shops.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4">
+            <div className="flex flex-col sm:flex-row gap-4 items-center justify-center lg:justify-start pt-4">
               <Button
                 size="lg"
                 className="h-14 w-56 px-16 text-base rounded-full bg-gradient-to-r from-[#FF6B2B] to-[#FF8A4C] hover:shadow-lg hover:shadow-orange-500/25 transition-all duration-300 hover:scale-[1.02] group"

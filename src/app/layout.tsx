@@ -34,29 +34,35 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   title: {
     default: "Frovo - Smart Vending Machines | India's #1 Vending Solution",
-    template: "%s | Frovo",
+    template: "%s | Frovo Marketplace Private Limited",
   },
   description:
-    "Frovo is India's most advanced smart vending machine company. Get 24/7 access to snacks, beverages, and essentials with Frovo's tap-to-pay technology. Perfect for offices, colleges, and public spaces.",
+    "Frovo Marketplace Private Limited is India's most advanced smart vending machine company. Get 24/7 access to snacks, beverages, and essentials with Frovo's tap-to-pay technology. Perfect for offices, colleges, and public spaces.",
   keywords: [
     "Frovo",
     "Frovo India",
+    "Frovo Marketplace",
+    "Frovo Marketplace Private Limited",
     "Frovo vending",
-    "smart vending machines",
+    "Frovo smart vending",
+    "Frovo vending machine",
+    "smart vending machines India",
     "vending solutions India",
     "24/7 vending",
     "tap and pay vending",
     "office vending machines",
     "college vending solutions",
-    "automated retail",
+    "automated retail India",
     "cashless vending",
     "snack vending machines",
     "beverage vending",
     "contactless payment vending",
+    "best vending machine company India",
+    "vending machine startup India",
   ],
-  authors: [{ name: "Frovo Team" }],
-  creator: "Frovo",
-  publisher: "Frovo",
+  authors: [{ name: "Frovo Marketplace Private Limited" }],
+  creator: "Frovo Marketplace Private Limited",
+  publisher: "Frovo Marketplace Private Limited",
   formatDetection: {
     email: false,
     address: false,
@@ -87,15 +93,15 @@ export const metadata: Metadata = {
     title:
       "Frovo - Smart Vending Machines | India's #1 Automated Retail Solution",
     description:
-      "Experience the future of vending with Frovo's smart machines. 24/7 availability, tap-to-pay technology, and fresh products. Revolutionizing retail across India.",
+      "Frovo Marketplace Private Limited — Experience the future of vending with Frovo's smart machines. 24/7 availability, tap-to-pay technology, and fresh products. Revolutionizing retail across India.",
     url: "https://www.frovo.in",
-    siteName: "Frovo",
+    siteName: "Frovo Marketplace Private Limited",
     images: [
       {
-        url: "https://www.frovo.in/images/logo.webp", //
+        url: "https://www.frovo.in/images/logo.webp",
         width: 1200,
         height: 630,
-        alt: "Frovo Smart Vending Machines - 24/7 Automated Retail Solutions",
+        alt: "Frovo Marketplace Private Limited - Smart Vending Machines India",
       },
     ],
     locale: "en_IN",
@@ -103,10 +109,10 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Frovo - Smart Vending Machines | Grab & Go 24/7",
+    title: "Frovo Marketplace Private Limited | Smart Vending Machines",
     description:
-      "India's most advanced smart vending solutions. 24/7 access with tap-to-pay technology.",
-    images: ["https://www.frovo.in/images/logo.webp"], //
+      "Frovo Marketplace Private Limited — India's most advanced smart vending solutions. 24/7 access with tap-to-pay technology.",
+    images: ["https://www.frovo.in/images/logo.webp"],
     creator: "@frovo_in",
     site: "@frovo_in",
   },
@@ -119,6 +125,11 @@ export const metadata: Metadata = {
     google: "e9xJhMGXQD1dTwXcDQdvXEVBGcoPUNrQWjbIyDB1SP0",
   },
   category: "technology",
+  applicationName: "Frovo Marketplace Private Limited",
+  other: {
+    "og:site_name": "Frovo Marketplace Private Limited",
+    "article:publisher": "https://www.frovo.in",
+  },
 };
 
 export default function RootLayout({
@@ -136,8 +147,8 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Corporation",
-              name: "Frovo",
-              alternateName: "Frovo India",
+              name: "Frovo Marketplace Private Limited",
+              alternateName: ["Frovo", "Frovo India", "Frovo Marketplace"],
               legalName: "Frovo Marketplace Private Limited",
               description:
                 "Frovo is India's leading smart vending machine solutions provider, delivering 24/7 access to snacks and beverages through innovative tap-to-pay technology.",

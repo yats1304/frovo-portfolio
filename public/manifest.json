@@ -1,7 +1,7 @@
 {
-  "name": "Frovo - Grab & Go 24/7",
+  "name": "Frovo Marketplace Private Limited",
   "short_name": "Frovo",
-  "description": "India's leading smart vending machine solutions provider. 24/7 access to snacks, beverages, and essentials with tap-to-pay technology.",
+  "description": "Frovo Marketplace Private Limited — India's leading smart vending machine solutions provider. 24/7 access to snacks, beverages, and essentials with tap-to-pay technology.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
@@ -13,10 +13,21 @@
   "categories": ["business", "productivity", "shopping"],
   "icons": [
     {
+      "src": "/icons/icon.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/icon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
       "src": "/icon.svg",
       "sizes": "any",
       "type": "image/svg+xml",
-      "purpose": "any maskable"
+      "purpose": "any"
     },
     {
       "src": "/images/logo.webp",

@@ -319,6 +319,7 @@ export default function RootLayout({
         <Navbar />
         <main className="min-h-screen">{children}</main>
         <Footer />
+        {/* Toast */}
         <Toaster
           position="top-right"
           richColors

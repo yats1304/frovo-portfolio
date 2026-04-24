@@ -307,7 +307,7 @@ export default function Footer() {
         {/* Copyright */}
         <div className="text-center">
           <p className="text-sm text-muted-foreground">
-            © <span className="font-semibold text-foreground">Frovo</span> 2025
+            © <span className="font-semibold text-foreground">Frovo</span> 2026
             |{" "}
             <span
               className="transition-colors duration-300 cursor-default"

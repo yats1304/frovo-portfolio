@@ -33,7 +33,8 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   title: {
-    default: "Frovo - Smart Vending Machines | India's #1 Vending Solution",
+    default:
+      "Frovo - Smart Vending Machines | India's Smartest Vending Platform",
     template: "%s | Frovo Marketplace Private Limited",
   },
   description:
@@ -90,8 +91,7 @@ export const metadata: Metadata = {
   },
   manifest: "/manifest.json",
   openGraph: {
-    title:
-      "Frovo - Smart Vending Machines | India's #1 Automated Retail Solution",
+    title: "Frovo - Smart Vending Machines | India's Smartest Vending Platform",
     description:
       "Frovo Marketplace Private Limited — Experience the future of vending with Frovo's smart machines. 24/7 availability, tap-to-pay technology, and fresh products. Revolutionizing retail across India.",
     url: "https://www.frovo.in",
@@ -198,8 +198,8 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "WebSite",
-              name: "Frovo",
-              alternateName: "Frovo India",
+              name: "Frovo Marketplace Private Limited",
+              alternateName: "Frovo Marketplace Private Limited",
               url: "https://www.frovo.in",
               description:
                 "Frovo delivers smart vending machines and automated retail solutions across India",
@@ -229,7 +229,7 @@ export default function RootLayout({
               "@type": "Brand",
               name: "Frovo",
               alternateName: ["Frovo India", "Frovo Vending"],
-              description: "India's most advanced smart vending machine brand",
+              description: "India's Smartest Vending Platform",
               url: "https://www.frovo.in",
               logo: "https://www.frovo.in/images/logo.webp",
               slogan: "Grab & Go 24/7",

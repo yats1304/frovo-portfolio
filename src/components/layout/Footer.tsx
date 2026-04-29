@@ -162,7 +162,6 @@ export default function Footer() {
                   />
                 </div>
                 <a
-                  href="https://maps.app.goo.gl/Ruq8JVd1h2fQkviw6"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex flex-col gap-0.5 group cursor-pointer"

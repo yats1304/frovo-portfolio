@@ -167,15 +167,8 @@ export default function Footer() {
                   rel="noopener noreferrer"
                   className="flex flex-col gap-0.5 group cursor-pointer"
                 >
-                  <span className="text-sm font-semibold text-foreground transition-colors duration-300 group-hover:text-[#FF6B2B]">
-                    Office Address
-                  </span>
-                  <span className="text-sm text-muted-foreground leading-relaxed transition-colors duration-300 group-hover:text-[#FF6B2B]">
-                    Canvas Workspace, 502,
-                    <br />
-                    22nd Cross Rd, Sector 3,
-                    <br />
-                    HSR Layout, Bengaluru 560102
+                  <span className="text-sm text-muted-foreground transition-colors duration-300 group-hover:text-[#FF6B2B]">
+                    <span>Bangalore, India</span>
                   </span>
                 </a>
               </li>

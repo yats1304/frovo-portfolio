@@ -274,10 +274,13 @@ export default function AboutUs() {
                 }}
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src="/images/karthick.png"
+                <Image
+                  width={200}
+                  height={200}
+                  src="/images/karthick1.webp"
                   alt="Karthickayan Manikandaraman - Founder & CEO, Frovo"
                   className="w-full h-full object-contain object-bottom absolute inset-0"
+                  unoptimized
                 />
               </div>
 

@@ -107,9 +107,14 @@ export default function NavbarDesktop() {
         <nav
           className={`pointer-events-auto flex items-center transition-all duration-500 ease-in-out ${
             scrolled
-              ? "justify-center w-max px-10 py-3 rounded-full bg-white/85 backdrop-blur-xl shadow-[0_8px_32px_rgba(255,107,43,0.12),0_2px_10px_rgba(0,0,0,0.08)] border border-orange-100/60"
-              : "justify-end w-full max-w-[1300px] px-8 py-5 rounded-none bg-transparent border-b border-transparent shadow-none"
+              ? "justify-center w-max px-10 py-3 rounded-full backdrop-blur-2xl shadow-[0_8px_40px_rgba(255,107,43,0.15),0_2px_12px_rgba(0,0,0,0.10)] border border-white/40"
+              : "justify-end w-full max-w-[1300px] px-8 py-5 rounded-none border-b border-white/20 shadow-none backdrop-blur-md"
           }`}
+          style={{
+            background: scrolled
+              ? "linear-gradient(135deg, rgba(255,255,255,0.75) 0%, rgba(255,240,230,0.70) 100%)"
+              : "linear-gradient(180deg, rgba(255,237,229,0.55) 0%, rgba(255,255,255,0.10) 100%)",
+          }}
         >
           {/* Desktop Nav */}
           <ul className="flex items-center space-x-6">

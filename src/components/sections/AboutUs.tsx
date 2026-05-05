@@ -229,6 +229,103 @@ export default function AboutUs() {
             </div>
           </div>
         </div>
+
+        {/* Founder / Team Section */}
+        <div className="mt-10 md:mt-14 lg:mt-16">
+          {/* Section Header */}
+          <div data-aos="fade-up" className="text-center mb-6 md:mb-10">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold font-poppins mb-2">
+              Meet the{" "}
+              <span
+                className="bg-clip-text text-transparent"
+                style={{
+                  backgroundImage:
+                    "linear-gradient(135deg, #FF6B2B 0%, #FF8A4C 40%, #FFD700 70%, #9ACD32 100%)",
+                }}
+              >
+                Team
+              </span>
+            </h2>
+            <p className="text-sm md:text-xl text-muted-foreground font-medium">
+              The people building and scaling Frovo every day
+            </p>
+            <p className="text-sm md:text-base text-muted-foreground max-w-2xl mx-auto mt-3 leading-relaxed">
+              Frovo Marketplace Private Limited was founded in Bengaluru with a
+              vision to make everyday snacking and essentials effortlessly
+              accessible. Built by a team with experience across technology,
+              operations, and consumer services, Frovo solves real-world
+              convenience gaps in modern workplaces and campuses.
+            </p>
+          </div>
+
+          {/* Founder Card — open layout matching reference */}
+          <div
+            data-aos="fade-up"
+            data-aos-delay="150"
+            className="max-w-4xl mx-auto"
+          >
+            <div className="flex flex-col sm:flex-row items-center gap-8 md:gap-12">
+              {/* Left — standalone photo card with warm peach→orange gradient */}
+              <div
+                className="relative flex-shrink-0 mx-auto w-[260px] h-[360px] sm:w-[300px] sm:h-auto sm:min-h-[480px] md:w-[420px] rounded-2xl overflow-hidden shadow-lg flex items-end justify-center"
+                style={{
+                  background:
+                    "linear-gradient(180deg, #FFE8D6 0%, #FFBE93 45%, #FF6B2B 100%)",
+                }}
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/images/karthick.png"
+                  alt="Karthickayan Manikandaraman - Founder & CEO, Frovo"
+                  className="w-full h-full object-contain object-bottom absolute inset-0"
+                />
+              </div>
+
+              {/* Right — text content, transparent (blends with section bg) */}
+              <div className="flex-1 flex flex-col justify-center pt-2 text-center sm:text-left">
+                <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold font-poppins text-gray-900 leading-tight mb-3">
+                  Karthickayan
+                  <br />
+                  Manikandaraman
+                </h3>
+                <p
+                  className="text-base md:text-lg font-bold mb-5"
+                  style={{ color: "#FF6B2B" }}
+                >
+                  Founder &amp; CEO
+                </p>
+                <p className="text-sm md:text-base leading-relaxed text-gray-600 mb-8 max-w-md">
+                  With a background in operations and startup scaling,
+                  Karthickayan built Frovo to solve everyday accessibility
+                  challenges in fast-paced environments. His vision is to make
+                  smart snacking effortless and available anytime, anywhere.
+                </p>
+
+                {/* LinkedIn CTA */}
+                <div className="flex justify-center sm:justify-start">
+                  <a
+                    href="https://www.linkedin.com/in/karthickayan-manikandaraman-b07ab4155/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full text-white text-sm font-semibold shadow-md hover:shadow-orange-300/60 hover:brightness-110 active:scale-95 transition-all duration-300"
+                    style={{ background: "#FF6B2B" }}
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      className="w-4 h-4 flex-shrink-0"
+                      aria-hidden="true"
+                    >
+                      <path d="M20.447 20.452H17.21v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.984V9.006h3.106v1.479h.044c.432-.818 1.487-1.68 3.059-1.68 3.27 0 3.874 2.152 3.874 4.95v6.697zM5.337 7.527a1.8 1.8 0 1 1 0-3.601 1.8 1.8 0 0 1 0 3.601zM6.926 20.452H3.747V9.006h3.179v11.446zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.226.792 24 1.771 24h20.451C23.2 24 24 23.226 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                    </svg>
+                    Connect on LinkedIn
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );

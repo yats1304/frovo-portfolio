@@ -235,7 +235,7 @@ export default function AboutUs() {
           {/* Section Header */}
           <div data-aos="fade-up" className="text-center mb-6 md:mb-10">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold font-poppins mb-2">
-              Meet the{" "}
+              Meet our{" "}
               <span
                 className="bg-clip-text text-transparent"
                 style={{
@@ -243,7 +243,7 @@ export default function AboutUs() {
                     "linear-gradient(135deg, #FF6B2B 0%, #FF8A4C 40%, #FFD700 70%, #9ACD32 100%)",
                 }}
               >
-                Team
+                Founder
               </span>
             </h2>
             <p className="text-sm md:text-xl text-muted-foreground font-medium">
